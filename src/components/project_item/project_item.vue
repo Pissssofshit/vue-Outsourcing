@@ -7,12 +7,12 @@
     </div>
 </template>
 <style>
-.el-card__body{
+/* .el-card__body{
     position: relative;
     top: 40%;
     border:0px;
     padding: 0px;
-}
+} */
 </style>
 
 <script>
