@@ -1,10 +1,11 @@
 <template>
   <div class="wuyu">
       <projectheadr></projectheadr>
-      <projectbody @click1="forclick1"></projectbody>
+      <projectbody @click1="forclick1" @click2="forclick2"></projectbody>
       <renwustate3 :dialogVisible="dialogvisible" @close1="forclose1"
-      :value2="sss">
-          <div slot="canyuzhe">黄某某</div>
+      :value2="sss"
+      :mode="iscreate">
+          <div slot="canyuzhe"></div>
          >
       </renwustate3>
   </div>
@@ -28,8 +29,16 @@ export default {
         })
   },
   methods: {
+      forclick2: function(){
+          console.log('this is forclick2')
+        this.iscreate='create'
+        // this.dialogvisible=false
+        this.dialogvisible=true
+      },
       forclick1: function(data){
           console.log('sssssssss')
+          this.iscreate='false'
+          this.dialogvisible=false
           this.dialogvisible=true
       },
       forclose1: function(){
@@ -40,7 +49,8 @@ export default {
   data(){
       return {
           dialogvisible: false,
-          sss: '2018-02-06'
+          sss: '2018-02-06',
+          iscreate:'notcreate'
       }
   }
 }

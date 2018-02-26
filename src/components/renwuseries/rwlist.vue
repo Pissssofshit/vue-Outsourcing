@@ -3,7 +3,7 @@
       <el-card class="box-card">
   <div slot="header" class="clearfix">
     <span>{{name}}</span>
-    <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
+    <el-button style="float: right; padding: 3px 0" type="text" @click="forclick2">操作按钮</el-button>
   </div>
   <div v-for="o in 4" :key="o" class="text item">
     <rwstate1 @click1="forclick1"></rwstate1>
@@ -23,6 +23,9 @@ export default {
     'name'
   ],
   methods:{
+    forclick2: function(){
+      this.$emit('click2')
+    },
     forclick1: function(renwuid){
       console.log('level 2 renwuclick')
       this.$emit('click1',renwuid)

@@ -33,11 +33,8 @@
     display: flex;
     margin: 1px;
   }
-  .el-alert{
-    width: 80%;
-  }
   .hang2,.hang1{
-    width: 80px;
+    width: 100px;
     text-align: start;
   }
   .canyuzhemen{
@@ -87,26 +84,23 @@
             </el-collapse-item>
           </el-collapse>
           <div class="canyuzhe hang1">
-            <slot name="canyuzhe">黄枭帅</slot></div>
+            <slot name="canyuzhe"></slot></div>
         </div>
         <div class="deadline">
           <el-date-picker v-model="value1" type="date" placeholder="选择日期">
-            <slot name="deadline"></slot>
           </el-date-picker>
         </div>
       </div>
       <div class="gaiyao">
         <div class="shuoming">
           <div class="hang2">任务说明</div>
-          <el-alert :closable="false" title="我是任务说明我是任务说明我是任务说明我是任务说明我是任务说明我是任务说明我是任务说明我是任务说明我是任务说明我是任务说明我是任务说明我是任务说明我是任务说明我是任务说明我是任务说明我是任务说明我是任务说明我是任务说明" type="info">
-            <slot name="renwushuoming"></slot>
-          </el-alert>
+          <el-input v-model="input" placeholder="请输入内容" :disabled="inputdisable"></el-input>
         </div>
         <div>
           <div class="youxianji">
             <div class="hang2">优先级</div>
-            <el-tag>普通
-              <slot name="youxianji"></slot></el-tag>
+            <el-tag>
+              <slot name="youxianji">普通</slot></el-tag>
           </div>
           <div></div>
         </div>
@@ -129,6 +123,14 @@
 </template>
 
 <script>
+/*
+:mode //等于create时将显示空白模板，否则载入设置的数据
+:value2 //用于设置时间
+:input2 //用于设置任务说明
+<slot name="canyuzhe">黄枭帅</slot>
+<slot name="youxianji"></slot>
+<span slot="footer" class="dialog-footer"></span>
+*/
 export default {
   data() {
     return {
@@ -136,6 +138,8 @@ export default {
       sss: true,
       ttt: false,
       value1: '',
+      input: '',
+      inputdisable: false,
       projectmember:[
         {id:'1',name:'jobs'},
         {id:'2',name:'linus'},
@@ -145,15 +149,24 @@ export default {
       searchword: ''
     }
   },
-  props: ['dialogVisible','value2'],
+  props: ['dialogVisible','value2','input2','mode'],
+  created: function(){
+    console.log('this is renwu3 created')
+    console.log('mode is '+this.mode)
+    if(this.mode!='create'){
+      this.value1=this.value2
+      this.input=this.input2
+      this.inputdisable=true
+      console.log('inputdisabel is '+this.inputdisable)
+    }
+    else{
+      this.inputdisable=false
+    }
+  },
   watch: {
     dialogVisible: function() {
       // console('watch dialogVIsible'+this.dialogVisible)
       this.ttt = this.dialogVisible
-    },
-    value2: function(){
-        console.log('watch value2')
-        this.value1=this.value2
     },
     searchword: function() {
       // console('watch dialogVisible')

@@ -1,9 +1,9 @@
 <template>
   <div>
     <div class="rwlistgroup">
-    <rwlist @click1="forclick1" name="待处理任务"></rwlist>
-    <rwlist @click1="forclick1" name="进行中任务"></rwlist>
-    <rwlist @click1="forclick1" name="已完成任务"></rwlist>
+    <rwlist @click1="forclick1" @click2="forclick2" name="待处理任务"></rwlist>
+    <rwlist @click1="forclick1" @click2="forclick2" name="进行中任务"></rwlist>
+    <rwlist @click1="forclick1" @click2="forclick2" name="已完成任务"></rwlist>
     </div>
   </div>
 </template>
@@ -14,6 +14,9 @@ export default {
     forclick1: function(renwuid){
         console.log('i received the click!')
         this.$emit('click1',renwuid)
+    },
+    forclick2: function(){
+      this.$emit('click2')
     }
   },
   components:{
@@ -25,7 +28,6 @@ export default {
     }
   },
   created() {
-    this.$emit('event',this.te)
   }
 }
 </script>
