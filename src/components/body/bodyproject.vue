@@ -1,8 +1,14 @@
 <template>
   <div class="wuyu">
       <projectheadr></projectheadr>
-      <projectbody @event="test"></projectbody>
-      <renwustate3></renwustate3>
+
+      <projectbody @click1="forclick1" @click2="forclick2"></projectbody>
+      <renwustate3 :dialogVisible="dialogvisible" @close1="forclose1"
+      :value2="sss"
+      :mode="iscreate">
+          <div slot="canyuzhe"></div>
+         >
+      </renwustate3>
   </div>
 </template>
 
@@ -27,6 +33,28 @@ export default {
       test: function(data){
           console.log('sssssssss')
           console.log(data)
+      forclick2: function(){
+          console.log('this is forclick2')
+        this.iscreate='create'
+        // this.dialogvisible=false
+        this.dialogvisible=true
+      },
+      forclick1: function(data){
+          console.log('sssssssss')
+          this.iscreate='false'
+          this.dialogvisible=false
+          this.dialogvisible=true
+      },
+      forclose1: function(){
+          console.log('forclose1 bodyproject')
+          this.dialogvisible=false
+      }
+  },
+  data(){
+      return {
+          dialogvisible: false,
+          sss: '2018-02-06',
+          iscreate:'notcreate'
       }
   }
 }

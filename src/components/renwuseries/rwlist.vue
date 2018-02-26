@@ -2,8 +2,8 @@
   <div class="rw">
       <el-card class="box-card">
   <div slot="header" class="clearfix">
-    <span>我是任务列表</span>
-    <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
+    <span>{{name}}</span>
+    <el-button style="float: right; padding: 3px 0" type="text" @click="forclick2">操作按钮</el-button>
   </div>
   <div v-for="o in 4" :key="o" class="text item">
     <rwstate1></rwstate1>
@@ -18,6 +18,18 @@ import Rwstate1 from './renwustate1.vue'
 export default {
   components:{
       Rwstate1
+  },
+  props:[
+    'name'
+  ],
+  methods:{
+    forclick2: function(){
+      this.$emit('click2')
+    },
+    forclick1: function(renwuid){
+      console.log('level 2 renwuclick')
+      this.$emit('click1',renwuid)
+    }
   }
 }
 </script>
