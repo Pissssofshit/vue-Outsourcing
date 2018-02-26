@@ -6,7 +6,7 @@
     <el-button style="float: right; padding: 3px 0" type="text" @click="forclick2">操作按钮</el-button>
   </div>
   <div v-for="o in 4" :key="o" class="text item">
-    <rwstate1 @click1="forclick1"></rwstate1>
+    <rwstate1></rwstate1>
   </div>
 </el-card>
 

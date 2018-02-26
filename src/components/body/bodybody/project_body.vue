@@ -10,6 +10,7 @@
 <script>
 import Rwlist from '../../renwuseries/rwlist.vue'
 export default {
+
   methods:{
     forclick1: function(renwuid){
         console.log('i received the click!')

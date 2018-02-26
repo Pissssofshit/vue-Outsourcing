@@ -1,6 +1,7 @@
 <template>
   <div class="wuyu">
       <projectheadr></projectheadr>
+
       <projectbody @click1="forclick1" @click2="forclick2"></projectbody>
       <renwustate3 :dialogVisible="dialogvisible" @close1="forclose1"
       :value2="sss"
@@ -29,6 +30,9 @@ export default {
         })
   },
   methods: {
+      test: function(data){
+          console.log('sssssssss')
+          console.log(data)
       forclick2: function(){
           console.log('this is forclick2')
         this.iscreate='create'
