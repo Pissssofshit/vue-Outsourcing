@@ -210,7 +210,7 @@
 export default {
   data() {
     return {
-      textarea: ''
+      textarea: '',
       activeNames: '',
       sss: true,
       ttt: false,
