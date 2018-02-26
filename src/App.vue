@@ -1,6 +1,6 @@
 <template>
   <div id="app" :style="csswidth">
-    <router-view/>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -20,7 +20,7 @@ export default {
     console.log(this.maxwidth)
     console.log(document.documentElement.clientWidth)
     console.log(document.documentElement.clientHeight)
-  }
+  },
 }
 </script>
 

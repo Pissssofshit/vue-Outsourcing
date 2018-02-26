@@ -1,10 +1,12 @@
 <template>
   <div>
     <div>
-      <span>我参与的项目 {{userInfo}} </span>
+      <span>我参与的项目 </span>
       <div class="projectlist">
         <div v-for="item in items" :key="item.id">
-          <projectItem @click="listenforclick(item.id)" :name="item.name" :img="item.logo" :proid="item.id"></projectItem>
+          <router-link :to="{name: '项目详情', params: {proid: item.id}}">
+            <projectItem @click="(item.id)" :name="item.name" :img="item.logo" :proid="item.id"></projectItem>
+          </router-link>
         </div>
         <div class="addproject">
           <projectItem @click="listenforaddclick">
@@ -17,7 +19,9 @@
       <span>我管理的项目</span>
       <div class="projectlist">
         <div v-for="item in items" :key="item.id">
-          <projectItem :name="item.name" :img="item.logo"></projectItem>
+          <router-link :to="{name: '项目详情', params: {proid: item.id}}">
+            <projectItem :name="item.name" :img="item.logo"></projectItem>
+          </router-link>
         </div>
         <div class="addproject">
           <projectItem @click="listenforaddclick">
@@ -52,8 +56,8 @@ span {
 
 </style>
 <script>
-import ProjectItem from '../project_item/project_item.vue'
-import Vue from 'vue'
+import ProjectItem from '../../components/Project/projectItem.vue'
+// import Vue from 'vue'
 import { mapState, mapGetters } from 'vuex'
 export default {
   data() {
@@ -62,10 +66,6 @@ export default {
     }
   },
   methods: {
-    listenforclick(proid) {
-      //console.log(proid)
-      this.$emit('changeBODY', 'Bodyproject', proid)
-    },
     listenforaddclick: function(proid) {
       //console.log(proid)
       console.log('im add project the add card works!')
@@ -83,19 +83,15 @@ export default {
     console.log(this.items)
   },
   computed: {
-    // ...mapState([
-    //   'userInfo'
-    // ])
-    // 映射
     ...mapState({
-      userInfo:'userInfo'
+      userInfo: 'userInfo'
     })
   }
 }
-Vue.component('bodymain', {
-  methods: {
-    test: function() {}
-  }
-})
+// Vue.component('bodymain', {
+//   methods: {
+//     test: function() {}
+//   }
+// })
 
 </script>

@@ -1,12 +1,8 @@
 <template>
   <div class="wuyu">
       <projectheadr></projectheadr>
-      <projectbody @click1="forclick1"></projectbody>
-      <renwustate3 :dialogVisible="dialogvisible" @close1="forclose1"
-      :value2="sss">
-          <div slot="canyuzhe">黄某某</div>
-         >
-      </renwustate3>
+      <projectbody @event="test"></projectbody>
+      <renwustate3></renwustate3>
   </div>
 </template>
 
@@ -28,19 +24,9 @@ export default {
         })
   },
   methods: {
-      forclick1: function(data){
+      test: function(data){
           console.log('sssssssss')
-          this.dialogvisible=true
-      },
-      forclose1: function(){
-          console.log('forclose1 bodyproject')
-          this.dialogvisible=false
-      }
-  },
-  data(){
-      return {
-          dialogvisible: false,
-          sss: '2018-02-06'
+          console.log(data)
       }
   }
 }

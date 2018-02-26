@@ -1,18 +1,16 @@
 <template>
   <div>
-    <div class="rwlistgroup">
-    <rwlist></rwlist>
-    <rwlist></rwlist>
-    <rwlist></rwlist>
+    <div class="tasklistgroup">
+    <task-list></task-list>
+    <task-list></task-list>
+    <task-list></task-list>
     </div>
   </div>
 </template>
 <script>
-import Rwlist from '../../renwuseries/rwlist.vue'
+
+import TaskList from '../../../components/Task/taskList.vue'
 export default {
-  components:{
-      Rwlist
-  },
   data() {
     return{
       te:1234
@@ -20,12 +18,15 @@ export default {
   },
   created() {
     this.$emit('event',this.te)
+  },
+  components:{
+      TaskList
   }
 }
 </script>
 
 <style scoped>
-.rwlistgroup{
+.tasklistgroup{
     display: flex;
     margin-left: 5vh;
     margin-top: 3vh;
