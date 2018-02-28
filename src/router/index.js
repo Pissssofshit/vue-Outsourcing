@@ -31,7 +31,12 @@ export default new Router({
           path: 'project-details',
           name: '项目详情',
           component: ProjectDetails,
-          children: [{ path: '', redirect: { name: '任务总览' } },
+          children: [
+            { 
+              path: '', 
+              component: Task,
+              // redirect: { name: '任务总览' } 
+            },
             {
               path: 'task',
               name: '任务总览',

@@ -33,7 +33,8 @@ export default {
       test: function(data){
           console.log('sssssssss')
           console.log(data)
-      forclick2: function(){
+      },
+      forclick2: function (){
           console.log('this is forclick2')
         this.iscreate='create'
         // this.dialogvisible=false
