@@ -1,7 +1,9 @@
-
 <style  scoped>
   *{
    margin-right: 10px;
+  }
+  input{
+    border: 1px solid green;
   }
   .sf1{
     width: 80px;
@@ -34,8 +36,11 @@
     display: flex;
     margin: 1px;
   }
+  .el-alert{
+    width: 80%;
+  }
   .hang2,.hang1{
-    width: 100px;
+    width: 80px;
     text-align: start;
   }
   .canyuzhemen{
@@ -63,187 +68,115 @@
 </style>
 
 <template>
-  <div class="renwu">
-    <div class="black_overlay" @click="closetanchuang"></div>
-    <div class="white_content">
+ <div>
+  <el-dialog title="任务管理" :visible.sync="show" width="30%" :before-close="handleClose">
+    <div>
       <div class="title">
         <el-checkbox label="" name="type"></el-checkbox>
-        <span>解决移动端界面布局问题</span>
+        <span>
+          <slot name="renwuming">处理啥啥啥那个啥对对就是那个啥</slot></span>
       </div>
       <div class="yaosu">
         <div class="canyuzhemen">
-          <div class="canyuzhe">
-            黄枭帅
-          </div>
-          <el-collapse v-model="activeNames" @change="handleChange">
-            <el-collapse-item title="参与者" name="1">
-              <div>
-                <input v-model="searchword" placeholder="查找成员">
-              </div>
-              <div>
-                <ul class="sdf" v-for="item in projectmember" :key="item.id">
-                  <li>{{item.name}}</li></ul>
-              </div>
-            </el-collapse-item>
-          </el-collapse>
+            <el-dropdown @command="handleCommand">
+              <div>参与者</div>
+              <div v-for="attendertmp in attenders" :key="attendertmp.id">{{attendertmp.name}}</div>
+              <el-dropdown-menu slot="dropdown" 
+                >
+                <div>
+                <input command="input" v-model="searchword" placeholder="查找成员">
+                </div>
+                <el-dropdown-item v-for="item in projectmember" :key="item.id" :command="item.index">{{item.name}}
+                  <div v-if="item.attend" class="el-icon-circle-check"></div>
+                </el-dropdown-item>
+              </el-dropdown-menu>
+            </el-dropdown>
           <div class="canyuzhe hang1">
             <slot name="canyuzhe"></slot></div>
         </div>
         <div class="deadline">
           <el-date-picker v-model="value1" type="date" placeholder="选择日期">
+            <slot name="deadline"></slot>
           </el-date-picker>
         </div>
       </div>
       <div class="gaiyao">
         <div class="shuoming">
           <div class="hang2">任务说明</div>
-          <el-input v-model="input" placeholder="请输入内容" :disabled="inputdisable"></el-input>
+          <el-input v-model="inputobject.input" type="textarea" placeholder="请输入内容" :disabled="inputobject.disable"></el-input>
         </div>
         <div>
           <div class="youxianji">
             <div class="hang2">优先级</div>
-            <el-tag>
-              <slot name="youxianji">普通</slot></el-tag>
+            <el-tag>普通
+              <slot name="youxianji"></slot></el-tag>
           </div>
           <div></div>
         </div>
       </div>
       <div class="zirenwus">
-        <div>子任务</div>
-        <div class="zirenwu"></div>
+        <div class="sf hang2">子任务</div>
+        <div class="zirenwu">
+          <slot name="子任务"></slot>
+        </div>
         <div class="tianjiazirenwu">
           <div type="primary" class="el-icon-circle-plus icon"></div>
-          <div>添加子任务</div>
-        </div>
+          <div>添加子任务</div></div>
       </div>
       <div class="dongtai">
-        <div>这里放关于此任务的动态。。。有空做</div>
-      </div>
+        <div>这里放关于此任务的动态。。。有空做</div></div>
     </div>
-  </div>
+    <span slot="footer" class="dialog-footer"></span>
+  </el-dialog>
+</div>
 </template>
-<style>
-.zirenwus {
-  text-align: start;
-  border-bottom: 1px solid black;
-}
 
-.tianjiazirenwu {
-  display: flex;
-}
 
-.el-icon-circle-plus {
-  color: #409EFF;
-}
-
-.gaiyao {
-  border-bottom: solid black 1px;
-}
-
-.youxianji {
-  display: flex;
-}
-
-.shuoming {
-  display: flex;
-}
-
-.title {
-  text-align: start;
-  font-size: 20px;
-}
-
-.yaosu {
-  display: flex;
-  border-bottom: black 1px solid;
-  align-items: baseline;
-}
-
-.black_overlay {
-  display: block;
-  position: absolute;
-  top: 0%;
-  left: 0%;
-  width: 100%;
-  height: 100%;
-  background-color: black;
-  z-index: 1001;
-  -moz-opacity: 0.8;
-  opacity: .80;
-  filter: alpha(opacity=80);
-}
-
-.white_content {
-  display: block;
-  position: absolute;
-  top: 20%;
-  left: 20%;
-  width: 50%;
-  height: 60%;
-  background-color: white;
-  z-index: 1002;
-  overflow: auto;
-}
-
-.el-input__inner {
-  border: 0px;
-}
-
-.renwu {
-  position: absolute;
-  top: 0%;
-  left: 0%;
-  width: 100%;
-  height: 100%;
-}
-
-</style>
 <script>
-/*
-:mode //等于create时将显示空白模板，否则载入设置的数据
-:value2 //用于设置时间
-:input2 //用于设置任务说明
-<slot name="canyuzhe">黄枭帅</slot>
-<slot name="youxianji"></slot>
-<span slot="footer" class="dialog-footer"></span>
-*/
+import { mapMutations } from 'vuex'
+//这边要求后端写两个接口，一个是
+//
 export default {
   data() {
     return {
-      textarea: '',
+      attenders:[
+      ],
       activeNames: '',
       sss: true,
       ttt: false,
       value1: '',
-      input: '',
-      inputdisable: false,
       projectmember:[
-        {id:'1',name:'jobs'},
-        {id:'2',name:'linus'},
-        {id:'3',name:'fool'}
+        {id:'11',name:'jobs',attend:true,index:'0'},
+        {id:'22',name:'linus',attend:false,index:'1'},
+        {id:'33',name:'fool',attend:true,index:'2'}
       ],
       projectmembertmp:[],
-      searchword: ''
+      searchword: '',
+      inputobject: {
+        input: '刮风这天 但偏偏 雨渐渐 大到我看你不见 还要多久 我才能在你身边 从前从前有个人爱你很久 但偏偏 风渐渐 把距离吹得好远 但故事的最后你好像还是说了 byebye 消失的下雨天我好想再淋一遍 刮风这天 我试过握着你手 但偏偏 雨渐渐 大到我看你不见 从前从前 有个人等你很久 好不容易 又能够再多爱一天',
+        disable: true
+      },
+      test:{
+        0: '1',
+        1: '2'
+      }
+      
     }
   },
-  props: ['dialogVisible','value2','input2','mode'],
-  created: function(){
-    console.log('this is renwu3 created')
-    console.log('mode is '+this.mode)
-    if(this.mode!='create'){
-      this.value1=this.value2
-      this.input=this.input2
-      this.inputdisable=true
-      console.log('inputdisabel is '+this.inputdisable)
-    }
-    else{
-      this.inputdisable=false
-    }
+  computed:{
+    show:function(){
+      return this.$store.state.task.showRenwu
+    },
   },
+  props: ['dialogVisible','value2'],
   watch: {
     dialogVisible: function() {
       // console('watch dialogVIsible'+this.dialogVisible)
       this.ttt = this.dialogVisible
+    },
+    value2: function(){
+        console.log('watch value2')
+        this.value1=this.value2
     },
     searchword: function() {
       // console('watch dialogVisible')
@@ -275,11 +208,24 @@ export default {
     }
   },
   methods: {
-    closetanchuang: function() {
-      $('.black_overlay').css('display', 'none')
-      $('.white_content').css('display', 'none')
-    }
+    handleCommand(command){
+      //command这里假设为点击菜单项的名字 估计之后得改成获得菜单项人员的id，然后靠这id向服务器请求更多的数据，这样的话，会不会对服务器的压力太大了，请求太多了
+      //上面这条注释 改为传递 人员数组的下标，这样不用频繁访问服务器了，也能获取一些必要的数据
+      //而获取人员数组 ，这可以写成一个接口，获取所有人员信息存到一个数组里（需不需要逐步载入呢？会不会要求的数据太大？） 
+      console.log('im handlecommand')
+     
+      var tmp=this.projectmember[parseInt(command)]
+      if(tmp.attend===true)
+      {
+        return
+      }
+      else{
+        this.attenders.push(tmp)
+      }
+    },
+    ...mapMutations({
+      handleClose: 'hideRenwu'
+    })
   }
 }
-
 </script>

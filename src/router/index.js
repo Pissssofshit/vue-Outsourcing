@@ -13,15 +13,25 @@ import ProjectDetails from '@/pages/Project/projectDetails'
 import Staff from '@/pages/Project/ProjectDetails/staff'
 import Task from '@/pages/Project/ProjectDetails/task'
 import Attendance from '@/pages/Project/ProjectDetails/attendance'
-
+import test from '../pages/test.vue'
 Vue.use(Router)
 // 兄弟 or 侄子 用router-to ，父子 包含router-view
 export default new Router({
-  routes: [{
+  routes: [
+    {
+      path: '/test',
+      component: test
+    },
+    {
       path: '/',
       name: '首页',
       component: MainPage,
       children: [{ path: '', redirect: { name: '项目列表' } },
+        { 
+          path: '/my', 
+          name: '', 
+          component: My 
+        },
         {
           path: "project-list",
           name: '项目列表',
@@ -62,7 +72,6 @@ export default new Router({
     },
     { path: '/login', name: '', component: Login },
     { path: '/register', name: '', component: Register },
-    { path: '/my', name: '', component: My },
     { path: '/search', name: '', component: Search },
   ]
 })
