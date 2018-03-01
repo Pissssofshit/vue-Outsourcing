@@ -1,5 +1,5 @@
 <template>
-  <el-card class="box-card">
+  <el-card class="box-card" @click="handleclick">
     <div class="ite">
       <el-checkbox label="" name="type"></el-checkbox>
       <span>解决移动端界面布局问题</span>
@@ -13,7 +13,9 @@ export default {
     'renwu'
   ],
   methods: {
-    test: function() {}
+    handleclick: function(){
+      console.log('sss')
+    }
   }
 }
 

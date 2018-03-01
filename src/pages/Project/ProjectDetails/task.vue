@@ -4,12 +4,14 @@
     <task-list></task-list>
     <task-list></task-list>
     <task-list></task-list>
+    <task-state3></task-state3>
     </div>
   </div>
 </template>
 <script>
 
 import TaskList from '../../../components/Task/taskList.vue'
+import TaskState3 from '../../../components/Task/taskState3.vue'
 export default {
   data() {
     return{
@@ -20,7 +22,8 @@ export default {
     this.$emit('event',this.te)
   },
   components:{
-      TaskList
+      TaskList,
+      TaskState3
   }
 }
 </script>

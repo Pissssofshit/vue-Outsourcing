@@ -63,9 +63,12 @@
 </style>
 
 <template>
+<el-dialog
+  title="提示"
+  :visible.sync="dialogVisible"
+  width="30%"
+  :before-close="handleClose">
   <div class="renwu">
-    <div class="black_overlay" @click="closetanchuang"></div>
-    <div class="white_content">
       <div class="title">
         <el-checkbox label="" name="type"></el-checkbox>
         <span>解决移动端界面布局问题</span>
@@ -119,8 +122,8 @@
       <div class="dongtai">
         <div>这里放关于此任务的动态。。。有空做</div>
       </div>
-    </div>
   </div>
+</el-dialog>
 </template>
 <style>
 .zirenwus {

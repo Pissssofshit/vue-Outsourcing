@@ -5,7 +5,7 @@
         <span>我是任务列表</span>
         <el-button style="float: right; padding: 3px 0" type="text">操作按钮</el-button>
       </div>
-      <div v-for="o in 4" :key="o" class="text item">
+      <div v-for="o in 4" :key="o" class="text item" @click="handleclick">
         <task-state1></task-state1>
       </div>
     </el-card>
@@ -16,6 +16,12 @@ import TaskState1 from './taskState1.vue'
 export default {
   components: {
     TaskState1
+  },
+  methods: {
+    handleclick: function() {
+      console.log('im handle click')
+      this.$store.commit('showRenwu')
+    }
   }
 }
 

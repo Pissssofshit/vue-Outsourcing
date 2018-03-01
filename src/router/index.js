@@ -31,11 +31,12 @@ export default new Router({
           path: 'project-details',
           name: '项目详情',
           component: ProjectDetails,
+          redirect: { name: '任务总览' },//本来就是用下面的path:''渲染出来的，但是这里没用，不知何解
           children: [
             { 
               path: '', 
               component: Task,
-              // redirect: { name: '任务总览' } 
+              //  redirect: { name: '任务总览' } 
             },
             {
               path: 'task',

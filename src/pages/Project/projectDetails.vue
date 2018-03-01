@@ -1,5 +1,5 @@
 <template>
-  <div id="app" :style="csswidth">
+  <div >
     <el-container>
       <el-header>
         <second-header></second-header>

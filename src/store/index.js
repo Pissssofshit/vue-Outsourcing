@@ -9,9 +9,7 @@ const store = new Vuex.Store({
   state: {
       login: false,
       userInfo: 'no',
-      projectList: [],
-      //
-      showRenwu: false
+      projectList: []
   },
   getters: {
   },
