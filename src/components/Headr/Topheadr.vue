@@ -16,17 +16,30 @@
             <div class="el-icon-bell"></div>
           </el-badge>
         </li>
-        <li>我的</li>
-        <li>我的</li>
+        <li @click="loginOut()">
+          <el-button type="text">登出</el-button>
+        </li>
       </ul>
     </div>
   </div>
 </template>
 <script>
+import { mapMutations ,mapActions} from 'vuex'
 export default {
+
   data() {
     return {
       input: ''
+    }
+  },
+  methods: {
+    ...mapActions(['ResetStateAction']),
+    loginOut() {
+      console.log("loginOut")
+      this.ResetStateAction();
+      localStorage.removeItem('userInfo')
+      // this.$store.commit('ResetState')
+      this.$router.push({ name: '登录' })
     }
   }
 }

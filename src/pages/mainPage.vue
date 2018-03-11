@@ -1,5 +1,5 @@
 <template>
-  <div id="app" >
+  <div id="app">
     <el-container>
       <el-header>
         <top-header></top-header>
@@ -12,16 +12,22 @@
 </template>
 <script>
 import TopHeader from '../components/Headr/Topheadr.vue'
+import { mapState } from 'vuex'
 export default {
   data() {
     return {}
   },
   components: {
     TopHeader
+  },
+  computed: {
+  },
+  mounted() {
   }
 }
 
 </script>
 <style>
+
 
 </style>

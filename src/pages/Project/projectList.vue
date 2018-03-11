@@ -3,13 +3,13 @@
     <div>
       <span>我参与的项目 </span>
       <div class="projectlist">
-        <div v-for="item in items" :key="item.id">
-          <router-link :to="{name: '项目详情', params: {proid: item.id}}">
-            <projectItem @click="(item.id)" :name="item.name" :img="item.logo" :proid="item.id"></projectItem>
+        <div v-for="item in projectList.joinProjectList" :key="item.projectId">
+          <router-link :to="{name: '项目详情', params: {proid: item.projectId}}">
+            <projectItem @click="(item.projectId)" :name="item.projectName" :img="item.projectLogo" :proid="item.projectId"></projectItem>
           </router-link>
         </div>
-        <div class="addproject">
-          <projectItem @click="listenforaddclick">
+        <div class="addproject" @click='AddJoinProjectListAction()' style="cursor:pointer">
+          <projectItem>
             <div type="primary" class="el-icon-circle-plus icon"></div>
           </projectItem>
         </div>
@@ -18,20 +18,61 @@
     <div>
       <span>我管理的项目</span>
       <div class="projectlist">
-        <div v-for="item in items" :key="item.id">
-          <router-link :to="{name: '项目详情', params: {proid: item.id}}">
-            <projectItem :name="item.name" :img="item.logo"></projectItem>
+        <div v-for="item in projectList.managerProjectList" :key="item.projectId">
+          <router-link :to="{name: '项目详情', params: {proid: item.projectId}}">
+            <projectItem @click="(item.projectId)" :name="item.projectName" :img="item.projectLogo" :proid="item.projectId"></projectItem>
+            }
           </router-link>
         </div>
-        <div class="addproject">
-          <projectItem @click="listenforaddclick">
-            <div type="primary" class="el-icon-circle-plus icon"></div>
+        <div class="addproject" @click='AddManageProjectListAction()' style="cursor:pointer">
+          <projectItem>
+            <div @click='dialogFormVisible = true' type="primary" class="el-icon-circle-plus icon"></div>
           </projectItem>
         </div>
       </div>
     </div>
   </div>
 </template>
+<script>
+import ProjectItem from '../../components/Project/projectItem.vue'
+import { mapState, mapGetters, mapActions } from 'vuex'
+import MYURL from '../../const/MYURL.js'
+export default {
+  data() {
+    return {
+      item1: [],
+      item2: []
+    }
+  },
+  components: {
+    ProjectItem
+  },
+  created() {
+    this.JoinProjectListAction(this.$store.state.userInfo.userid);
+    this.ManageProjectListAction(this.$store.state.userInfo.userid);
+    // console.log("projectList.vue：" + JSON.stringify(this.$store.state.userInfo));
+  },
+  mounted() {
+    // console.log("projectList.vue：" + JSON.stringify(this.projectList));
+  },
+  computed: {
+    ...mapState([
+      'userInfo',
+      'projectList'
+    ]),
+  },
+  methods: {
+    ...mapActions([
+      'ProjectListAction',
+      'JoinProjectListAction',
+      'ManageProjectListAction',
+      'AddJoinProjectListAction',
+      'AddManageProjectListAction'
+    ])
+  }
+}
+
+</script>
 <style scoped>
 .el-icon-circle-plus {
   color: #409EFF;
@@ -55,43 +96,3 @@ span {
 }
 
 </style>
-<script>
-import ProjectItem from '../../components/Project/projectItem.vue'
-// import Vue from 'vue'
-import { mapState, mapGetters } from 'vuex'
-export default {
-  data() {
-    return {
-      items: []
-    }
-  },
-  methods: {
-    listenforaddclick: function(proid) {
-      //console.log(proid)
-      console.log('im add project the add card works!')
-      // this.$emit('changeBODY','Bodyproject',proid)
-    }
-  },
-  components: {
-    ProjectItem
-  },
-  created() {
-    this.$http.get('/api/project').then(data => {
-      this.items = data.body.data
-    })
-    console.log(this.userInfo)
-    console.log(this.items)
-  },
-  computed: {
-    ...mapState({
-      userInfo: 'userInfo'
-    })
-  }
-}
-// Vue.component('bodymain', {
-//   methods: {
-//     test: function() {}
-//   }
-// })
-
-</script>

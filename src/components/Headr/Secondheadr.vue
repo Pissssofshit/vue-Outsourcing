@@ -1,41 +1,54 @@
 <template>
   <div>
-    <div class="test2">
-      <div class="test1">
-        <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
-          
-          <el-menu-item index="1"><router-link to="/project-details/task">任务</router-link></el-menu-item>
-          
-          <el-submenu index="2">
-            <template slot="title">我的工作台</template>
-            <el-menu-item index="2-1">选项1</el-menu-item>
-            <el-menu-item index="2-2">选项2</el-menu-item>
-            <el-menu-item index="2-3">选项3</el-menu-item>
-            <el-submenu index="2-4">
-              <template slot="title">kao</template>
-              <el-menu-item index="2-4-1">选项1</el-menu-item>
-              <el-menu-item index="2-4-2">选项2</el-menu-item>
-              <el-menu-item index="2-4-3">选项3</el-menu-item>
-            </el-submenu>
-          </el-submenu>
-          
-          <el-menu-item index="3"><router-link to="/project-details/staff">员工</router-link></el-menu-item>
-          
-         
-          <el-menu-item index="4"> <router-link to="/project-details/attendance">考勤</router-link></el-menu-item>
-          
-        </el-menu>
-      </div>
-      <div class="ss">
-        <div>
-          <Icon type="person-stalker"></Icon>
+    <el-row :gutter="0">
+      <el-col :span="12">
+        <div class="secondheader-nav-first">
+          <el-breadcrumb separator="/">
+            <el-breadcrumb-item v-for="(item, index) in $route.meta" :key="index" :to="{name:item}">{{item}}</el-breadcrumb-item>
+          </el-breadcrumb>
         </div>
-        <div class="el-icon-view">视图</div>
-      </div>
-    </div>
+      </el-col>
+      <el-col :span="12">
+        <div class="secondheader-nav-second">
+          <el-menu :default-active="activeIndex" class="" mode="horizontal" @select="handleSelect">
+            <el-menu-item index="1">
+              <router-link :to="{name:'任务总览'}">任务</router-link>
+            </el-menu-item>
+            <el-submenu index="2">
+              <template slot="title">我的工作台</template>
+              <el-menu-item index="2-1">选项1</el-menu-item>
+              <el-menu-item index="2-2">选项2</el-menu-item>
+              <el-menu-item index="2-3">选项3</el-menu-item>
+              <el-submenu index="2-4">
+                <template slot="title">kao</template>
+                <el-menu-item index="2-4-1">选项1</el-menu-item>
+                <el-menu-item index="2-4-2">选项2</el-menu-item>
+                <el-menu-item index="2-4-3">选项3</el-menu-item>
+              </el-submenu>
+            </el-submenu>
+            <el-menu-item index="3">
+              <router-link :to="{name:'人员'}">人员</router-link>
+            </el-menu-item>
+            <el-menu-item index="4">
+              <router-link :to="{name:'考勤'}">考勤</router-link>
+            </el-menu-item>
+            <el-menu-item index="5">
+              <router-link :to="{name:'item'}">概况</router-link>
+            </el-menu-item>
+          </el-menu>
+        </div>
+      </el-col>
+    </el-row>
   </div>
 </template>
 <style scoped>
+.secondheader-nav-first {
+  padding: 20px;
+}
+
+.secondheader-nav-second {}
+
+
 .ss {
   display: flex;
   align-items: center;

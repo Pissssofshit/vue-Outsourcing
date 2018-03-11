@@ -1,8 +1,28 @@
-{ 
-    "projects": [ 
-        { "name": "智能外包服务平台", "logo": "https://edu-image.nosdn.127.net/434D47E2CA070A1295432269521F5086.jpg?imageView&amp;thumbnail=426y240&amp;quality=100&amp;thumbnail=223x125&amp;quality=100", "id": "1" },
-        { "name": "智能外包服务平台", "logo": "https://edu-image.nosdn.127.net/434D47E2CA070A1295432269521F5086.jpg?imageView&amp;thumbnail=426y240&amp;quality=100&amp;thumbnail=223x125&amp;quality=100", "id": "2" },
-        { "name": "智能外包服务平台", "logo": "https://edu-image.nosdn.127.net/BF967F2AE9D9F9379B3ADBBC6635C2A0.jpg?imageView&amp;thumbnail=510y288&amp;quality=100&amp;thumbnail=223x125&amp;quality=100", "id": "3" },
-        { "name": "智能外包服务平台", "logo": "https://edu-image.nosdn.127.net/434D47E2CA070A1295432269521F5086.jpg?imageView&amp;thumbnail=426y240&amp;quality=100&amp;thumbnail=223x125&amp;quality=100", "id": "4" },
-        { "name": "智能外包服务平台", "logo": "https://edu-image.nosdn.127.net/434D47E2CA070A1295432269521F5086.jpg?imageView&amp;thumbnail=426y240&amp;quality=100&amp;thumbnail=223x125&amp;quality=100", "id": "5" }]
+{
+  "projects": [
+  {
+    "name": "智能外包服务平台",
+    "logo": "https://edu-image.nosdn.127.net/434D47E2CA070A1295432269521F5086.jpg?imageView&amp;thumbnail=426y240&amp;quality=100&amp;thumbnail=223x125&amp;quality=100",
+    "id": "1"
+  },
+  {
+    "name": "智能外包服务平台",
+    "logo": "https://edu-image.nosdn.127.net/434D47E2CA070A1295432269521F5086.jpg?imageView&amp;thumbnail=426y240&amp;quality=100&amp;thumbnail=223x125&amp;quality=100",
+    "id": "2"
+  },
+  {
+    "name": "智能外包服务平台",
+    "logo": "https://edu-image.nosdn.127.net/BF967F2AE9D9F9379B3ADBBC6635C2A0.jpg?imageView&amp;thumbnail=510y288&amp;quality=100&amp;thumbnail=223x125&amp;quality=100",
+    "id": "3"
+  },
+  {
+    "name": "智能外包服务平台",
+    "logo": "https://edu-image.nosdn.127.net/434D47E2CA070A1295432269521F5086.jpg?imageView&amp;thumbnail=426y240&amp;quality=100&amp;thumbnail=223x125&amp;quality=100",
+    "id": "4"
+  },
+  {
+    "name": "智能外包服务平台",
+    "logo": "https://edu-image.nosdn.127.net/434D47E2CA070A1295432269521F5086.jpg?imageView&amp;thumbnail=426y240&amp;quality=100&amp;thumbnail=223x125&amp;quality=100",
+    "id": "5"
+  }]
 }
