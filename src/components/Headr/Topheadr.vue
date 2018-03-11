@@ -9,7 +9,7 @@
     <div type="primary" class="el-icon-circle-plus icon"></div>
     <div class="te2">
       <ul class="icon">
-        <li>我的</li>
+        <li><router-link to="/my">我的</router-link></li>
         <li>日历</li>
         <li>
           <el-badge class="item">
