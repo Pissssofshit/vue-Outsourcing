@@ -16,13 +16,16 @@ import Attendance from '@/pages/Project/ProjectDetails/attendance'
 
 Vue.use(Router)
 // 兄弟 or 侄子 用router-to ，父子 包含router-view
-export default new Router({
-  routes: [{
-      path: '/',
+const vueRouter = new Router({
+  routes: [
+    { path: '', redirect: { name: '登录' } },
+    { path: '/login', name: '登录', component: Login },
+    {
+      path: '/index',
       name: '首页',
       component: MainPage,
-      children: [{ path: '', redirect: { name: '项目列表' } },
-        {
+      redirect: { name: '项目列表' },
+      children: [{
           path: "project-list",
           name: '项目列表',
           component: ProjectList
@@ -31,38 +34,33 @@ export default new Router({
           path: 'project-details',
           name: '项目详情',
           component: ProjectDetails,
-          redirect: { name: '任务总览' },//本来就是用下面的path:''渲染出来的，但是这里没用，不知何解
-          children: [
-            { 
-              path: '', 
-              component: Task,
-              //  redirect: { name: '任务总览' } 
-            },
-            {
+          redirect: { name: '任务总览' }, //本来就是用下面的path:''渲染出来的，但是这里没用，不知何解
+          children: [{
               path: 'task',
               name: '任务总览',
               component: Task,
-              meta: []
+              meta: ["首页", "项目详情", "任务总览"]
             },
             {
               path: 'staff',
-              name: '',
+              name: '人员',
               component: Staff,
-              meta: []
+              meta: ["首页", "项目详情", "人员"]
             },
             {
               path: 'attendance',
-              name: '',
+              name: '考勤',
               component: Attendance,
-              meta: []
+              meta: ["首页", "项目详情", "考勤"]
             }
           ]
         }
       ]
     },
-    { path: '/login', name: '', component: Login },
-    { path: '/register', name: '', component: Register },
-    { path: '/my', name: '', component: My },
-    { path: '/search', name: '', component: Search },
+    { path: '/register', name: '注册', component: Register },
+    { path: '/my', name: '我的', component: My },
+    { path: '/search', name: '搜索', component: Search },
   ]
 })
+
+export default vueRouter

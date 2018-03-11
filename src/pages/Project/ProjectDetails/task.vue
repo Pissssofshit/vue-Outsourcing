@@ -4,7 +4,7 @@
     <task-list></task-list>
     <task-list></task-list>
     <task-list></task-list>
-    <task-state3></task-state3>
+    <!-- <task-state3></task-state3> -->
     </div>
   </div>
 </template>
@@ -15,15 +15,15 @@ import TaskState3 from '../../../components/Task/taskState3.vue'
 export default {
   data() {
     return{
-      te:1234
+      // te:1234
     }
   },
   created() {
-    this.$emit('event',this.te)
+    // this.$emit('event',this.te)
   },
   components:{
       TaskList,
-      TaskState3
+      // TaskState3
   }
 }
 </script>

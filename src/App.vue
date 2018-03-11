@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import { mapActions, mapState } from 'vuex'
 export default {
   data() {
     return{
@@ -21,6 +22,20 @@ export default {
     console.log(document.documentElement.clientWidth)
     console.log(document.documentElement.clientHeight)
   },
+  mounted(){
+    // let userInfo = JSON.parse(localStorage.getItem("userInfo"))
+    // console.log(userInfo)
+    // if (userInfo != null) {
+    //   this.$router.push({ name: '首页' })
+    //   this.LoginAction(userInfo)
+    // }
+    // if (this.$store.state.IsLogin === true) {
+    //   this.$router.push({ name: '首页' });
+    // }
+  },
+  methods:{
+     ...mapActions(['LoginAction'])
+  }
 }
 </script>
 
