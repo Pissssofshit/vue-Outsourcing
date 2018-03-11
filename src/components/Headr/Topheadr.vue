@@ -12,7 +12,7 @@
         <li><router-link to="/my">我的</router-link></li>
         <li>日历</li>
         <li>
-          <el-badge class="item">
+          <el-badge value="12" class="item">
             <div class="el-icon-bell"></div>
           </el-badge>
         </li>
@@ -91,7 +91,7 @@ ul {
 }
 
 ul li {
-  margin-left: 5px;
+  margin-left: 20px;
 }
 
 .icon {
