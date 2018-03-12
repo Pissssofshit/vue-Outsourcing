@@ -4,7 +4,7 @@
       <span>我参与的项目 </span>
       <div class="projectlist">
         <div v-for="item in projectList.joinProjectList" :key="item.projectId">
-          <router-link :to="{name: '项目详情', params: {proid: item.projectId}}">
+          <router-link :to="{name: '项目详情', params: {projectId: item.projectId}}">
             <projectItem @click="(item.projectId)" :name="item.projectName" :img="item.projectLogo" :proid="item.projectId"></projectItem>
           </router-link>
         </div>
@@ -19,9 +19,8 @@
       <span>我管理的项目</span>
       <div class="projectlist">
         <div v-for="item in projectList.managerProjectList" :key="item.projectId">
-          <router-link :to="{name: '项目详情', params: {proid: item.projectId}}">
-            <projectItem @click="(item.projectId)" :name="item.projectName" :img="item.projectLogo" :proid="item.projectId"></projectItem>
-            }
+          <router-link :to="{name: '项目详情', params: {projectId: item.projectId}}">
+            <projectItem :name="item.projectName" :img="item.projectLogo" :proid="item.projectId"></projectItem>
           </router-link>
         </div>
         <div class="addproject" @click='AddManageProjectListAction()' style="cursor:pointer">
@@ -67,7 +66,8 @@ export default {
       'JoinProjectListAction',
       'ManageProjectListAction',
       'AddJoinProjectListAction',
-      'AddManageProjectListAction'
+      'AddManageProjectListAction',
+      'IntoProjectDetailsAction',
     ])
   }
 }
@@ -84,7 +84,7 @@ export default {
 span {
   margin-left: 5vh;
   display: block;
-  width: 100%;
+  width: 95%;
   text-align: start;
   font-size: 30px;
 }

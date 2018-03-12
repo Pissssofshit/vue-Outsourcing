@@ -63,7 +63,7 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          this.$http.post(MYURL.URL_LOGIN, { name: this.loginForm.username, password: this.loginForm.password }).then(response => {
+          this.$http.get(MYURL.URL_LOGIN, { name: this.loginForm.username, password: this.loginForm.password }).then(response => {
             if (response.body.correct === true) {
               console.log('验证通过')
               let userInfo = {

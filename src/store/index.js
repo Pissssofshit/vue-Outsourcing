@@ -6,15 +6,18 @@ import Task from './modules/taskIndex.js'
 import MYURL from '../const/MYURL.js'
 Vue.use(Vuex)
 const defaultState = {
+  //用户
   IsLogin: false,
   userInfo: {
     username: '',
     userid: ''
   },
+  // 项目
   projectList: {
     joinProjectList: [],
     managerProjectList: []
-  }
+  },
+  currentProjectId: ''
 }
 
 const store = new Vuex.Store({
@@ -33,9 +36,9 @@ const store = new Vuex.Store({
       state.userInfo.username = userInfo.username
       state.userInfo.userid = userInfo.userid
     },
-    SaveProjectList(state, projectList) {
-      state.projectList = projectList
-    },
+    // SaveProjectList(state, projectList) {
+    //   state.projectList = projectList
+    // },
     SaveJoinProjectList(state, joinProjectList) {
       state.projectList.joinProjectList = joinProjectList
     },
@@ -47,6 +50,9 @@ const store = new Vuex.Store({
     },
     AddJoinProjectList(state, newProject) {
       state.projectList.joinProjectList.push(newProject)
+    },
+    IntoProjectDetails(state, projectId) {
+      state.currentProjectId = projectId
     }
   },
   actions: {
@@ -56,18 +62,8 @@ const store = new Vuex.Store({
     LoginAction({ commit }, userInfo) {
       commit('SaveUserInfo', userInfo)
     },
-    ProjectListAction({ commit }, projectList) {
-      Vue.http.post(MYURL.URL_ALLPROJECTLIST, { userid: state.userInfo.userid }).then(response => {
-        if (response.status === 200) {
-          console.log("ProjectListAction:" + '获取项目列表成功')
-          commit('SaveProjectList', projectList)
-        } else {
-          console.log("ProjectListAction:" + '获取项目列表失败');
-        }
-      })
-    },
     JoinProjectListAction({ commit }, userid) {
-      Vue.http.post(MYURL.URL_JOINPROJECTLIST, { userid: userid }).then(response => {
+      Vue.http.get(MYURL.URL_JOINPROJECTLIST, { userid: userid }).then(response => {
         if (response.status === 200) {
           console.log("JoinProjectListAction:" + '获取我参与的项目列表成功')
           commit('SaveJoinProjectList', response.body.projectList)
@@ -78,7 +74,7 @@ const store = new Vuex.Store({
 
     },
     ManageProjectListAction({ commit }, userid) {
-      Vue.http.post(MYURL.URL_MANAGEPROJECTLIST, { userid: userid }).then(response => {
+      Vue.http.get(MYURL.URL_MANAGEPROJECTLIST, { userid: userid }).then(response => {
         if (response.status === 200) {
           console.log("ManageProjectListAction:" + '获取我管理的项目列表成功')
           commit('SaveManageProjectList', response.body.projectList)
@@ -95,6 +91,9 @@ const store = new Vuex.Store({
       let newProject = { projectId: projectId, projectName: projectName };
       commit('AddManageProjectList', newProject)
     },
+    IntoProjectDetailsAction({ commit }, projectId) {
+      commit('IntoProjectDetails', projectId)
+    }
   },
 
   modules: {
