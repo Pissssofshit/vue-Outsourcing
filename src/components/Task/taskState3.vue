@@ -12,6 +12,8 @@
     text-align: start;
     font-size: 20px;
     margin: 1px;
+    display: flex;
+    align-items: baseline;
   }
   .yaosu{
     display: flex;
@@ -74,7 +76,7 @@
       <div class="title">
         <el-checkbox label="" name="type"></el-checkbox>
         <span>
-          <slot name="renwuming">处理啥啥啥那个啥对对就是那个啥</slot></span>
+          <slot name="renwuming"><el-input v-model="input" placeholder="请输入标题"></el-input></slot></span>
       </div>
       <div class="yaosu">
         <div class="canyuzhemen">
@@ -108,8 +110,16 @@
         <div>
           <div class="youxianji">
             <div class="hang2">优先级</div>
-            <el-tag>普通
-              <slot name="youxianji"></slot></el-tag>
+            
+        <el-dropdown trigger="click" @command="handleCommand2">
+  <el-tag>{{youxianji}}</el-tag>
+  <el-dropdown-menu slot="dropdown">
+    <el-dropdown-item command="普通"><el-tag>普通</el-tag></el-dropdown-item>
+    <el-dropdown-item command="重要"><el-tag>重要</el-tag></el-dropdown-item>
+    <el-dropdown-item command="紧急"><el-tag>紧急</el-tag></el-dropdown-item>
+  </el-dropdown-menu>
+</el-dropdown>
+            
           </div>
           <div></div>
         </div>
@@ -133,34 +143,43 @@
 
 
 <script>
+/*
+<taskState3>
+  <p slot="renwuming"></p>
+  <p slot="canyuzhe"></p>
+  <p slot="deadline"></p> //注意格式YYYY-MM-DD
+</taskState3>
+
+参数:
+attenders //项目组成员
+youxianji 
+inputobject{
+  input //任务描述内容
+  disable //是否可编辑
+}
+projectmember //数组 {id:str,name:str,attend:bool,index:number}
+*/
 import { mapMutations } from 'vuex'
 //这边要求后端写两个接口，一个是
 //
 export default {
   data() {
     return {
-      attenders:[
-      ],
-      activeNames: '',
-      sss: true,
+      taskname: '',
+      youxianji: '普通',//用于修改优先级，保存当前优先级
+      attenders:[       //参与者列表
+      ],     
       ttt: false,
-      value1: '',
-      projectmember:[
-        {id:'11',name:'jobs',attend:true,index:'0'},
-        {id:'22',name:'linus',attend:false,index:'1'},
-        {id:'33',name:'fool',attend:true,index:'2'}
+      value1: '', //value1 和value2 是用来设置日期先关的
+      projectmember:[ //这个数据用于保存接收到的项目成员的数据
+      //  {id:'11',name:'jobs',attend:true,index:'0'}, index 是因为，command 不能传对象，那就传index，从这个数组里面拿数据了
       ],
       projectmembertmp:[],
       searchword: '',
-      inputobject: {
-        input: '刮风这天 但偏偏 雨渐渐 大到我看你不见 还要多久 我才能在你身边 从前从前有个人爱你很久 但偏偏 风渐渐 把距离吹得好远 但故事的最后你好像还是说了 byebye 消失的下雨天我好想再淋一遍 刮风这天 我试过握着你手 但偏偏 雨渐渐 大到我看你不见 从前从前 有个人等你很久 好不容易 又能够再多爱一天',
-        disable: true
-      },
-      test:{
-        0: '1',
-        1: '2'
-      }
-      
+      inputobject: {    //任务描述和是否可编辑
+        input:'',
+        disable:false
+      }   
     }
   },
   computed:{
@@ -213,7 +232,6 @@ export default {
       //上面这条注释 改为传递 人员数组的下标，这样不用频繁访问服务器了，也能获取一些必要的数据
       //而获取人员数组 ，这可以写成一个接口，获取所有人员信息存到一个数组里（需不需要逐步载入呢？会不会要求的数据太大？） 
       console.log('im handlecommand')
-     
       var tmp=this.projectmember[parseInt(command)]
       if(tmp.attend===true)
       {
@@ -222,6 +240,11 @@ export default {
       else{
         this.attenders.push(tmp)
       }
+    },
+    handleCommand2(command){ //用于更改优先级级
+      console.log('im handlecommand2')
+      console.log(command)
+      this.youxianji=command
     },
     ...mapMutations({
       handleClose: 'hideRenwu'

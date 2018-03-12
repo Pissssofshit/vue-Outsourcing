@@ -1,15 +1,12 @@
 <template>
   <div>
-    <el-dropdown @command="handleCommand">
-  <span class="el-dropdown-link">
-    下拉菜单<i class="el-icon-arrow-down el-icon--right"></i>
-  </span>
+    <el-dropdown>
+  <el-tag>
+              <slot name="youxianji">普通</slot></el-tag>
   <el-dropdown-menu slot="dropdown">
-    <el-dropdown-item command="a">黄金糕</el-dropdown-item>
-    <el-dropdown-item command="b">狮子头</el-dropdown-item>
-    <el-dropdown-item command="c">螺蛳粉</el-dropdown-item>
-    <el-dropdown-item command="d" disabled>双皮奶</el-dropdown-item>
-    <el-dropdown-item command="e" divided>蚵仔煎</el-dropdown-item>
+    <el-dropdown-item>普通</el-dropdown-item>
+    <el-dropdown-item>重要</el-dropdown-item>
+    <el-dropdown-item>紧急</el-dropdown-item>
   </el-dropdown-menu>
 </el-dropdown>
   </div>

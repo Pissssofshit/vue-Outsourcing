@@ -27,7 +27,7 @@ const vueRouter = new Router({
       redirect: { name: '项目列表' },
       children: [{ path: '', redirect: { name: '项目列表' } },
         { 
-          path: '/my', 
+          path: 'my', 
           name: '', 
           component: My 
         },
@@ -67,7 +67,7 @@ const vueRouter = new Router({
     { path: '/my', name: '我的', component: My },
     { path: '/search', name: '搜索', component: Search },
     { path: '/login', name: '', component: Login },
-
+    { path: '/test', component:test}
   ]
 })
 
