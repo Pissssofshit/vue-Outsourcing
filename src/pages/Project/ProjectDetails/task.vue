@@ -4,7 +4,7 @@
     <task-list></task-list>
     <task-list></task-list>
     <task-list></task-list>
-    <!-- <task-state3></task-state3> -->
+    <task-state3></task-state3>
     </div>
   </div>
 </template>
@@ -23,7 +23,7 @@ export default {
   },
   components:{
       TaskList,
-      // TaskState3
+      TaskState3
   }
 }
 </script>

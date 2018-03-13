@@ -3,7 +3,7 @@
     <el-card class="box-card">
       <div slot="header" class="clearfix">
         <span>我是任务列表</span>
-        <el-button style="float: right; padding: 3px 0" type="text" @click="handleclick('create')">操作按钮</el-button>
+        <el-button style="float: right; padding: 3px 0" type="text" @click="handleclick('create')">添加任务</el-button>
       </div>
       <div v-for="o in 4" :key="o" class="text item" @click="handleclick">
         <task-state1></task-state1>

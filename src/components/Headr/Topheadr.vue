@@ -2,6 +2,7 @@
   <div class="header_">
     <div class="te">
       <div class="search_">
+        <div id="tmp"><router-link to="/index/project-list">我的项目</router-link></div>
         <el-input v-model="input" placeholder="请输入内容"></el-input>
         <el-button type="primary" class="el-icon-search icon">搜索</el-button>
       </div>
@@ -9,7 +10,7 @@
     <div type="primary" class="el-icon-circle-plus icon"></div>
     <div class="te2">
       <ul class="icon">
-        <li><router-link to="/my">我的</router-link></li>
+        <li><router-link to="/index/my">我的</router-link></li>
         <li>日历</li>
         <li>
           <el-badge value="12" class="item">
@@ -82,7 +83,6 @@ export default {
   align-items: center;
   background-color: pink;
 }
-
 ul {
   display: flex;
   list-style: none;

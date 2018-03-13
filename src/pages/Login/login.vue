@@ -93,7 +93,7 @@ export default {
 }
 
 </script>
-<style type="text/css">
+<style  scoped>
 .login_page {
   background-color: #324057;
   height: 100%;
