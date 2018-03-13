@@ -37,7 +37,7 @@ export default {
 </script>
 <style scoped>
 .el-card {
-  width: 40vh;
+  width: 30vh;
   height: 20vh;
   overflow: hidden;
   margin: 2vh;

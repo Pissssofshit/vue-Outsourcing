@@ -1,5 +1,5 @@
 <template>
-  <div >
+  <div>
     <el-container>
       <el-header>
         <second-header></second-header>
@@ -12,20 +12,25 @@
 </template>
 <script>
 import SecondHeader from '../../components/Headr/Secondheadr.vue'
+import { mapActions } from 'vuex'
 export default {
   data() {
-    return {
-    }
+    return {}
   },
   components: {
     SecondHeader
   },
-  beforeMount: function(){
-    console.log(this.$route.params)
+  created: function() {
+    console.log(this.$route.params.projectId)
+    this.IntoProjectDetailsAction(this.$route.params.projectId)
+  },
+  methods: {
+    ...mapActions(['IntoProjectDetailsAction']),
   }
 }
 
 </script>
 <style>
+
 
 </style>
