@@ -60,13 +60,13 @@
   }
 </style>
 <style>
-.el-input__inner{
+/* .el-input__inner{
     border: 0px;
   }
   .el-collapse-item__header
   {
     border:0px;
-  }
+  } */
 </style>
 
 <template>
