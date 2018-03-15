@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-table :data="staff.staffList" highlight-current-row height="600"  style="width: 100% text-align:center">
+    <el-table :data="staff.staffList" highlight-current-row height="600" style="width: 100% text-align:center" v-loading="loading">
       <el-table-column align="center" prop="staffId" label="编号" width="180">
       </el-table-column>
       <el-table-column align="center" prop="staffName" label="姓名" width="180">
@@ -54,6 +54,7 @@ export default {
         id: '',
         postion: '',
       },
+      loading: true,
     }
   },
   computed: mapState({ staff: state => state.staff }),
@@ -68,9 +69,12 @@ export default {
       this.AddNewStaffAction({ staffId: this.form.id, staffPostion: this.form.postion })
     }
   },
-  created() {
-    this.StaffListAction(this.$store.state.currentProjectId);
+  created: async function() {
+    await this.StaffListAction(this.$store.state.currentProjectId);
+    console.log("超级瞄准，启动")
+    this.loading = false
   }
+
 }
 
 </script>

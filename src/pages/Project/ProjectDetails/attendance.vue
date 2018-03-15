@@ -5,7 +5,7 @@
         <el-tab-pane label="单日统计" name="today">
           <el-date-picker :editable="false" :clearable="false" v-model="selectDate" type="date" placeholder="选择日期时间" format="yyyy-MM-dd" value-format="yyyy-MM-dd">
           </el-date-picker>
-          <el-table :data="attendance.attendanceList" style="width: 100% " :default-sort="{prop: 'date', order: 'descending'}">
+          <el-table :data="attendance.attendanceList" style="width: 100% " :default-sort="{prop: 'date', order: 'descending'}" v-loading="dayLoading">
             <el-table-column align="center" prop="attendanceId" label="人员编号" width="200">
             </el-table-column>
             <el-table-column align="center" prop="attendanceName" label="姓名" width="200">
@@ -42,7 +42,7 @@
         <el-tab-pane label="范围统计" name="sum">
           <el-date-picker :editable="false" :clearable="false" v-model="rangeDate" type="daterange" range-separator="-" start-placeholder="开始日期" end-placeholder="结束日期" format="yyyy-MM-dd" value-format="yyyy-MM-dd">
           </el-date-picker>
-          <el-table :data="attendance.attendanceRangeList" style="width: 100% " :default-sort="{prop: 'attendanceId', order: 'descending'}">
+          <el-table :data="attendance.attendanceRangeList" style="width: 100% " :default-sort="{prop: 'attendanceId', order: 'descending'}" v-loading="rangeLoading">
             <el-table-column align="center" prop="attendanceId" label="人员编号" width="200" sortable>
             </el-table-column>
             <el-table-column align="center" prop="attendanceName" label="姓名" width="200">
@@ -65,6 +65,7 @@
 </template>
 <script>
 import { mapActions, mapState } from 'vuex'
+import { Loading } from 'element-ui';
 export default {
   data() {
     return {
@@ -77,6 +78,8 @@ export default {
         id: '',
         state: '',
       },
+      dayLoading: true,
+      rangeLoading: true,
     }
   },
   created() {
@@ -92,6 +95,9 @@ export default {
   },
   methods: {
     ...mapActions(['AttendanceListAction', 'AttendanceRangeListAction']),
+    // async waitDayLoading() {
+    //   await this.()
+    // },
     getNowFormatDate() {
       let date = new Date();
       let seperator1 = "-";
@@ -139,7 +145,7 @@ export default {
       this.dialogFormVisible = true
       // console.log("row:"+JSON.stringify(row))
       this.form.id = row.attendanceId
-      this.form.state=row.attendanceState
+      this.form.state = row.attendanceState
     },
     confirmNowDateEdit() {
       this.dialogFormVisible = false
@@ -150,23 +156,26 @@ export default {
     }
   },
   watch: {
-    selectDate(curVal, oldVal) {
+    async selectDate(curVal, oldVal) {
       // console.log(curVal + " : " + oldVal)
-      this.AttendanceListAction({
+      await this.AttendanceListAction({
         ProjectId: this.ProjectId,
         date: this.selectDate
       })
+      // console.log("完成接受数据")
+      this.dayLoading = false
     },
-    rangeDate(curVal, oldVal) {
+    async rangeDate(curVal, oldVal) {
       // console.log(curVal)
       // console.log(curVal.toString().split(','))
       let startDate = curVal.toString().split(',')[0]
       let endDate = curVal.toString().split(',')[1]
-      this.AttendanceRangeListAction({
+      await this.AttendanceRangeListAction({
         ProjectId: this.ProjectId,
         startDate: startDate,
         endDate: endDate,
       })
+      this.rangeLoading = false
     }
   }
 }
