@@ -28,9 +28,9 @@ Vue.use(Vueresource)
 router.beforeEach(function(to, from, next) {
   const nextRoute = ['登录', '注册'];
   const auth = store.state.IsLogin;
-  console.log("main.js:"+auth)
-  console.log("main.js:"+nextRoute)
-  console.log("main.js:"+to.name)
+  // console.log("main.js:"+auth)
+  // console.log("main.js:"+nextRoute)
+  // console.log("main.js:"+to.name)
   //除了登录和注册页面其他都要验证是否登录
   if (nextRoute.indexOf(to.name) === -1) {
     //未登录

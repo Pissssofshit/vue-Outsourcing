@@ -12,7 +12,7 @@
         <div class="secondheader-nav-second">
           <el-menu :default-active="activeIndex" class="" mode="horizontal" @select="handleSelect">
             <el-menu-item index="1">
-              <router-link :to="{name:'任务总览'}">任务</router-link>
+              <router-link :to="{name:'任务总览'}" replace>任务</router-link>
             </el-menu-item>
             <el-submenu index="2">
               <template slot="title">我的工作台</template>
@@ -27,13 +27,13 @@
               </el-submenu>
             </el-submenu>
             <el-menu-item index="3">
-              <router-link :to="{name:'人员'}">人员</router-link>
+              <router-link :to="{name:'人员'} " replace>人员</router-link>
             </el-menu-item>
             <el-menu-item index="4">
-              <router-link :to="{name:'考勤'}">考勤</router-link>
+              <router-link :to="{name:'考勤'}" replace>考勤</router-link>
             </el-menu-item>
             <el-menu-item index="5">
-              <router-link :to="{name:'item'}">概况</router-link>
+              <router-link :to="{name:'考勤'}" replace>概况</router-link>
             </el-menu-item>
           </el-menu>
         </div>

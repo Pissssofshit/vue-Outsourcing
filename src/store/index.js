@@ -17,7 +17,7 @@ const defaultState = {
     joinProjectList: [],
     managerProjectList: []
   },
-  currentProjectId: ''
+  ProjectId: ''
 }
 
 const store = new Vuex.Store({
@@ -52,7 +52,7 @@ const store = new Vuex.Store({
       state.projectList.joinProjectList.push(newProject)
     },
     IntoProjectDetails(state, projectId) {
-      state.currentProjectId = projectId
+      state.ProjectId = projectId
     }
   },
   actions: {
@@ -63,24 +63,31 @@ const store = new Vuex.Store({
       commit('SaveUserInfo', userInfo)
     },
     JoinProjectListAction({ commit }, userid) {
-      Vue.http.get(MYURL.URL_JOINPROJECTLIST, { userid: userid }).then(response => {
-        if (response.status === 200) {
-          console.log("JoinProjectListAction:" + '获取我参与的项目列表成功')
-          commit('SaveJoinProjectList', response.body.projectList)
-        } else {
-          console.log("JoinProjectListAction:" + '获取我参与的项目列表失败');
-        }
+      return new Promise((resolve, reject) => {
+        Vue.http.get(MYURL.URL_JOINPROJECTLIST, { userid: userid }).then(response => {
+          if (response.status === 200) {
+            console.log("JoinProjectListAction:" + '获取我参与的项目列表成功')
+            commit('SaveJoinProjectList', response.body.projectList)
+            resolve()
+          } else {
+            console.log("JoinProjectListAction:" + '获取我参与的项目列表失败');
+            reject()
+          }
+        })
       })
-
     },
     ManageProjectListAction({ commit }, userid) {
-      Vue.http.get(MYURL.URL_MANAGEPROJECTLIST, { userid: userid }).then(response => {
-        if (response.status === 200) {
-          console.log("ManageProjectListAction:" + '获取我管理的项目列表成功')
-          commit('SaveManageProjectList', response.body.projectList)
-        } else {
-          console.log("ManageProjectListAction:" + '获取我管理的项目列表失败');
-        }
+      return new Promise((resolve, reject) => {
+        Vue.http.get(MYURL.URL_MANAGEPROJECTLIST, { userid: userid }).then(response => {
+          if (response.status === 200) {
+            console.log("ManageProjectListAction:" + '获取我管理的项目列表成功')
+            commit('SaveManageProjectList', response.body.projectList)
+            resolve()
+          } else {
+            console.log("ManageProjectListAction:" + '获取我管理的项目列表失败');
+            reject()
+          }
+        })
       })
     },
     AddJoinProjectListAction({ commit }, projectId, projectName) {
