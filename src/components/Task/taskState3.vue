@@ -22,7 +22,7 @@
   }
   .shuoming{
     display: flex;
-    align-items: baseline;
+    align-items: start;
     margin: 1px;
   }
   .youxianji{
@@ -58,23 +58,25 @@
   li:hover{
     background-color: orange;
   }
-</style>
-<style>
-/* .el-input__inner{
+  .checkbox{
+    margin-right: 50px;
+  }
+  .el-input__inner{
     border: 0px;
   }
-  .el-collapse-item__header
-  {
-    border:0px;
-  } */
 </style>
+<style>
+</style>
+
 
 <template>
  <div>
   <el-dialog title="任务管理" :visible.sync="show" width="30%" :before-close="handleClose">
     <div>
       <div class="title">
+        <div class="checkbox">
         <el-checkbox label="" name="type"></el-checkbox>
+        </div>
         <span>
           <slot name="renwuming"><el-input v-model="input" placeholder="请输入标题"></el-input></slot></span>
       </div>
@@ -97,7 +99,7 @@
             <slot name="canyuzhe"></slot></div>
         </div>
         <div class="deadline">
-          <el-date-picker v-model="value1" type="date" placeholder="选择日期">
+          <el-date-picker class="timepicker" v-model="value1" type="date" placeholder="选择日期">
             <slot name="deadline"></slot>
           </el-date-picker>
         </div>
@@ -114,9 +116,9 @@
         <el-dropdown trigger="click" @command="handleCommand2">
   <el-tag>{{youxianji}}</el-tag>
   <el-dropdown-menu slot="dropdown">
-    <el-dropdown-item command="普通"><el-tag>普通</el-tag></el-dropdown-item>
-    <el-dropdown-item command="重要"><el-tag>重要</el-tag></el-dropdown-item>
-    <el-dropdown-item command="紧急"><el-tag>紧急</el-tag></el-dropdown-item>
+    <el-dropdown-item command="普通">普通</el-dropdown-item>
+    <el-dropdown-item command="重要">重要</el-dropdown-item>
+    <el-dropdown-item command="紧急">紧急</el-dropdown-item>
   </el-dropdown-menu>
 </el-dropdown>
             

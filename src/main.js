@@ -11,12 +11,13 @@ import $ from 'jquery'
 import iView from 'iview';
 import 'iview/dist/styles/iview.css';
 // discomfort
-
+import Chart from 'chart.js'
 import store from './store'
-
+import sChart from 'vue-schart'
 //vue-router + vuex +vue-resource+element-ui
 // Vue.use(VueRouter);
 Vue.use(iView);
+Vue.use(sChart)
 Vue.config.productionTip = false
 Vue.use(ElementUI)
 Vue.use(Vueresource)

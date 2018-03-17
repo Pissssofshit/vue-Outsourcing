@@ -11,6 +11,8 @@ import ProjectList from '@/pages/Project/projectList'
 import ProjectDetails from '@/pages/Project/projectDetails'
 // third pages
 import Staff from '@/pages/Project/ProjectDetails/staff'
+import Recordgraph from '@/pages/Project/ProjectDetails/recordgraph'
+import ProjectPlan from '@/pages/Project/ProjectDetails/projectplan'
 import Task from '@/pages/Project/ProjectDetails/task'
 import Attendance from '@/pages/Project/ProjectDetails/attendance'
 import test from '../pages/test.vue'
@@ -58,6 +60,16 @@ const vueRouter = new Router({
               name: '考勤',
               component: Attendance,
               meta: ["首页", "项目详情", "考勤"]
+            },
+            {
+              path: 'recordgraph',
+              name: '记录图表',
+              component: Recordgraph,
+            },
+            {
+              path: 'projectplan',
+              name: '项目计划',
+              component: ProjectPlan,
             }
           ]
         }

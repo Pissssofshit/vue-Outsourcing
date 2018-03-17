@@ -18,6 +18,9 @@ const defaultState = {
     managerProjectList: []
   },
   ProjectId: ''
+  currentProjectId: '',
+  // 界面
+  aside:false
 }
 
 const store = new Vuex.Store({
