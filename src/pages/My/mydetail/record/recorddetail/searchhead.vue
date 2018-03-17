@@ -2,7 +2,8 @@
   <div>
       <el-row>
           <el-col　:xs="8" :sm="6" :md="4" :lg="2">
-              <el-dropdown split-button type="primary" @command="handleCommand" @click="handleClick">
+              <el-dropdown
+ split-button type="primary" @command="handleCommand" @click="handleClick">
                 {{shaixuan}}
                 <el-dropdown-menu slot="dropdown">
     <el-dropdown-item　command="默认排序" >默认排序</el-dropdown-item>

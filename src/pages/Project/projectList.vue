@@ -2,7 +2,7 @@
   <div>
     <div>
       <span>我参与的项目 </span>
-      <div class="projectlist">
+      <div class="projectlist" v-loading="joinLoading">
         <div v-for="item in projectList.joinProjectList" :key="item.projectId">
           <router-link :to="{name: '项目详情', params: {projectId: item.projectId}}">
             <projectItem @click="(item.projectId)" :name="item.projectName" :img="item.projectLogo" :proid="item.projectId"></projectItem>
@@ -17,7 +17,7 @@
     </div>
     <div>
       <span>我管理的项目</span>
-      <div class="projectlist">
+      <div class="projectlist" v-loading="managerLoading">
         <div v-for="item in projectList.managerProjectList" :key="item.projectId">
           <router-link :to="{name: '项目详情', params: {projectId: item.projectId}}">
             <projectItem :name="item.projectName" :img="item.projectLogo" :proid="item.projectId"></projectItem>
@@ -40,15 +40,17 @@ export default {
   data() {
     return {
       item1: [],
-      item2: []
+      item2: [],
+      joinLoading: true,
+      managerLoading: true,
     }
   },
   components: {
     ProjectItem
   },
-  created() {
-    this.JoinProjectListAction(this.$store.state.userInfo.userid);
-    this.ManageProjectListAction(this.$store.state.userInfo.userid);
+  created: function() {
+    this.getJoinProjectList()
+    this.getManagerProjectList()
     // console.log("projectList.vue：" + JSON.stringify(this.$store.state.userInfo));
   },
   mounted() {
@@ -68,7 +70,17 @@ export default {
       'AddJoinProjectListAction',
       'AddManageProjectListAction',
       'IntoProjectDetailsAction',
-    ])
+    ]),
+    async getJoinProjectList() {
+      await this.JoinProjectListAction(this.$store.state.userInfo.userid)
+       console.log("得到JoinList")
+      this.joinLoading = false
+    },
+    async getManagerProjectList() {
+      await this.ManageProjectListAction(this.$store.state.userInfo.userid)
+      console.log("得到ManagerList")
+      this.managerLoading = false;
+    },
   }
 }
 

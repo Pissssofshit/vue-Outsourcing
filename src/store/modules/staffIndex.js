@@ -25,19 +25,23 @@ const staffIndex = {
   },
   actions: {
     StaffListAction({ state, commit, rootState }, projectId) {
-      Vue.http.post(MYURL.URL_STAFF, { projectId: projectId }).then(response => {
-        if (response.status === 200) {
-          console.log("StaffListAction:" + '获取人员列表成功')
-          commit('SaveStaffList', response.body.staffList)
-        } else {
-          console.log("StaffListAction:" + '获取人员列表失败');
-        }
+      return new Promise((resolve, reject) => {
+        Vue.http.get(MYURL.URL_STAFF, { projectId: projectId }).then(response => {
+          if (response.status === 200) {
+            console.log("StaffListAction:" + '获取人员列表成功')
+            commit('SaveStaffList', response.body.staffList)
+            resolve()
+          } else {
+            console.log("StaffListAction:" + '获取人员列表失败')
+            reject()
+          }
+        })
       })
     },
 
     // 假把戏 应该put
-    AddNewStaffAction({ state, commit, rootState },newStaff){
-      commit('AddNewStaff',newStaff)
+    AddNewStaffAction({ state, commit, rootState }, newStaff) {
+      commit('AddNewStaff', newStaff)
     }
   },
   getters: {}
