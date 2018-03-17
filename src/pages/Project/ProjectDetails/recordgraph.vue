@@ -1,12 +1,26 @@
 <template>
-<div>
-   <schart :canvasId="canvasId"
+<div class="that">
+   <div>
+     <schart :canvasId="canvasId"
 			:type="type"
 			:width="width"
 			:height="height"
 			:data="data"
 			:options="options"
 		></schart>
+     <div class="block">
+    <el-date-picker
+      v-model="value7"
+      type="daterange"
+      align="right"
+      unlink-panels
+      range-separator="至"
+      start-placeholder="开始日期"
+      end-placeholder="结束日期"
+      :picker-options="pickerOptions2">
+    </el-date-picker>
+  </div>
+   </div>
   <el-table
     :data="tableData"
     style="width: 100%">
@@ -42,7 +56,13 @@
 </div>
 </template>
 <style scoped>
-
+.that{
+  width:60%;
+  margin: 0 auto;
+}
+.cell{
+  text-align: start;
+}
 </style>
 
 <script>
@@ -50,6 +70,34 @@ import Schart from 'vue-schart';
   export default {
     data() {
       return {
+        value7:'',
+        pickerOptions2: {
+          shortcuts: [{
+            text: '最近一周',
+            onClick(picker) {
+              const end = new Date();
+              const start = new Date();
+              start.setTime(start.getTime() - 3600 * 1000 * 24 * 7);
+              picker.$emit('pick', [start, end]);
+            }
+          }, {
+            text: '最近一个月',
+            onClick(picker) {
+              const end = new Date();
+              const start = new Date();
+              start.setTime(start.getTime() - 3600 * 1000 * 24 * 30);
+              picker.$emit('pick', [start, end]);
+            }
+          }, {
+            text: '最近三个月',
+            onClick(picker) {
+              const end = new Date();
+              const start = new Date();
+              start.setTime(start.getTime() - 3600 * 1000 * 24 * 90);
+              picker.$emit('pick', [start, end]);
+            }
+          }]
+        },
         canvasId: 'myCanvas',
 			type: 'pie',
 			width: 500,
@@ -58,7 +106,7 @@ import Schart from 'vue-schart';
     {name:'完成', value:1200},
     {name:'进行中', value:1222},
     {name:'失败', value:1283}
-],options: {
+    ],options: {
 				title: '任务完成情况'
 			},
         tableData: [{

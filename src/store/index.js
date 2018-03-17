@@ -17,7 +17,9 @@ const defaultState = {
     joinProjectList: [],
     managerProjectList: []
   },
-  currentProjectId: ''
+  currentProjectId: '',
+  // 界面
+  aside:false
 }
 
 const store = new Vuex.Store({

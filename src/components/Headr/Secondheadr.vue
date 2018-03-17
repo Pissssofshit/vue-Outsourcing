@@ -38,6 +38,9 @@
             <el-menu-item index="6">
               <router-link :to="{name:'记录图表'}">任务记录图表</router-link>
             </el-menu-item>
+            <el-menu-item index="7">
+              <router-link :to="{name:'项目计划'}">项目计划</router-link>
+            </el-menu-item>
           </el-menu>
         </div>
       </el-col>
