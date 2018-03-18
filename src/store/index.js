@@ -17,7 +17,7 @@ const defaultState = {
     joinProjectList: [],
     managerProjectList: []
   },
-  ProjectId: ''
+  ProjectId: '',
   currentProjectId: '',
   // 界面
   aside:false
