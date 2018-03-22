@@ -65,6 +65,7 @@ const vueRouter = new Router({
               path: 'recordgraph',
               name: '记录图表',
               component: Recordgraph,
+              meta: ["首页", "项目详情", "记录图表"]
             },
             {
               path: 'projectplan',

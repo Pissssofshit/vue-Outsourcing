@@ -47,6 +47,10 @@ export default {
 
 </script>
 <style scoped>
+#tmp{
+  width: 100px;
+  overflow: hidden;
+}
 .te2 {
   width: 100%;
   display: flex;
@@ -74,14 +78,17 @@ export default {
 }
 
 .header_ {
+  padding: 0px;
   min-height: 50px;
   max-height: 60px;
   width: 100%;
+  min-width: 1400px;
   height: 20%;
   display: flex;
   /* justify-content: center; */
   align-items: center;
-  background-color: pink;
+  background-color: white;
+  box-shadow: 
 }
 ul {
   display: flex;
