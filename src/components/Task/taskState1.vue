@@ -24,7 +24,10 @@ export default {
 .box-card {
   display: flex;
   font-size: 20px;
-  width: 100%;
+  /* width: 100%; */
+  /* width: 300px; */
+  height: 100px;
+  margin-top: 10px;
 }
 
 </style>

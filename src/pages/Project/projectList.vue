@@ -1,6 +1,26 @@
 <template>
   <div>
-    <div>
+    <el-container>
+      <el-row>
+        <el-col :span="24"><div id="test">推荐项目</div></el-col></el-row>
+    <el-row>
+      <el-col :span="24">
+      <div class="projectlist" v-loading="joinLoading">
+        
+        <div v-for="item in projectList.joinProjectList" :key="item.projectId">
+          <!-- <el-col :span="8"> -->
+          <router-link :to="{name: '项目详情', params: {projectId: item.projectId}}">
+            <projectItem @click="(item.projectId)" :name="item.projectName" :img="item.projectLogo" :proid="item.projectId"></projectItem>
+          </router-link>
+          <!-- </el-col> -->
+        </div>
+        
+      
+    </div>
+      </el-col>
+    </el-row>
+    </el-container>
+    <!-- <div>
       <span>我参与的项目 </span>
       <div class="projectlist" v-loading="joinLoading">
         <div v-for="item in projectList.joinProjectList" :key="item.projectId">
@@ -29,13 +49,14 @@
           </projectItem>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 <script>
 import ProjectItem from '../../components/Project/projectItem.vue'
 import { mapState, mapGetters, mapActions } from 'vuex'
 import MYURL from '../../const/MYURL.js'
+
 export default {
   data() {
     return {
@@ -86,25 +107,6 @@ export default {
 
 </script>
 <style scoped>
-.el-icon-circle-plus {
-  color: #409EFF;
-  padding: 0;
-  border: 0;
-  font-size: 30px;
-}
 
-span {
-  margin-left: 5vh;
-  display: block;
-  width: 95%;
-  text-align: start;
-  font-size: 30px;
-}
-
-.projectlist {
-  height: 100%;
-  display: flex;
-  flex-wrap: wrap;
-}
 
 </style>

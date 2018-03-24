@@ -1,6 +1,9 @@
 <template>
   <div>
     <el-container>
+      <el-row >
+        <prodesp></prodesp>
+      </el-row>
       <el-header>
         <second-header></second-header>
       </el-header>
@@ -12,13 +15,15 @@
 </template>
 <script>
 import SecondHeader from '../../components/Headr/Secondheadr.vue'
+import Prodesp from '../../components/Prodesp/prodesp.vue'
 import { mapActions } from 'vuex'
 export default {
   data() {
     return {}
   },
   components: {
-    SecondHeader
+    SecondHeader,
+    Prodesp
   },
   created: function() {
     console.log(this.$route.params.projectId)
@@ -30,7 +35,7 @@ export default {
 }
 
 </script>
-<style>
+<style scoped>
 
 
 </style>

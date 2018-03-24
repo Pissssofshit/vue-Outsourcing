@@ -2,7 +2,7 @@
   <div class="rw">
     <el-card class="box-card">
       <div slot="header" class="clearfix">
-        <span>我是任务列表</span>
+        <h3>{{renwulistname}}</h3>
         <el-button style="float: right; padding: 3px 0" type="text" @click="handleclick('create')">添加任务</el-button>
       </div>
       <div v-for="o in 4" :key="o" class="text item" @click="handleclick">
@@ -17,6 +17,9 @@ export default {
   components: {
     TaskState1
   },
+  props:[
+    'renwulistname'
+  ],
   methods: {
     handleclick: function(mode) {
       console.log('im handle click')
@@ -31,10 +34,14 @@ export default {
 <style scoped>
 .rw {
   height: 100%;
+    width: 100px;
+   margin-right: 10px; 
 }
 
 .el-card {
   height: 100%;
+  width: 350px;
+ 
 }
 
 .text {
@@ -53,10 +60,6 @@ export default {
 
 .clearfix:after {
   clear: both
-}
-
-.box-card {
-  width: 480px;
 }
 
 </style>

@@ -1,11 +1,20 @@
 <template>
   <div>
     <div class="tasklistgroup">
-      <task-list></task-list>
-      <task-list></task-list>
-      <task-list></task-list>
-      <task-state3></task-state3>
+      <el-row type="flex" gutter="1" justify="center" >
+      <el-col :span="3">
+      <task-list  renwulistname="待参加的任务"></task-list>
+      </el-col>
+      <el-col :span="3">
+      <task-list renwulistname="进行中的任务"></task-list>
+      </el-col>
+      <el-col :span="3">
+        <task-list renwulistname="完成的任务"></task-list>
+      </el-col>
+      </el-row>
+      
     </div>
+      <task-state3></task-state3>
   </div>
 </template>
 <script>
@@ -28,6 +37,9 @@ export default {
 
 </script>
 <style scoped>
+.el-row{
+  width: 100%;
+}
 .tasklistgroup {
   display: flex;
 
