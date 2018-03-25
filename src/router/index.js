@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 //top pages
 import Login from '@/pages/Login/login'
+import Auth from '@/pages/Login/authentication'
 import Register from '@/pages/Register/register'
 import MainPage from '@/pages/mainPage'
 import My from '@/pages/My/my'
@@ -23,16 +24,17 @@ const vueRouter = new Router({
   routes: [
     { path: '', redirect: { name: '登录' } },
     { path: '/login', name: '登录', component: Login },
+    {path:"/au",name:"人脸验证",component:Auth},
     {
       path: '/index',
       name: '首页',
       component: MainPage,
       redirect: { name: '项目列表' },
       children: [{ path: '', redirect: { name: '项目列表' } },
-        { 
-          path: 'my', 
-          name: '', 
-          component: My 
+        {
+          path: 'my',
+          name: '',
+          component: My
         },
         {
           path: "project-list",
@@ -86,7 +88,7 @@ const vueRouter = new Router({
     { path: '/my', name: '我的', component: My },
     { path: '/search', name: '搜索', component: Search },
     { path: '/login', name: '', component: Login },
-    { path: '/test', component:test}
+    { path: '/test', component: test }
   ]
 })
 
