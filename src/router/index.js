@@ -14,6 +14,7 @@ import ProjectDetails from '@/pages/Project/projectDetails'
 import Staff from '@/pages/Project/ProjectDetails/staff'
 import Recordgraph from '@/pages/Project/ProjectDetails/recordgraph'
 import ProjectPlan from '@/pages/Project/ProjectDetails/projectplan'
+import ProjectPower from '@/pages/Project/ProjectDetails/projectpower'
 import Task from '@/pages/Project/ProjectDetails/task'
 import Attendance from '@/pages/Project/ProjectDetails/attendance'
 import test from '../pages/test.vue'
@@ -73,6 +74,11 @@ const vueRouter = new Router({
               path: 'projectplan',
               name: '项目计划',
               component: ProjectPlan,
+            },
+            {
+              path: 'ProjectPower',
+              name: '项目权限',
+              component: ProjectPower
             }
           ]
         }

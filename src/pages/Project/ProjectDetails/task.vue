@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="tasklistgroup">
-      <el-row type="flex" gutter="1" justify="center" >
+      <el-row type="flex"  justify="center" >
       <el-col :span="3">
       <task-list  renwulistname="待参加的任务"></task-list>
       </el-col>
