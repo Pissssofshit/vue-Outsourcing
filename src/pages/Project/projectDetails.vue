@@ -14,6 +14,7 @@
   </div>
 </template>
 <script>
+//男儿到死心如血
 import SecondHeader from '../../components/Headr/Secondheadr.vue'
 import Prodesp from '../../components/Prodesp/prodesp.vue'
 import { mapActions } from 'vuex'

@@ -88,7 +88,6 @@ export default {
   /* justify-content: center; */
   align-items: center;
   background-color: white;
-  box-shadow: 
 }
 ul {
   display: flex;

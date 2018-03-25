@@ -14,18 +14,7 @@
             <el-menu-item index="1">
               <router-link :to="{name:'任务总览'}" replace>任务</router-link>
             </el-menu-item>
-            <el-submenu index="2">
-              <template slot="title">我的工作台</template>
-              <el-menu-item index="2-1">选项1</el-menu-item>
-              <el-menu-item index="2-2">选项2</el-menu-item>
-              <el-menu-item index="2-3">选项3</el-menu-item>
-              <el-submenu index="2-4">
-                <template slot="title">kao</template>
-                <el-menu-item index="2-4-1">选项1</el-menu-item>
-                <el-menu-item index="2-4-2">选项2</el-menu-item>
-                <el-menu-item index="2-4-3">选项3</el-menu-item>
-              </el-submenu>
-            </el-submenu>
+           
             <el-menu-item index="3">
               <router-link :to="{name:'人员'} " replace>人员</router-link>
             </el-menu-item>
@@ -38,9 +27,18 @@
             <el-menu-item index="6">
               <router-link :to="{name:'记录图表'}">任务记录图表</router-link>
             </el-menu-item>
-            <el-menu-item index="7">
-              <router-link :to="{name:'项目计划'}">项目计划</router-link>
-            </el-menu-item>
+        
+             <el-submenu index="7">
+              <template slot="title">设置</template>
+              <el-menu-item index="2-1"><router-link :to="{name:'项目计划'}">项目计划</router-link></el-menu-item>
+              <el-menu-item index="2-2"><router-link :to="{name:'项目权限'}">项目权限</router-link></el-menu-item>
+              <el-submenu index="2-4">
+                <template slot="title">kao</template>
+                <el-menu-item index="2-4-1">选项1</el-menu-item>
+                <el-menu-item index="2-4-2">选项2</el-menu-item>
+                <el-menu-item index="2-4-3">选项3</el-menu-item>
+              </el-submenu>
+            </el-submenu>
           </el-menu>
         </div>
       </el-col>
