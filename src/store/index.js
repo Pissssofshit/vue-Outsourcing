@@ -5,6 +5,7 @@ import Staff from './modules/staffIndex.js'
 import Task from './modules/taskIndex.js'
 import MYURL from '../const/MYURL.js'
 Vue.use(Vuex)
+const logo = "https://edu-image.nosdn.127.net/BF967F2AE9D9F9379B3ADBBC6635C2A0.jpg?imageView&amp;thumbnail=510y288&amp;quality=100&amp;thumbnail=223x125&amp;quality=100"
 const defaultState = {
   //用户
   IsLogin: false,
@@ -14,13 +15,26 @@ const defaultState = {
   },
   // 项目
   projectList: {
-    joinProjectList: [],
-    managerProjectList: []
+    prepareProjectList: [{
+      projectId: "",
+      projectName: "",
+      projectLogo: "",
+    }],
+    startProjectList: [{
+      projectId: "",
+      projectName: "",
+      projectLogo: "",
+    }],
+    finishProjectList: [{
+      projectId: "",
+      projectName: "",
+      projectLogo: "",
+    }]
   },
   ProjectId: '',
   currentProjectId: '',
   // 界面
-  aside:false
+  aside: false
 }
 
 const store = new Vuex.Store({
@@ -39,20 +53,23 @@ const store = new Vuex.Store({
       state.userInfo.username = userInfo.username
       state.userInfo.userid = userInfo.userid
     },
-    // SaveProjectList(state, projectList) {
-    //   state.projectList = projectList
+    AddPrepareProjectList(state, newProject) {
+      state.projectList.prepareProjectList.push(newProject)
+    },
+    // AddManageProjectList(state, newProject) {
+    //   state.projectList.managerProjectList.push(newProject)
     // },
-    SaveJoinProjectList(state, joinProjectList) {
-      state.projectList.joinProjectList = joinProjectList
+    // AddJoinProjectList(state, newProject) {
+    //   state.projectList.joinProjectList.push(newProject)
+    // },
+    SavePrepareProjectList(state, prepareProjectList) {
+      state.projectList.prepareProjectList = prepareProjectList
     },
-    SaveManageProjectList(state, managerProjectList) {
-      state.projectList.managerProjectList = managerProjectList
+    SaveStartProjectList(state, startProjectList) {
+      state.projectList.startProjectList = startProjectList
     },
-    AddManageProjectList(state, newProject) {
-      state.projectList.managerProjectList.push(newProject)
-    },
-    AddJoinProjectList(state, newProject) {
-      state.projectList.joinProjectList.push(newProject)
+    SaveFinishProjectList(state, finishProjectList) {
+      state.projectList.finishProjectList = finishProjectList
     },
     IntoProjectDetails(state, projectId) {
       state.ProjectId = projectId
@@ -65,41 +82,47 @@ const store = new Vuex.Store({
     LoginAction({ commit }, userInfo) {
       commit('SaveUserInfo', userInfo)
     },
-    JoinProjectListAction({ commit }, userid) {
+    PrepareProjectListAction({ commit }, userid) {
       return new Promise((resolve, reject) => {
-        Vue.http.get(MYURL.URL_JOINPROJECTLIST, { userid: userid }).then(response => {
+        Vue.http.get(MYURL.URL_PrepareProjectList, { userid: userid })
+          .then(response => {
+            if (response.status === 200) {
+              commit('SavePrepareProjectList', response.body.projectList)
+              resolve()
+            } else {
+              reject()
+            }
+          })
+      })
+    },
+    StartProjectListAction({ commit }, userid) {
+      return new Promise((resolve, reject) => {
+        Vue.http.get(MYURL.URL_StartProjectList, { userid: userid })
+          .then(response => {
+            if (response.status === 200) {
+              commit('SaveStartProjectList', response.body.projectList)
+              resolve()
+            } else {
+              reject()
+            }
+          })
+      })
+    },
+    FinishProjectListAction({ commit }, userid) {
+      return new Promise((resolve, reject) => {
+        Vue.http.get(MYURL.URL_FinishProjectList, { userid: userid }).then(response => {
           if (response.status === 200) {
-            console.log("JoinProjectListAction:" + '获取我参与的项目列表成功')
-            commit('SaveJoinProjectList', response.body.projectList)
+            commit('SaveFinishProjectList', response.body.projectList)
             resolve()
           } else {
-            console.log("JoinProjectListAction:" + '获取我参与的项目列表失败');
             reject()
           }
         })
       })
     },
-    ManageProjectListAction({ commit }, userid) {
-      return new Promise((resolve, reject) => {
-        Vue.http.get(MYURL.URL_MANAGEPROJECTLIST, { userid: userid }).then(response => {
-          if (response.status === 200) {
-            console.log("ManageProjectListAction:" + '获取我管理的项目列表成功')
-            commit('SaveManageProjectList', response.body.projectList)
-            resolve()
-          } else {
-            console.log("ManageProjectListAction:" + '获取我管理的项目列表失败');
-            reject()
-          }
-        })
-      })
-    },
-    AddJoinProjectListAction({ commit }, projectId, projectName) {
-      let newProject = { projectId: projectId, projectName: projectName };
-      commit('AddJoinProjectList', newProject)
-    },
-    AddManageProjectListAction({ commit }, projectId, projectName) {
-      let newProject = { projectId: projectId, projectName: projectName };
-      commit('AddManageProjectList', newProject)
+    AddPrepareProjectListAction({ commit }, projectId, projectName) {
+      let newProject = { projectLogo: logo, projectId: projectId, projectName: "待定" };
+      commit('AddPrepareProjectList', newProject)
     },
     IntoProjectDetailsAction({ commit }, projectId) {
       commit('IntoProjectDetails', projectId)

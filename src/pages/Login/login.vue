@@ -22,7 +22,6 @@
 </template>
 <script>
 import { mapActions, mapState, mapMutations } from 'vuex'
-//URL
 import MYURL from '../../const/MYURL.js'
 export default {
   data() {
@@ -47,11 +46,11 @@ export default {
     let userInfo = JSON.parse(localStorage.getItem("userInfo"))
     console.log(userInfo)
     if (userInfo != null) {
-      this.$router.push({ name: '首页' })
+      this.$router.push({ name: '人脸验证' })
       this.LoginAction(userInfo)
     }
     if (this.$store.state.IsLogin === true) {
-      this.$router.push({ name: '首页' });
+      this.$router.push({ name: '人脸验证' });
     }
   },
   computed: {
@@ -59,7 +58,6 @@ export default {
   },
   methods: {
     ...mapActions(['LoginAction']),
-    // ...mapMutations(['SaveUserInfo']),
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
@@ -73,7 +71,8 @@ export default {
               this.LoginAction(userInfo);
               console.log("login.vue:" + JSON.stringify(this.userInfo))
               localStorage.setItem('userInfo', JSON.stringify(this.userInfo))
-              this.$router.push({ name: '首页' });
+              // this.$router.push({ name: '首页' });
+              this.$router.push({ name: '人脸验证' });
             } else {
               console.log('账号密码出错');
               this.$message({

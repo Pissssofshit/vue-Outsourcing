@@ -1,77 +1,69 @@
 <template>
   <div>
-    <el-container>
-      <el-row>
-        <el-col :span="24"><div id="test">推荐项目</div></el-col></el-row>
-    <el-row>
-      <el-col :span="24">
-      <div class="projectlist" v-loading="joinLoading">
-        
-        <div v-for="item in projectList.joinProjectList" :key="item.projectId">
-          <!-- <el-col :span="8"> -->
-          <router-link :to="{name: '项目详情', params: {projectId: item.projectId}}">
-            <projectItem @click="(item.projectId)" :name="item.projectName" :img="item.projectLogo" :proid="item.projectId"></projectItem>
-          </router-link>
-          <!-- </el-col> -->
+    <div>
+      <div class="container-header">
+        <div class="title">进行中的项目</div>
+        <div class="right-content">
+          <i class="el-icon-plus"></i>
+          <span class="item-title">新建项目</span>
         </div>
-        
-      
-    </div>
-      </el-col>
-    </el-row>
-    </el-container>
-    <!-- <div>
-      <span>我参与的项目 </span>
-      <div class="projectlist" v-loading="joinLoading">
-        <div v-for="item in projectList.joinProjectList" :key="item.projectId">
+      </div>
+      <div class="projectlist" v-loading="startLoading">
+        <div v-for="item in projectList.prepareProjectList" :key="item.projectId">
           <router-link :to="{name: '项目详情', params: {projectId: item.projectId}}">
-            <projectItem @click="(item.projectId)" :name="item.projectName" :img="item.projectLogo" :proid="item.projectId"></projectItem>
+            <projectItem :name="item.projectName" :img="item.projectLogo" :proid="item.projectId">
+            </projectItem>
           </router-link>
-        </div>
-        <div class="addproject" @click='AddJoinProjectListAction()' style="cursor:pointer">
-          <projectItem>
-            <div type="primary" class="el-icon-circle-plus icon"></div>
-          </projectItem>
         </div>
       </div>
     </div>
     <div>
-      <span>我管理的项目</span>
-      <div class="projectlist" v-loading="managerLoading">
-        <div v-for="item in projectList.managerProjectList" :key="item.projectId">
+      <div class="container-header">
+        <div class="title">准备中的项目</div>
+      </div>
+      <div class="projectlist" v-loading="prepareLoading">
+        <div v-for="item in projectList.startProjectList" :key="item.projectId">
           <router-link :to="{name: '项目详情', params: {projectId: item.projectId}}">
             <projectItem :name="item.projectName" :img="item.projectLogo" :proid="item.projectId"></projectItem>
           </router-link>
         </div>
-        <div class="addproject" @click='AddManageProjectListAction()' style="cursor:pointer">
-          <projectItem>
-            <div @click='dialogFormVisible = true' type="primary" class="el-icon-circle-plus icon"></div>
-          </projectItem>
+      </div>
+    </div>
+    <div>
+      <div class="container-header">
+        <div class="title">已完结的项目</div>
+      </div>
+      <div class="projectlist" v-loading="finishLoading">
+        <div v-for="item in projectList.finishProjectList" :key="item.projectId">
+          <router-link :to="{name: '项目详情', params: {projectId: item.projectId}}">
+            <projectItem :name="item.projectName" :img="item.projectLogo" :proid="item.projectId"></projectItem>
+          </router-link>
         </div>
       </div>
-    </div> -->
+    </div>
   </div>
 </template>
 <script>
 import ProjectItem from '../../components/Project/projectItem.vue'
 import { mapState, mapGetters, mapActions } from 'vuex'
 import MYURL from '../../const/MYURL.js'
-
 export default {
   data() {
     return {
       item1: [],
       item2: [],
-      joinLoading: true,
-      managerLoading: true,
+      startLoading: true,
+      prepareLoading: true,
+      finishLoading: true,
     }
   },
   components: {
     ProjectItem
   },
   created: function() {
-    this.getJoinProjectList()
-    this.getManagerProjectList()
+    this.getStartProjectList()
+    this.getPrepareProjectList()
+    this.getFinishProjectList()
     // console.log("projectList.vue：" + JSON.stringify(this.$store.state.userInfo));
   },
   mounted() {
@@ -85,28 +77,93 @@ export default {
   },
   methods: {
     ...mapActions([
-      'ProjectListAction',
-      'JoinProjectListAction',
-      'ManageProjectListAction',
-      'AddJoinProjectListAction',
-      'AddManageProjectListAction',
+      'StartProjectListAction',
+      'PrepareProjectListAction',
+      'FinishProjectListAction',
+      'AddPrepareProjectListAction',
       'IntoProjectDetailsAction',
     ]),
-    async getJoinProjectList() {
-      await this.JoinProjectListAction(this.$store.state.userInfo.userid)
-       console.log("得到JoinList")
-      this.joinLoading = false
+    async getStartProjectList() {
+      await this.StartProjectListAction(this.$store.state.userInfo.userid)
+      this.startLoading = false
     },
-    async getManagerProjectList() {
-      await this.ManageProjectListAction(this.$store.state.userInfo.userid)
-      console.log("得到ManagerList")
-      this.managerLoading = false;
+    async getPrepareProjectList() {
+      await this.PrepareProjectListAction(this.$store.state.userInfo.userid)
+      this.prepareLoading = false;
+    },
+    async getFinishProjectList() {
+      await this.FinishProjectListAction(this.$store.state.userInfo.userid)
+      this.finishLoading = false;
     },
   }
 }
 
 </script>
 <style scoped>
+.el-icon-plus {
+  padding: 0;
+  border: 0;
+  font-size: 15px;
+  font-weight: bold;
+}
 
+.item-title {
+  line-height: 15px;
+  padding-left: 1px;
+  font-size: 15px;
+}
+
+.container-header {
+  width: 100%;
+  margin-left: 2vh;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #dedede;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+}
+
+.title {
+  -webkit-flex: 1 1 auto;
+  flex: 1 1 auto;
+  font-size: 25px;
+  font-weight: 500;
+  text-align: left;
+}
+
+.right-content {
+  -webkit-align-self: center;
+  align-self: center;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+  padding-right: 3vh;
+}
+
+span {
+  margin-left: 2vh;
+  display: block;
+  width: 95%;
+  text-align: start;
+  font-size: 25px;
+}
+
+.projectlist {
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.el-card {
+  width: 35vh;
+  height: 26vh;
+  overflow: hidden;
+  margin: 2vh;
+  /* 设置子DIV居中 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 </style>
