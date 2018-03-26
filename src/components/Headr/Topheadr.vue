@@ -11,14 +11,13 @@
     <div class="te2">
       <ul class="icon">
         <li><router-link to="/index/my">我的</router-link></li>
-        <li>日历</li>
+        <li style="cursor:pointer;">日历</li>
         <li>
-          <el-badge value="12" class="item">
+          <el-badge value="12" class="item" style="cursor:pointer;">
             <div class="el-icon-bell"></div>
           </el-badge>
         </li>
-        <li @click="loginOut()">
-          <el-button type="text">登出</el-button>
+        <li @click="loginOut()" style="cursor:pointer;">登出
         </li>
       </ul>
     </div>

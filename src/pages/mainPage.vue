@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="page">
         <top-header></top-header>
     <el-container>
       <el-main>
@@ -34,6 +34,7 @@ export default {
 </script>
 
 <style scoped>
+
 .el-container{
   width: 1400px;
   margin: 0 auto;

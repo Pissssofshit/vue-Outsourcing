@@ -1,10 +1,12 @@
 <template>
-  <div>
+  <div class="page">
     <div>
       <div class="container-header">
         <div class="title">进行中的项目</div>
         <div class="right-content">
-          <i class="el-icon-plus"></i>
+          <router-link :to="{name: '新建项目'}">
+            <i class="el-icon-plus"></i>
+          </router-link>
           <span class="item-title">新建项目</span>
         </div>
       </div>
@@ -100,6 +102,11 @@ export default {
 
 </script>
 <style scoped>
+.page {
+  min-height: 500px;
+  height: 100%;
+}
+
 .el-icon-plus {
   padding: 0;
   border: 0;
@@ -156,8 +163,9 @@ span {
 }
 
 .el-card {
+  /*
   width: 35vh;
-  height: 26vh;
+  height: 26vh;*/
   overflow: hidden;
   margin: 2vh;
   /* 设置子DIV居中 */
