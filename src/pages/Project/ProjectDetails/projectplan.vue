@@ -166,7 +166,7 @@ ul{
   display: flex;
 }
 .that{
-  width:60%;
+  background-color: floralwhite;
   margin: 0 auto;
 }
 .el-icon-circle-plus{
