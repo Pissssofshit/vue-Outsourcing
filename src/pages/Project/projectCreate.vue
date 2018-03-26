@@ -21,7 +21,7 @@
           </div>
           <div class="file">
             <div class="file_title">文件上传<span>上传100KB以上文件容易失败，请多次尝试或压缩</span></div>
-            <el-upload  :headers=myheaders class="file_upload" action="https://jsonplaceholder.typicode.com/posts/" list-type="picture-card" :on-preview="handlePictureCardPreview" :on-remove="handleRemove" :file-list="upFileList" :on-success="updateSuccess" >
+            <el-upload :headers=myheaders class="file_upload" action="https://jsonplaceholder.typicode.com/posts/" list-type="picture-card" :on-preview="handlePictureCardPreview" :on-remove="handleRemove" :file-list="upFileList" :on-success="updateSuccess">
               <i class="el-icon-plus"></i>
             </el-upload>
           </div>
@@ -74,7 +74,7 @@ import upfileLogo from '../../assets/pics/upfile.png'
 export default {
   data() {
     return {
-      myheaders:{
+      myheaders: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
       name: '',
@@ -133,7 +133,7 @@ export default {
       var results = queryString ? candidate.filter(this.createFilter(queryString)) : candidate;
       // 调用 callback 返回建议列表的数据
 
-      if (typeof(queryString)!=undefined&&queryString.length > 0) {
+      if (typeof(queryString) != undefined && queryString.length > 0) {
         cb(results);
       }
 
@@ -162,15 +162,15 @@ export default {
       }
       return false
     },
-    updateSuccess(response, file, fileList){
+    updateSuccess(response, file, fileList) {
       // console.log(response)
-      console.log(file)
+      // console.log(file)
       // console.log(fileList)
-      let fileType=file.name.split('.')[file.name.split('.').length-1]
-      console.log(fileType)
-      let img=['jpg','jpeg','png'];
-      if (file.name!=jpg&&file.name!=png&&file.name!=jpeg) {file.url=upfileLogo}
-      this.upFileList=fileList
+      let fileType = file.name.split('.')[file.name.split('.').length - 1]
+      // console.log(fileType)
+      let img = ['jpg', 'jpeg', 'png'];
+      if (fileType != 'jpg' && fileType != 'png' && fileType != 'jpeg') { file.url = upfileLogo }
+      this.upFileList = fileList
 
       // console.log(this.upFileList)
     }
@@ -179,11 +179,12 @@ export default {
 
 </script>
 <style scoped>
-.file_title span{
+.file_title span {
   margin-left: 10px;
   font-size: 12px;
-  color: rgb(176,190,197);
+  color: rgb(176, 190, 197);
 }
+
 .third_toDetails {
   font-size: 16px;
 }
