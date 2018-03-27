@@ -1,22 +1,18 @@
 <template>
   <div class="base">
       <el-row>
-
           <el-col :span="12">
-            <div class="imges"><img src="../../assets/logo.png" class="test"></div>
+            <div class="imges"><img src="../../../img/123.png" class="test"></div>
           </el-col>
           <el-col :span="12">
           <div class="text">
               <el-row>
-                  <el-col :span="10"><h3 >人脸图像采集</h3></el-col>             
+                  <el-col :span="10"><h3 class="item">人脸图像采集</h3></el-col>             
               </el-row>
               <el-row>
-                  <el-col :span="8"><div class="owner">红软公司</div></el-col> 
+                  <el-col :span="8"><div class="owner item">红软公司</div></el-col> 
               </el-row>
-              <el-row class="desp">
-                  <el-col :span="4">
-              <div >项目简介</div>
-                  </el-col>
+              <el-row class="desp item">
                   <el-col :span="20">
 
                       项目简介 项目简介
@@ -43,9 +39,11 @@
 <style scoped>
 .desp{
     text-align: start;
+    margin-top: 30px;
 }
 .owner{
     text-align: start;
+    margin-top: 15px !important;
 }
 h3{
     font-size: 25px;
@@ -56,10 +54,13 @@ h3{
 }
 img{
     src: url("../../assets/logo.png");
-    height: 400px;
+    width: 100%;
+    height: 100%;
 }
-.text{
-    height: 400px;
+.item{
+    margin-top: 30px;
+    margin-right: 30px;
+    margin-left: 30px;
 }
 .base{
     background-color: white;

@@ -75,6 +75,7 @@
 
 </style>
 <script>
+import Prodesp from '../Prodesp/prodesp.vue'
 export default {
   data() {
     return {
@@ -85,6 +86,9 @@ export default {
     handleSelect(key, keyPath) {
       console.log(key, keyPath);
     }
+  },
+  components:{
+    Prodesp
   }
 }
 

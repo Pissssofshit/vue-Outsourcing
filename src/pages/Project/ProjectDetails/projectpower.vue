@@ -23,6 +23,7 @@ export default {
 }
 .bases{
   background-color: white;
+  
   box-shadow: 0px 0px 3px grey;
 }
 </style>
