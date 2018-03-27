@@ -58,8 +58,8 @@ export default {
 </script>
 <style scoped>
 .el-card {
-  width: 35vh;
-  height: 26vh;
+  width: 300px;
+  height: 240px;
   overflow: hidden;
   display: flex inline-flex;
   margin: 2vh;
@@ -78,8 +78,8 @@ export default {
 }
 
 .showcase_img .showcase_meta {
-  width: 35vh;
-  height: 26vh;
+ width: 300px;
+  height: 240px;
   z-index: 10;
   opacity: 0;
   position: absolute;

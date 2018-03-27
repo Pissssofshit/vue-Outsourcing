@@ -1,6 +1,7 @@
 <template>
-  <div id="app">
-      <top-header></top-header>
+  <div id="app" class="page">
+        <top-header></top-header>
+
     <el-container>
       <el-main>
         <router-view></router-view>

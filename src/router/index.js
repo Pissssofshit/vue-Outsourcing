@@ -10,6 +10,7 @@ import Search from '@/pages/Search/search'
 //second pages
 import ProjectList from '@/pages/Project/projectList'
 import ProjectDetails from '@/pages/Project/projectDetails'
+import ProjectCreate from '@/pages/Project/ProjectCreate'
 // third pages
 import Staff from '@/pages/Project/ProjectDetails/staff'
 import Recordgraph from '@/pages/Project/ProjectDetails/recordgraph'
@@ -25,7 +26,7 @@ const vueRouter = new Router({
   routes: [
     { path: '', redirect: { name: '登录' } },
     { path: '/login', name: '登录', component: Login },
-    {path:"/au",name:"人脸验证",component:Auth},
+    { path: "/au", name: "人脸验证", component: Auth },
     {
       path: '/index',
       name: '首页',
@@ -41,6 +42,11 @@ const vueRouter = new Router({
           path: "project-list",
           name: '项目列表',
           component: ProjectList
+        },
+        {
+          path: "project-create",
+          name: '新建项目',
+          component: ProjectCreate
         },
         {
           path: 'project-details',
