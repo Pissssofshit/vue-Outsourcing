@@ -1,5 +1,10 @@
 <template>
   <div>
+    <el-container>
+      <el-aside>
+        <asidenav :title="title" :data="data"></asidenav>
+      </el-aside>
+      <el-main>
     <div>
       <div class="container-header">
         <div class="title">进行中的项目</div>
@@ -41,15 +46,25 @@
         </div>
       </div>
     </div>
+      </el-main>
+    </el-container>
+    
   </div>
 </template>
 <script>
 import ProjectItem from '../../components/Project/projectItem.vue'
 import { mapState, mapGetters, mapActions } from 'vuex'
 import MYURL from '../../const/MYURL.js'
+import Asidenav from '../../components/Nav/nav.vue'
 export default {
   data() {
     return {
+      title:'地狱咆哮',
+          data:[
+              [{type:1,menuname:'概览',url:''},
+            {type:1,menuname:'数据中心',},
+            {type:1,menuname:'个人中心'}]
+          ],
       item1: [],
       item2: [],
       startLoading: true,
@@ -58,7 +73,8 @@ export default {
     }
   },
   components: {
-    ProjectItem
+    ProjectItem,
+    Asidenav
   },
   created: function() {
     this.getStartProjectList()

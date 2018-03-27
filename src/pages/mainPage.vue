@@ -1,12 +1,11 @@
 <template>
   <div id="app">
-        <top-header></top-header>
+      <top-header></top-header>
     <el-container>
       <el-main>
         <router-view></router-view>
       </el-main>
     </el-container>
-    <!-- <el-aside>ssss</el-aside> -->
   </div>
 </template>
 <script>
@@ -14,7 +13,8 @@ import TopHeader from '../components/Headr/Topheadr.vue'
 import { mapState } from 'vuex'
 export default {
   data() {
-    return {}
+    return {
+    }
   },
   components: {
     TopHeader
@@ -32,16 +32,19 @@ export default {
 // /* } */
 // </style>
 </script>
+<style>
+/* .el-container{
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+} */
+</style>
 
 <style scoped>
-.el-container{
-  width: 1400px;
-  margin: 0 auto;
-}
+
 .el-aside{
-  display: none;
-  height: 1000px;
-  background-color: black;
+  /* display: none; */
+  height: 100%;
 }
 
 </style>

@@ -16,6 +16,7 @@ import Recordgraph from '@/pages/Project/ProjectDetails/recordgraph'
 import ProjectPlan from '@/pages/Project/ProjectDetails/projectplan'
 import ProjectPower from '@/pages/Project/ProjectDetails/projectpower'
 import Task from '@/pages/Project/ProjectDetails/task'
+import Tasklist from '@/pages/Project/ProjectDetails/tasklist'
 import Attendance from '@/pages/Project/ProjectDetails/attendance'
 import test from '../pages/test.vue'
 Vue.use(Router)

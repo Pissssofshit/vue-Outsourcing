@@ -49,7 +49,7 @@
     </el-table>
  </el-main>
        <el-aside> 
-        <taskList></taskList>
+        <test></test>
        </el-aside>
     </el-container>
     </el-container>
@@ -57,7 +57,7 @@
   </div>
 </template>
 <script>
-import TaskList from '../../../components/Task/taskList.vue'
+import Test from '../../../components/Task/taskdetail.vue'
 export default {
   data() {
     return {
@@ -68,7 +68,7 @@ export default {
     // this.$emit('event',this.te)
   },
   components: {
-    TaskList
+    Test
   }
 }
 

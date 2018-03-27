@@ -1,8 +1,5 @@
 <template>
   <div>
-    <el-row>
-      <prodesp></prodesp>
-    </el-row>
     <el-row :gutter="0">
       <el-col :span="12">
         <div class="secondheader-nav-first">
