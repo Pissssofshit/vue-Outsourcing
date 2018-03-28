@@ -10,13 +10,12 @@ import Search from '@/pages/Search/search'
 //second pages
 import ProjectList from '@/pages/Project/projectList'
 import ProjectDetails from '@/pages/Project/projectDetails'
-import ProjectCreate from '@/pages/Project/ProjectCreate'
+import ProjectCreate from '@/pages/Project/projectCreate'
 // third pages
 import Staff from '@/pages/Project/ProjectDetails/staff'
 import Recordgraph from '@/pages/Project/ProjectDetails/recordgraph'
 import ProjectPlan from '@/pages/Project/ProjectDetails/projectplan'
 import ProjectPower from '@/pages/Project/ProjectDetails/projectpower'
-import Task from '@/pages/Project/ProjectDetails/task'
 import Tasklist from '@/pages/Project/ProjectDetails/tasklist'
 import Attendance from '@/pages/Project/ProjectDetails/attendance'
 import test from '../pages/test.vue'
@@ -52,11 +51,12 @@ const vueRouter = new Router({
           path: 'project-details',
           name: '项目详情',
           component: ProjectDetails,
-          redirect: { name: '任务总览' }, //本来就是用下面的path:''渲染出来的，但是这里没用，不知何解
-          children: [{
-              path: 'task',
+          redirect: { name: '任务总览' }, 
+          children: [
+            {
+              path: 'tasklist',
               name: '任务总览',
-              component: Task,
+              component: Tasklist,
               meta: ["首页", "项目详情", "任务总览"]
             },
             {

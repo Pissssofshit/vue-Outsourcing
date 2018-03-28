@@ -3,7 +3,6 @@
         <h5 class="nowname">{{title}}</h5>
         <div v-for="(item,index) in data" :key="index">
             <menublock :menulist="item"></menublock>
-            <div>分割线</div>
         </div>
     </div>
 </template>
@@ -26,9 +25,10 @@ export default {
 </script>
 <style scoped>
 h5{
-    font-size: 30px;
+    font-size: 25px;
 }
 .base{
-    background-color: white;
+    text-align: start;
 }
+
 </style>

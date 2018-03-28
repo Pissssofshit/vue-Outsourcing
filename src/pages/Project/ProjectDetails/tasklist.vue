@@ -1,8 +1,12 @@
 <template>
   <div class="base">
     <el-container>
-      <el-header>
-        <div class="title">我负责的任务</div>
+      <el-header class="header">
+        <el-row>
+        <div class="title">我负责的任务</div></el-row>
+        <el-row>
+          <el-button class="op">sss</el-button>
+        </el-row>
       </el-header>
       <el-container>
       <el-main>
@@ -49,7 +53,7 @@
     </el-table>
  </el-main>
        <el-aside> 
-        <test></test>
+        <Test></Test>
        </el-aside>
     </el-container>
     </el-container>
@@ -59,50 +63,7 @@
 <script>
 import Test from '../../../components/Task/taskdetail.vue'
 export default {
-  data() {
-    return {
-      // te:1234
-    }
-  },
-  created() {
-    // this.$emit('event',this.te)
-  },
-  components: {
-    Test
-  }
-}
-
-</script>
-<style scoped>
-.el-container{
-  min-height: 800px;
-}
-.el-table{
-  height: 100%;
-}
-.el-row{
-  width: 100%;
-}
-.title{
-  background-color: white;
-}
-.tasklistgroup {
-  display: flex;
-  margin-top: 3vh;
-  height: 100%;
-}
-
-div {
-  width: 100%;
-  height: 100%;
-}
-.base{
-  height: 100%;
-}
-</style>
- <script>
-    export default {
-      data() {
+   data() {
         return {
           tableData: [{
             id:'#123',
@@ -134,6 +95,50 @@ div {
           }
             ]
         }
-      }
-    }
-  </script>
+      },
+  created() {
+    // this.$emit('event',this.te)
+  },
+  components: {
+    Test
+  }
+}
+
+</script>
+<style scoped>
+.header{
+  background-color: white;
+}
+.el-container{
+  min-height: 800px;
+}
+.el-button{
+  display: block;
+}
+.el-table{
+  height: 100%;
+}
+.el-row{
+  width: 100%;
+  padding: 0px;
+}
+.title,.op{
+  background-color: white;
+}
+.tasklistgroup {
+  display: flex;
+  margin-top: 3vh;
+  height: 100%;
+}
+
+div {
+  width: 100%;
+  height: 100%;
+}
+.el-header{
+  padding: 0px;
+}
+.base{
+  height: 100%;
+}
+</style>

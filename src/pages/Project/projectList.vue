@@ -55,6 +55,7 @@
     </el-container>
     
   </div>
+  </div>
 </template>
 <script>
 import ProjectItem from '../../components/Project/projectItem.vue'

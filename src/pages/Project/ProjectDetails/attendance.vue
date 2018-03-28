@@ -61,9 +61,13 @@
         </el-tab-pane>
       </el-tabs>
     </div>
+    <ttff></ttff>
   </div>
 </template>
 <script>
+import ProjectItem from '../../../components/Project/projectItem.vue'
+
+import Ttff from '../../../components/Task/taskdetail.vue'
 import { mapActions, mapState } from 'vuex'
 import { Loading } from 'element-ui';
 export default {
@@ -86,6 +90,10 @@ export default {
     this.getNowFormatDate()
     this.getNowRangeFormatDate()
     // this.AttendanceListAction({ ProjectId: this.ProjectId, date: this.selectDate })
+  },
+  components:{
+    ProjectItem,
+    Ttff
   },
   computed: {
     ...mapState({
