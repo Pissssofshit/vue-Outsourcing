@@ -1,8 +1,8 @@
 <template>
   <div>
     <el-container>
-      <el-aside>
-        <asidenav :title="title" :data="data"></asidenav>
+      <el-aside width="230px">
+        <asidenav class="ss" :title="title" :data="data"></asidenav>
       </el-aside>
       <el-main>
         <router-view></router-view>
@@ -20,14 +20,15 @@ export default {
     return {
       title:'项目管理',
           data:[
-              [{type:0,menuname:'全部任务',url:'task'},
+              [
             {type:1,menuname:'任务'},
+            {type:2,menuname:'全部任务',url:'task'},
             {type:1,menuname:'筛选器'},
-            {type:2,menuname:'我负责的任务'},
-            {type:2,menuname:'我关注的任务'}],
-              [{type:0,menuname:'报表'},
-            {type:0,menuname:'成员',url:''},
-            {type:0,menuname:'设置',url:''}]
+            {type:3,menuname:'我负责的任务'},
+            {type:3,menuname:'我关注的任务'}],
+            [{type:3,menuname:'报表'},
+            {type:3,menuname:'成员',url:''},
+            {type:3,menuname:'设置',url:''}]
           ],
     }
   },
@@ -45,6 +46,9 @@ export default {
 
 </script>
 <style scoped>
+.ss{
+  width: 230px;
+}
 .el-header{
   height: 500px !important;
 }

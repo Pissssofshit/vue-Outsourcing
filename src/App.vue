@@ -57,7 +57,7 @@ html,body{
   margin: 0;
 }
 body{
-  background-color: rgb(241,241,241)
+  background-color: rgb(241,241,241);
 }
 .icon{
   font-size: 20px;

@@ -39,6 +39,12 @@ export default {
   height: 100%;
   margin: 0 auto;
 } */
+a{
+  color: #303030;
+}
+.el-main{
+  padding:0px;
+}
 </style>
 
 <style scoped>

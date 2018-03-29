@@ -55,6 +55,7 @@
     </el-container>
     
   </div>
+  </div>
 </template>
 <script>
 import ProjectItem from '../../components/Project/projectItem.vue'
@@ -66,9 +67,9 @@ export default {
     return {
       title:'地狱咆哮',
           data:[
-              [{type:1,menuname:'概览',url:''},
-            {type:1,menuname:'数据中心',},
-            {type:1,menuname:'个人中心'}]
+              [{type:2,menuname:'概览',url:''},
+            {type:2,menuname:'数据中心',},
+            {type:2,menuname:'个人中心'}]
           ],
       item1: [],
       item2: [],
