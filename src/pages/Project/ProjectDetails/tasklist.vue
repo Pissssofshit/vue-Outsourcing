@@ -121,28 +121,32 @@ export default {
             youxianji:'普通',
             taskname:'实例任务示例任务',
             creator:'1412143367',
-            state:'未完成'
+            state:'未完成',
+            role:'mycare'
           },
           {
             id:'#234',
             youxianji:'重要',
             taskname:'实例任务示例任务',
             creator:'1412143367',
-            state:'未完成'
+            state:'未完成',
+            role:'mycare'
           },
           {
             id:'#345',
             youxianji:'紧急',
             taskname:'实例任务示例任务',
             creator:'1412143367',
-            state:'进行中'
+            state:'进行中',
+            role:'myduty'
           },
           {
             id:'#3454',
             youxianji:'紧急',
             taskname:'实例任务示例任务',
             creator:'1412143367',
-            state:'进行中'
+            state:'进行中',
+            role:'myduty'
           }
             ]
         }
