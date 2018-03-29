@@ -31,7 +31,7 @@ li{
 ul{
   border: 0px;
   padding-bottom: 20px;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #dedede
 }
 </style>
 

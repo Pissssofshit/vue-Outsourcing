@@ -1,8 +1,8 @@
 <template>
   <div>
     <el-container>
-      <el-aside>
-        <asidenav :title="title" :data="data"></asidenav>
+      <el-aside width="230px">
+        <asidenav class="ss" :title="title" :data="data"></asidenav>
       </el-aside>
       <el-main>
         <router-view></router-view>
@@ -45,6 +45,9 @@ export default {
 
 </script>
 <style scoped>
+.ss{
+  width: 230px;
+}
 .el-header{
   height: 500px !important;
 }

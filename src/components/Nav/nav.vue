@@ -29,6 +29,10 @@ h5{
 }
 .base{
     text-align: start;
+    width:230px;
 }
-
+.nowname{
+    margin-top: 15px;
+    margin-left: 15px;
+}
 </style>
