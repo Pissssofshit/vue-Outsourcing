@@ -21,14 +21,17 @@ export default {
       title:'项目管理',
           data:[
               [
-            {type:1,menuname:'任务'},
-            {type:2,menuname:'全部任务',url:'task'},
-            {type:1,menuname:'筛选器'},
-            {type:3,menuname:'我负责的任务'},
-            {type:3,menuname:'我关注的任务'}],
-            [{type:3,menuname:'报表'},
-            {type:3,menuname:'成员',url:''},
-            {type:3,menuname:'设置',url:''}]
+                {type:1,menuname:'任务'},
+                {type:2,menuname:'全部任务',url:'任务总览'},
+                {type:1,menuname:'筛选器'},
+                {type:3,menuname:'我负责的任务',url:''},
+                {type:3,menuname:'我关注的任务',url:''}
+              ],
+              [
+                {type:3,menuname:'报表',url:'项目报表'},
+                {type:3,menuname:'成员',url:'人员'},
+                {type:3,menuname:'设置',url:''}
+              ]
           ],
     }
   },

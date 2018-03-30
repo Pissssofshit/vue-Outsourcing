@@ -42,12 +42,11 @@
         <el-button type="primary" @click="AddNewStaff()">确 定</el-button>
       </div>
     </el-dialog>
-    <ttff></ttff>
+
   </div>
 </template>
 <script>
 import { mapState, mapActions } from 'vuex'
-import Ttff from '../../../components/Task/taskdetail.vue'
 export default {
   data() {
     return {
@@ -60,7 +59,6 @@ export default {
     }
   },
   components:{
-    Ttff
   },
   computed: mapState({ staff: state => state.staff }),
   methods: {

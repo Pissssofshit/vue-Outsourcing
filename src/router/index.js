@@ -12,13 +12,15 @@ import ProjectList from '@/pages/Project/projectList'
 import ProjectDetails from '@/pages/Project/projectDetails'
 import ProjectCreate from '@/pages/Project/projectCreate'
 // third pages
-import Staff from '@/pages/Project/ProjectDetails/staff'
+import Staff from '@/pages/Project/ProjectDetails/ProjectStaff/projectStaff'
 import Recordgraph from '@/pages/Project/ProjectDetails/recordgraph'
 import ProjectPlan from '@/pages/Project/ProjectDetails/projectplan'
 import ProjectPower from '@/pages/Project/ProjectDetails/projectpower'
+import ProjectReports from '@/pages/Project/ProjectDetails/ProjectReports/projectReports'
 import Tasklist from '@/pages/Project/ProjectDetails/tasklist'
 import Attendance from '@/pages/Project/ProjectDetails/attendance'
 import test from '../pages/test.vue'
+
 Vue.use(Router)
 // 兄弟 or 侄子 用router-to ，父子 包含router-view
 const vueRouter = new Router({
@@ -85,8 +87,13 @@ const vueRouter = new Router({
             {
               path: 'ProjectPower',
               name: '项目权限',
-              component: ProjectPower
-            }
+             component: ProjectPower
+            },
+             {
+              path: 'ProjectReports',
+              name: '项目报表',
+              component: ProjectReports
+            },
           ]
         }
       ]
