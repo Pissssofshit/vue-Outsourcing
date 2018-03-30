@@ -6,6 +6,10 @@ import Auth from '@/pages/Login/authentication'
 import Register from '@/pages/Register/register'
 import MainPage from '@/pages/mainPage'
 import My from '@/pages/My/my'
+import Personal from '@/pages/My/personal'
+import Rightbase1 from '@/pages/My/personaloption/rightbase1'
+import Rightbase2 from '@/pages/My/personaloption/rightbase2'
+import Rightbase3 from '@/pages/My/personaloption/rightbase3'
 import Search from '@/pages/Search/search'
 //second pages
 import ProjectList from '@/pages/Project/projectList'
@@ -32,6 +36,29 @@ const vueRouter = new Router({
       component: MainPage,
       redirect: { name: '项目列表' },
       children: [{ path: '', redirect: { name: '项目列表' } },
+        {
+          path: 'personal',
+          name: '个人中心',
+          component: Personal,
+          redirect: { name: 'main' }, 
+          children: [
+            {
+              path: 'main',
+              name: 'main',
+              component: Rightbase1
+            },
+            {
+              path: 'editemail',
+              name: 'editemail',
+              component: Rightbase2
+            },
+            {
+              path: 'editpwd',
+              name: 'editpwd',
+              component: Rightbase3
+            }
+          ]
+        },
         {
           path: 'my',
           name: '',
