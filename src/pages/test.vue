@@ -1,25 +1,22 @@
 <template>
-  <div>
-    <el-container>
-      <el-aside></el-aside>
-      <el-main></el-main>
-    </el-container>
-  </div>
+  <el-tabs v-model="activeName" @tab-click="handleClick">
+    <el-tab-pane label="" name="first">用户管理</el-tab-pane>
+    <el-tab-pane label="" name="second">配置管理</el-tab-pane>
+    <el-tab-pane label="" name="third">角色管理</el-tab-pane>
+    <el-tab-pane label="" name="fourth">定时任务补偿</el-tab-pane>
+  </el-tabs>
 </template>
-
 <script>
-export default {
-  data () {
-    return {
-      demoEvents: [{
-        date: '2016/12/15',
-        title: 'eat',
-        desc: 'longlonglong description'
-      },{
-        date: '2016/11/12',
-        title: 'this is a title'
-      }]
+  export default {
+    data() {
+      return {
+        activeName: 'second'
+      };
+    },
+    methods: {
+      handleClick(tab, event) {
+        console.log(tab, event);
+      }
     }
-  }
-}
+  };
 </script>

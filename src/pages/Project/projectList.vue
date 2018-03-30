@@ -3,7 +3,7 @@
   <div class="page">
   <div>
     <el-container>
-      <el-aside>
+      <el-aside width="230px">
         <asidenav :title="title" :data="data"></asidenav>
       </el-aside>
       <el-main>
