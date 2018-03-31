@@ -62,14 +62,24 @@ import ProjectItem from '../../components/Project/projectItem.vue'
 import { mapState, mapGetters, mapActions } from 'vuex'
 import MYURL from '../../const/MYURL.js'
 import Asidenav from '../../components/Nav/nav.vue'
+/*
+data 
+type 1
+如任务 这类标题性质的菜单项（不导航）
+type 2
+具体项目 带图标
+type 3
+具体项目 不带图表
+*/
 export default {
   data() {
     return {
       title:'地狱咆哮',
           data:[
-              [{type:2,menuname:'概览',url:''},
-            {type:2,menuname:'数据中心',},
-            {type:2,menuname:'个人中心'}]
+              [{type:2,menuname:'概览'},
+            {type:2,menuname:'数据中心'},
+            {type:2,menuname:'个人中心'}],
+            [{type:3,menuname:'团队配置中心'}]
           ],
       item1: [],
       item2: [],

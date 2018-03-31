@@ -6,6 +6,12 @@ import Auth from '@/pages/Login/authentication'
 import Register from '@/pages/Register/register'
 import MainPage from '@/pages/mainPage'
 import My from '@/pages/My/my'
+import Organization from '@/pages/Organization/organization'
+import OrOption1 from '@/pages/Organization/organizationoption/oroption1'
+import Orchengyuan from '@/pages/Organization/organizationoption/orchengyuan'
+import Orgroup from '@/pages/Organization/organizationoption/orgroup'
+import Orpower from '@/pages/Organization/organizationoption/orpower'
+import Orstruct from '@/pages/Organization/organizationoption/orstruct'
 import Personal from '@/pages/My/personal'
 import Rightbase1 from '@/pages/My/personaloption/rightbase1'
 import Rightbase2 from '@/pages/My/personaloption/rightbase2'
@@ -23,6 +29,8 @@ import ProjectPower from '@/pages/Project/ProjectDetails/projectpower'
 import ProjectReports from '@/pages/Project/ProjectDetails/ProjectReports/projectReports'
 import Tasklist from '@/pages/Project/ProjectDetails/tasklist'
 import Attendance from '@/pages/Project/ProjectDetails/attendance'
+import Data from '@/pages/Data/data'
+import Dataoption1 from '@/pages/Data/dataoption/data1.vue'
 import test from '../pages/test.vue'
 
 Vue.use(Router)
@@ -62,6 +70,52 @@ const vueRouter = new Router({
           ]
         },
         {
+          path: 'organization',
+          name: '团队配置中心',
+          component: Organization,
+          redirect: { name: '团队信息' }, 
+          children: [
+            {
+              path: 'mains', //不可司仪 即使这里重名也会导致路由器指向别的那个组件!
+              name: '团队信息',
+              component: OrOption1
+            },
+            {
+              path: 'orchengyuan', //不可司仪 即使这里重名也会导致路由器指向别的那个组件!
+              name: '团队成员',
+              component: Orchengyuan
+            },
+            {
+              path: 'orgroup', //不可司仪 即使这里重名也会导致路由器指向别的那个组件!
+              name: '用户组',
+              component: Orgroup
+            },
+            {
+              path: 'orpower', //不可司仪 即使这里重名也会导致路由器指向别的那个组件!
+              name: '团队权限',
+              component: Orpower
+            },
+            {
+              path: 'orstruct', //不可司仪 即使这里重名也会导致路由器指向别的那个组件!
+              name: '组织架构',
+              component: Orstruct
+            }
+          ]
+        },
+        {
+          path: 'data',
+          name: '数据中心',
+          component: Data,
+          redirect: { name: 'Dataoption1' }, 
+          children: [
+            {
+              path: 'Dataoption1',
+              name: 'Dataoption1',
+              component:  Dataoption1
+            }
+          ]
+        },
+        {
           path: 'my',
           name: '',
           component: My
@@ -90,7 +144,7 @@ const vueRouter = new Router({
             },
             {
               path: 'staff',
-              name: '人员',
+              name: '成员',
               component: Staff,
               meta: ["首页", "项目详情", "人员"]
             },
@@ -118,7 +172,7 @@ const vueRouter = new Router({
             },
              {
               path: 'ProjectReports',
-              name: '项目报表',
+              name: '报表',
               component: ProjectReports
             },
           ]
