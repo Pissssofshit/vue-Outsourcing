@@ -32,7 +32,7 @@ import Attendance from '@/pages/Project/ProjectDetails/attendance'
 import Data from '@/pages/Data/data'
 import Dataoption1 from '@/pages/Data/dataoption/data1.vue'
 import test from '../pages/test.vue'
-
+import SingleReport from '@/pages/Project/ProjectDetails/ProjectReports/singleReport'
 Vue.use(Router)
 // 兄弟 or 侄子 用router-to ，父子 包含router-view
 const vueRouter = new Router({
@@ -174,6 +174,11 @@ const vueRouter = new Router({
               path: 'ProjectReports',
               name: '报表',
               component: ProjectReports
+            },
+             {
+              path: 'SingleReport',
+              name: '单个报表',
+              component: SingleReport
             },
           ]
         }
