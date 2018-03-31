@@ -22,7 +22,7 @@ export default {
           data:[
               [
                 {type:1,menuname:'任务'},
-                {type:2,menuname:'全部任务',url:'任务总览'},
+                {type:2,menuname:'任务总览',url:'任务总览'},
                 {type:1,menuname:'筛选器'},
                 {type:3,menuname:'我负责的任务',url:''},
                 {type:3,menuname:'我关注的任务',url:''}

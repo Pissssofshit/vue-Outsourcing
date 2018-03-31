@@ -8,6 +8,10 @@ import MainPage from '@/pages/mainPage'
 import My from '@/pages/My/my'
 import Organization from '@/pages/Organization/organization'
 import OrOption1 from '@/pages/Organization/organizationoption/oroption1'
+import Orchengyuan from '@/pages/Organization/organizationoption/orchengyuan'
+import Orgroup from '@/pages/Organization/organizationoption/orgroup'
+import Orpower from '@/pages/Organization/organizationoption/orpower'
+import Orstruct from '@/pages/Organization/organizationoption/orstruct'
 import Personal from '@/pages/My/personal'
 import Rightbase1 from '@/pages/My/personaloption/rightbase1'
 import Rightbase2 from '@/pages/My/personaloption/rightbase2'
@@ -69,13 +73,33 @@ const vueRouter = new Router({
           path: 'organization',
           name: '团队配置中心',
           component: Organization,
-          redirect: { name: 'mains' }, 
+          redirect: { name: '团队信息' }, 
           children: [
             {
               path: 'mains', //不可司仪 即使这里重名也会导致路由器指向别的那个组件!
-              name: 'mains',
+              name: '团队信息',
               component: OrOption1
-            }       
+            },
+            {
+              path: 'orchengyuan', //不可司仪 即使这里重名也会导致路由器指向别的那个组件!
+              name: '团队成员',
+              component: Orchengyuan
+            },
+            {
+              path: 'orgroup', //不可司仪 即使这里重名也会导致路由器指向别的那个组件!
+              name: '用户组',
+              component: Orgroup
+            },
+            {
+              path: 'orpower', //不可司仪 即使这里重名也会导致路由器指向别的那个组件!
+              name: '团队权限',
+              component: Orpower
+            },
+            {
+              path: 'orstruct', //不可司仪 即使这里重名也会导致路由器指向别的那个组件!
+              name: '组织架构',
+              component: Orstruct
+            }
           ]
         },
         {
