@@ -5,7 +5,6 @@ import Login from '@/pages/Login/login'
 import Auth from '@/pages/Login/authentication'
 import Register from '@/pages/Register/register'
 import MainPage from '@/pages/mainPage'
-import My from '@/pages/My/my'
 import Organization from '@/pages/Organization/organization'
 import OrOption1 from '@/pages/Organization/organizationoption/oroption1'
 import Orchengyuan from '@/pages/Organization/organizationoption/orchengyuan'
@@ -116,11 +115,6 @@ const vueRouter = new Router({
           ]
         },
         {
-          path: 'my',
-          name: '',
-          component: My
-        },
-        {
           path: "project-list",
           name: '项目列表',
           component: ProjectList
@@ -185,7 +179,6 @@ const vueRouter = new Router({
       ]
     },
     { path: '/register', name: '注册', component: Register },
-    { path: '/my', name: '我的', component: My },
     { path: '/search', name: '搜索', component: Search },
     { path: '/login', name: '', component: Login },
     { path: '/test', component: test }
