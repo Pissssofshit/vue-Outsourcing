@@ -4,13 +4,13 @@
       <div class="container-header">
         <div class="title">新建项目</div>
       </div>
-      <el-steps :active="active" finish-status="success" simple style="margin-top: 10px">
+      <el-steps :active="active" finish-status="success" simple >
         <el-step title="项目内容"></el-step>
         <el-step title="邀请成员"></el-step>
         <el-step title="完成"></el-step>
       </el-steps>
-      <el-tabs v-model="activeName" style="height: 540px">
-        <el-tab-pane :disabled="true" label="" name="first" style="height: 490px">
+      <el-tabs v-model="activeName" >
+        <el-tab-pane :disabled="true" label="" name="first" style="height: 420px">
           <div class="name">
             <div class="name_title">项目名称</div>
             <el-input class="name_input" v-model="name" placeholder="请输入内容（必填）"></el-input>
@@ -31,7 +31,7 @@
           </div>
           <p>{{ifnext}}</p>
         </el-tab-pane>
-        <el-tab-pane :disabled="true" label="" name="second" style="height: 490px">
+        <el-tab-pane :disabled="true" label="" name="second" style="height: 420px">
           <div class="second">
             <div class="selectPerson">
               <el-autocomplete style="width:280px" class="inline-input" v-model="addPerson" :fetch-suggestions="querySearch" placeholder="输入昵称查找成员" @select="handleSelect">
@@ -42,11 +42,11 @@
               <span class="second_description">输入关键字，点击即可添加 </span>
             </div>
             <el-table :data="myStaff" max-height="500" style="width: 100%" :border="false" stripe>
-              <el-table-column type="index" width="50">
+              <el-table-column align="left"type="index" width="50">
               </el-table-column>
-              <el-table-column align="left" prop="userId" label="用户名" width="600px">
+              <el-table-column align="left" prop="userId" label="用户名" >
               </el-table-column>
-              <el-table-column align="left" prop="userEmail" label="邮箱">
+              <el-table-column align="center" prop="userEmail" label="邮箱">
               </el-table-column>
             </el-table>
             <div class="next">
@@ -55,7 +55,7 @@
             </div>
           </div>
         </el-tab-pane>
-        <el-tab-pane :disabled="true" label="" name="third" style="height: 490px">
+        <el-tab-pane :disabled="true" label="" name="third" style="height: 420px">
           <i class="el-icon-circle-check-outline"></i>
           <br></br>
           <span class="third_context">创建成功</span>
@@ -180,7 +180,7 @@ export default {
 </script>
 <style scoped>
 .file_title span {
-  margin-left: 10px;
+  padding-left: 10px;
   font-size: 12px;
   color: rgb(176, 190, 197);
 }
@@ -197,7 +197,7 @@ export default {
 .el-icon-circle-check-outline {
   font-size: 80px;
   color: green;
-  margin-top: 40px;
+  padding-top: 40px;
 }
 
 .second_description {
@@ -211,19 +211,19 @@ export default {
 }
 
 .second {
-  margin-left: 25px;
-  margin-right: 25px;
+  padding-left: 25px;
+  padding-right: 25px;
 }
 
 .next {
   position: absolute;
-  right: 25px;
-  bottom: 25px;
+  right: 15px;
+  bottom: 15px;
 }
 
 .name {
-  margin-left: 25px;
-  margin-right: 25px;
+  padding-left: 25px;
+  padding-right: 25px;
 }
 
 .name .name_title {
@@ -232,13 +232,13 @@ export default {
 }
 
 .name .name_input {
-  margin-top: 10px;
-  margin-bottom: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .description {
-  margin-left: 25px;
-  margin-right: 25px;
+  padding-left: 25px;
+  padding-right: 25px;
 }
 
 .description .description_title {
@@ -247,13 +247,13 @@ export default {
 }
 
 .description .description_input {
-  margin-top: 10px;
-  margin-bottom: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .file {
-  margin-left: 25px;
-  margin-right: 25px;
+  padding-left: 25px;
+  padding-right: 25px;
   text-align: left;
 }
 
@@ -263,23 +263,26 @@ export default {
 }
 
 .file .file_upload {
-  margin-top: 10px;
-  margin-bottom: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .create_page {
-  margin-left: 10%;
+  margin-top:2vh;
+  /*margin-left: 10%;*/
   width: 80%;
-  height: 670px;
+  /*height: 60%;*/
+  margin-right: auto;
+  margin-left: auto;
   background-color: white;
 }
 
 .container-header {
   width: 100%;
   padding-left: 20px;
-  padding-top: 20px;
+  padding-top: 5px;
   /*padding-right: 2vh;*/
-  padding-bottom: 0px;
+  padding-bottom: 5px;
   /*border-bottom: 1px solid #dedede;*/
   display: flex;
   -webkit-flex-direction: row;

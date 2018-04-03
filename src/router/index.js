@@ -33,6 +33,11 @@ import Data from '@/pages/Data/data'
 import Dataoption1 from '@/pages/Data/dataoption/data1.vue'
 import test from '../pages/test.vue'
 import SingleReport from '@/pages/Project/ProjectDetails/ProjectReports/singleReport'
+import ProjectData from '@/pages/Project/ProjectDetails/ProjectData/projectData'
+import ProjectStaff from '@/pages/Project/ProjectDetails/ProjectStaff/projectStaff'
+import Work from '@/pages/My/work'
+import WorkRecord from '@/pages/Project/ProjectDetails/ProjectReports/workRecord'
+import TaskStatistics from '@/pages/Project/ProjectDetails/ProjectReports/taskStatistics.vue'
 Vue.use(Router)
 // 兄弟 or 侄子 用router-to ，父子 包含router-view
 const vueRouter = new Router({
@@ -50,9 +55,8 @@ const vueRouter = new Router({
           path: 'personal',
           name: '个人中心',
           component: Personal,
-          redirect: { name: 'main' }, 
-          children: [
-            {
+          redirect: { name: 'main' },
+          children: [{
               path: 'main',
               name: 'main',
               component: Rightbase1
@@ -66,16 +70,20 @@ const vueRouter = new Router({
               path: 'editpwd',
               name: 'editpwd',
               component: Rightbase3
-            }
+            },
+            {
+              path: 'Work',
+              name: '工作',
+              component: Work
+            },
           ]
         },
         {
           path: 'organization',
           name: '团队配置中心',
           component: Organization,
-          redirect: { name: '团队信息' }, 
-          children: [
-            {
+          redirect: { name: '团队信息' },
+          children: [{
               path: 'mains', //不可司仪 即使这里重名也会导致路由器指向别的那个组件!
               name: '团队信息',
               component: OrOption1
@@ -106,14 +114,12 @@ const vueRouter = new Router({
           path: 'data',
           name: '数据中心',
           component: Data,
-          redirect: { name: 'Dataoption1' }, 
-          children: [
-            {
-              path: 'Dataoption1',
-              name: 'Dataoption1',
-              component:  Dataoption1
-            }
-          ]
+          redirect: { name: 'Dataoption1' },
+          children: [{
+            path: 'Dataoption1',
+            name: 'Dataoption1',
+            component: Dataoption1
+          }]
         },
         {
           path: 'my',
@@ -134,9 +140,8 @@ const vueRouter = new Router({
           path: 'project-details',
           name: '项目详情',
           component: ProjectDetails,
-          redirect: { name: '任务总览' }, 
-          children: [
-            {
+          redirect: { name: '任务总览' },
+          children: [{
               path: 'tasklist',
               name: '任务总览',
               component: Tasklist,
@@ -168,17 +173,37 @@ const vueRouter = new Router({
             {
               path: 'ProjectPower',
               name: '项目权限',
-             component: ProjectPower
+              component: ProjectPower
             },
-             {
+            {
               path: 'ProjectReports',
               name: '报表',
               component: ProjectReports
             },
-             {
+            {
               path: 'SingleReport',
               name: '单个报表',
               component: SingleReport
+            },
+            {
+              path: 'ProjectData',
+              name: '项目资料',
+              component: ProjectData
+            },
+             {
+              path: 'ProjectStaff',
+              name: '人员',
+              component: ProjectStaff
+            },
+             {
+              path: 'WorkRecord',
+              name: '工作记录',
+              component: WorkRecord
+            },
+            {
+              path: 'TaskStatistics',
+              name: '任务统计',
+              component: TaskStatistics
             },
           ]
         }

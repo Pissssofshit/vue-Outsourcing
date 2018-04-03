@@ -3,18 +3,18 @@
     <el-menu class="el-menu-vertical-demo">
       <div v-for="(item,index) in menulist" :key="index">
         <div v-if="item.type===1" class="menuitem gg">
-          <div>{{item.menuname}}</div>
+          <div>{{item.url}}</div>
         </div>
         <el-menu-item :index="''+index" v-else-if="item.type===2" class="menuitem ">
           <div class="no">
             <i class="el-icon-menu"></i>
-            <router-link :to="{name:item.menuname}" class="ff" replace>
+            <router-link :to="{name:item.url}" class="ff" replace>
               {{item.menuname}}</router-link>
           </div>
         </el-menu-item>
         <el-menu-item :index="''+index" v-else-if="item.type===3" class="menuitem">
           <div class="no">
-            <router-link :to="{name:item.menuname}" class="sff" replace>
+            <router-link :to="{name:item.url}" class="sff" replace>
               {{item.menuname}}</router-link>
           </div>
         </el-menu-item>

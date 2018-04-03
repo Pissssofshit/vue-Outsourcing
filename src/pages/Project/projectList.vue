@@ -1,60 +1,57 @@
 <template>
-
   <div class="page">
-  <div>
-    <el-container>
-      <el-aside width="230px">
-        <asidenav :title="title" :data="data"></asidenav>
-      </el-aside>
-      <el-main>
-
     <div>
-      <div class="container-header">
-        <div class="title">进行中的项目</div>
-        <div class="right-content">
-          <router-link :to="{name: '新建项目'}">
-            <i class="el-icon-plus"></i>
-          </router-link>
-          <span class="item-title">新建项目</span>
-        </div>
-      </div>
-      <div class="projectlist" v-loading="startLoading">
-        <div v-for="item in projectList.prepareProjectList" :key="item.projectId">
-          <router-link :to="{name: '项目详情', params: {projectId: item.projectId}}">
-            <projectItem :name="item.projectName" :img="item.projectLogo" :proid="item.projectId">
-            </projectItem>
-          </router-link>
-        </div>
-      </div>
+      <el-container>
+        <el-aside width="230px">
+          <asidenav :title="title" :data="data"></asidenav>
+        </el-aside>
+        <el-main>
+          <div>
+            <div class="container-header">
+              <div class="title">进行中的项目</div>
+              <div class="right-content">
+                <router-link :to="{name: '新建项目'}">
+                  <i class="el-icon-plus"></i>
+                </router-link>
+                <span class="item-title">新建项目</span>
+              </div>
+            </div>
+            <div class="projectlist" v-loading="startLoading">
+              <div v-for="item in projectList.prepareProjectList" :key="item.projectId">
+                <router-link :to="{name: '项目详情', params: {projectId: item.projectId}}">
+                  <projectItem :name="item.projectName" :img="item.projectLogo" :proid="item.projectId">
+                  </projectItem>
+                </router-link>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="container-header">
+              <div class="title">准备中的项目</div>
+            </div>
+            <div class="projectlist" v-loading="prepareLoading">
+              <div v-for="item in projectList.startProjectList" :key="item.projectId">
+                <router-link :to="{name: '项目详情', params: {projectId: item.projectId}}">
+                  <projectItem :name="item.projectName" :img="item.projectLogo" :proid="item.projectId"></projectItem>
+                </router-link>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="container-header">
+              <div class="title">已完结的项目</div>
+            </div>
+            <div class="projectlist" v-loading="finishLoading">
+              <div v-for="item in projectList.finishProjectList" :key="item.projectId">
+                <router-link :to="{name: '项目详情', params: {projectId: item.projectId}}">
+                  <projectItem :name="item.projectName" :img="item.projectLogo" :proid="item.projectId"></projectItem>
+                </router-link>
+              </div>
+            </div>
+          </div>
+        </el-main>
+      </el-container>
     </div>
-    <div>
-      <div class="container-header">
-        <div class="title">准备中的项目</div>
-      </div>
-      <div class="projectlist" v-loading="prepareLoading">
-        <div v-for="item in projectList.startProjectList" :key="item.projectId">
-          <router-link :to="{name: '项目详情', params: {projectId: item.projectId}}">
-            <projectItem :name="item.projectName" :img="item.projectLogo" :proid="item.projectId"></projectItem>
-          </router-link>
-        </div>
-      </div>
-    </div>
-    <div>
-      <div class="container-header">
-        <div class="title">已完结的项目</div>
-      </div>
-      <div class="projectlist" v-loading="finishLoading">
-        <div v-for="item in projectList.finishProjectList" :key="item.projectId">
-          <router-link :to="{name: '项目详情', params: {projectId: item.projectId}}">
-            <projectItem :name="item.projectName" :img="item.projectLogo" :proid="item.projectId"></projectItem>
-          </router-link>
-        </div>
-      </div>
-    </div>
-      </el-main>
-    </el-container>
-    
-  </div>
   </div>
 </template>
 <script>
@@ -74,13 +71,14 @@ type 3
 export default {
   data() {
     return {
-      title:'地狱咆哮',
-          data:[
-              [{type:2,menuname:'概览'},
-            {type:2,menuname:'数据中心'},
-            {type:2,menuname:'个人中心'}],
-            [{type:3,menuname:'团队配置中心'}]
-          ],
+      title: '地狱咆哮',
+      data: [
+        [{ type: 2, menuname: '概览' ,url:'概览'},
+          { type: 2, menuname: '数据中心' ,url:'数据中心'},
+          { type: 2, menuname: '个人中心' ,url:'个人中心'}
+        ],
+        [{ type: 3, menuname: '团队配置中心' ,url:'团队配置中心'}]
+      ],
       item1: [],
       item2: [],
       startLoading: true,
@@ -133,8 +131,10 @@ export default {
 </script>
 <style scoped>
 .page {
-  min-height: 500px;
-  height: 100%;
+  /*min-height: 500px;*/
+  /*height: 100%;*/
+  width: 100%;
+  padding-top: 1vh;
 }
 
 .el-icon-plus {
@@ -152,7 +152,8 @@ export default {
 
 .container-header {
   width: 100%;
-  margin-left: 2vh;
+  padding-left: 2vh;
+  /*margin-left: 2vh;*/
   padding-bottom: 5px;
   border-bottom: 1px solid #dedede;
   display: flex;

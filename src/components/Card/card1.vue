@@ -20,13 +20,13 @@
     font-weight: 500;
 }
 .card_content{
-    padding: 20px;
-    width: 100%;
-    height: 100%;
+    /*padding: 20px;*/
+    /*width: 100%;*/
+    /*height: 100%;*/
     /* background-color: black; */
 }
 .zuikengwangquegurenshi{
-    width: 40%;
+    /*width: 40%;*/
     height: 35%;
     min-width: 410px;
     min-height: 380px;
