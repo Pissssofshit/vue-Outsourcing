@@ -1,57 +1,99 @@
-
 <template>
-<div>
-  <!-- Table -->
-<el-button type="text" @click="dialogTableVisible = true">打开嵌套表格的 Dialog</el-button>
-
-<el-dialog title="收货地址" :visible.sync="dialogTableVisible">
-  <el-table :data="gridData">
-    <el-table-column property="date" label="日期" width="150"></el-table-column>
-    <el-table-column property="name" label="姓名" width="200"></el-table-column>
-    <el-table-column property="address" label="地址"></el-table-column>
-  </el-table>
-</el-dialog>
-
-<!-- Form -->
-<el-button type="text" @click="dialogFormVisible = true">打开嵌套表单的 Dialog</el-button>
-
-<el-dialog title="收货地址" :visible.sync="dialogFormVisible">
-  <el-form :model="form">
-    <el-form-item label="活动名称" :label-width="formLabelWidth">
-      <el-input v-model="form.name" auto-complete="off"></el-input>
-    </el-form-item>
-    <el-form-item label="活动区域" :label-width="formLabelWidth">
-      <el-select v-model="form.region" placeholder="请选择活动区域">
-        <el-option label="区域一" value="shanghai"></el-option>
-        <el-option label="区域二" value="beijing"></el-option>
-      </el-select>
-    </el-form-item>
-  </el-form>
-  <div slot="footer" class="dialog-footer">
-    <el-button @click="dialogFormVisible = false">取 消</el-button>
-    <el-button type="primary" @click="dialogFormVisible = false">确 定</el-button>
-  </div>
-</el-dialog>  
-</div>
+  <div class="swiper-container">
+		<div class="swiper-wrapper">
+			<div class="swiper-slide menu">Menu slide</div>
+			<div class="swiper-slide content">
+				Content slide
+			</div>
+		</div>
+	</div>
 </template>
+<style scoped>
+		html, body {
+			position: relative;
+			height: 100%;
+		}
+		body {
+			background: #eee;
+			font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+			font-size: 14px;
+			color: #000;
+			margin: 0;
+			padding: 0;
+		}
+		.swiper-container {
+			width: 100%;
+			height: 100%;
+		}
+		.swiper-slide {
+			text-align: center;
+			font-size: 18px;
+			background: #fff;
 
+			/* Center slide text vertically */
+			display: -webkit-box;
+			display: -ms-flexbox;
+			display: -webkit-flex;
+			display: flex;
+			-webkit-box-pack: center;
+			-ms-flex-pack: center;
+			-webkit-justify-content: center;
+			justify-content: center;
+			-webkit-box-align: center;
+			-ms-flex-align: center;
+			-webkit-align-items: center;
+			align-items: center;
+		}
+		.menu {
+			min-width: 100px;
+			width: 70%;
+			max-width: 320px;
+
+			background-color: #2C8DFB;
+			color: #fff;
+		}
+		.content {
+			width: 100%;
+		}
+		
+	</style>
 <script>
+import Swiper from 'swiper'
   export default {
-    data() {
-      return {
-        dialogFormVisible: false,
-        form: {
-          name: '',
-          region: '',
-          date1: '',
-          date2: '',
-          delivery: false,
-          type: [],
-          resource: '',
-          desc: ''
+    name: 'carrousel',
+      mounted:function(){
+	//   var menuButton = document.querySelector('.menu-button');
+    var swiper = new Swiper('.swiper-container', {
+      slidesPerView: 'auto',
+      initialSlide: 1,
+    //   resistanceRatio: 0,
+    //   slideToClickedSlide: true,
+      on: {
+    //     init: function () {
+    //       var slider = this;
+    //       menuButton.addEventListener('click', function () {
+    //         if (slider.activeIndex === 0) {
+    //           slider.slideNext();
+    //         } else {
+    //           slider.slidePrev();
+    //         }
+    //       }, true);
+    //     },
+        slideChange: function () {
+		  var slider = this;
+          if (slider.activeIndex === 0) {
+			
+				  var sss = document.querySelector('.content');
+					 sss.style.width="800px";
+          } else {
+				  var sss = document.querySelector('.content');
+				  sss.style.width="100%";			 
+          }
         },
-        formLabelWidth: '120px'
-      };
+      }
+    });
+      }
     }
-  };
+ 
+  
 </script>

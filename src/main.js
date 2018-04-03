@@ -5,6 +5,7 @@ import App from './App'
 import router from './router'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+import 'swiper/dist/css/swiper.css'
 // discomfort
 import Vueresource from 'vue-resource'
 import $ from 'jquery'
@@ -14,9 +15,7 @@ import 'iview/dist/styles/iview.css';
 import Chart from 'chart.js'
 import store from './store'
 import sChart from 'vue-schart'
-import 'vue-event-calendar/dist/style.css' //1.1.10之后的版本，css被放在了单独的文件中，方便替换
-import vueEventCalendar from 'vue-event-calendar'
-Vue.use(vueEventCalendar, {locale: 'en'}) //可以设置语言，支持中文和英文
+import VueAwesomeSwiper from 'vue-awesome-swiper'
 //vue-router + vuex +vue-resource+element-ui
 // Vue.use(VueRouter);
 Vue.use(iView);
@@ -25,7 +24,7 @@ Vue.config.productionTip = false
 Vue.use(ElementUI)
 Vue.use(Vueresource)
 
-
+Vue.use(VueAwesomeSwiper)
 /*
   路由守卫 判断是否登录
 */

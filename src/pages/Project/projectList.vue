@@ -3,10 +3,20 @@
   <div class="page">
   <div>
     <el-container>
-      <el-aside width="230px">
+      <div class="swiper-container" >
+		<div class="swiper-wrapper" >
+			<div class="swiper-slide menu">
+         <el-aside width="230px">
         <asidenav :title="title" :data="data"></asidenav>
       </el-aside>
-      <el-main>
+      </div>
+      <div class="swiper-slide content"></div>
+		</div>
+    </div>
+       <el-aside width="230px" v-if="media==='pc'">
+        <asidenav :title="title" :data="data"></asidenav>
+      </el-aside>
+        <el-main>
 
     <div>
       <div class="container-header">
@@ -52,6 +62,9 @@
       </div>
     </div>
       </el-main>
+      
+     
+      
     </el-container>
     
   </div>
@@ -62,6 +75,7 @@ import ProjectItem from '../../components/Project/projectItem.vue'
 import { mapState, mapGetters, mapActions } from 'vuex'
 import MYURL from '../../const/MYURL.js'
 import Asidenav from '../../components/Nav/nav.vue'
+import Swiper from 'swiper'
 /*
 data 
 type 1
@@ -71,9 +85,11 @@ type 2
 type 3
 具体项目 不带图表
 */
+
 export default {
   data() {
     return {
+      media:'phone',
       title:'地狱咆哮',
           data:[
               [{type:2,menuname:'概览'},
@@ -98,9 +114,40 @@ export default {
     this.getFinishProjectList()
     // console.log("projectList.vue：" + JSON.stringify(this.$store.state.userInfo));
   },
-  mounted() {
-    // console.log("projectList.vue：" + JSON.stringify(this.projectList));
+  beforecreate: function(){
+  //   var width=document.body.clientWidth;   it's um... it doesnt works
+  // if(width<700){
+  //     this.media='phone';
+  //   }else{
+  //     this.media='pc';
+  //   }
+  //   console.log('sss');
   },
+  mounted:function(){
+    // console.log('width'+width);
+    
+          if(this.media==='phone'){
+            console.log('excuted');
+            var swiper = new Swiper('.swiper-container', {
+      slidesPerView: 'auto',
+      initialSlide: 0,
+      on:{
+        slideChange: function () {
+		      // var slider = this;
+          // if (slider.activeIndex === 0) {
+			
+				  // var sss = document.querySelector('.content');
+					//  sss.style.width="800px";
+          // } else {
+				  // var sss = document.querySelector('.content');
+				  // sss.style.width="100%";			 
+          // }
+        },
+      }
+    });
+          }
+    
+      },
   computed: {
     ...mapState([
       'userInfo',
@@ -132,6 +179,27 @@ export default {
 
 </script>
 <style scoped>
+@media only screen and (max-width: 700px) {
+  .menu{
+  width: 320px;
+}
+.swiper-container{
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  position: absolute;
+}
+.swiper-wrapper{
+    height: 100%;
+  }
+.swiper-silde{
+  width: 100%;
+}
+.el-aside{
+  height: 100%;
+  background-color: rgb(241, 241, 241);
+}
+}
 .page {
   min-height: 500px;
   height: 100%;
@@ -203,5 +271,6 @@ span {
   justify-content: center;
   align-items: center;
 }
+
 
 </style>
