@@ -25,12 +25,6 @@
   </div>
 </template>
 <style>
-.el-card__body {
-  /* position: relative;*/
-  top: 0px;
-  border: 0px;
-  padding: 0px;
-}
 
 </style>
 <script>
@@ -57,6 +51,13 @@ export default {
 
 </script>
 <style scoped>
+/deep/ .el-card__body {
+  /* position: relative;*/
+  top: 0px;
+  border: 0px;
+  padding: 0px;
+}
+
 .el-card {
   width: 300px;
   height: 240px;
