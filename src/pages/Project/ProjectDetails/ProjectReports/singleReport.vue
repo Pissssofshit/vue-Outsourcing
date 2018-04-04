@@ -4,7 +4,7 @@
       <el-header height="55px">
         <el-row>
           <el-breadcrumb class="title" separator-class="el-icon-arrow-right">
-            <el-breadcrumb-item :to="{ name:'报表' }">成员角色</el-breadcrumb-item>
+            <el-breadcrumb-item :to="{ name:'报表' }">考勤报表</el-breadcrumb-item>
             <el-breadcrumb-item style="font-size:18px;  margin-top: 5px;">{{reportName}}</el-breadcrumb-item>
           </el-breadcrumb>
         </el-row>
@@ -21,18 +21,11 @@
                 <span style="margin-left: 0px">{{ scope.row.name }}</span>
               </template>
             </el-table-column>
-            <el-table-column label="邮箱" align="left" prop="email">
-            </el-table-column>
             <el-table-column label="考勤" align="left" sortable prop="state" :filters="[{text: '到', value: '到'}, {text: '缺席', value: '缺席'}]" :filter-method="filterHandler">
             </el-table-column>
             <el-table-column label="记录时间" align="left" prop="recordTime">
             </el-table-column>
-            <el-table-column label="联系" align="left" width="100px">
-              <template slot-scope="scope">
-                <div @click="">
-                  <i class="el-icon-phone-outline"></i>
-                </div>
-              </template>
+            <el-table-column label="状态" align="left" prop="nowstate">
             </el-table-column>
           </el-table>
         </el-main>
@@ -46,20 +39,26 @@ export default {
     return {
       reportName: "  无敌",
       tableData: [
-        { name: "zhuyunwu", email: "zhuyunwu@163.com", state: "到", recordTime: "12:00" },
-        { name: "wanghoulun", email: "wanghoulun@163.com", state: "缺席", recordTime: "13:01" },
-        { name: "fanping", email: "fanping@163.com", state: "到", recordTime: "14:01" },
-        { name: "spongebob ", email: "fanping@163.com", state: "到", recordTime: "17:02" },
+        { name: "zhuyunwu", email: "zhuyunwu@163.com", state: "到", recordTime: "12:00" ,nowstate:"在线"},
+        { name: "wanghoulun", email: "wanghoulun@163.com", state: "缺席", recordTime: "-" ,nowstate:"离线"},
+        { name: "fanping", email: "fanping@163.com", state: "到", recordTime: "14:01",nowstate:"在线" },
+        { name: "spongebob ", email: "fanping@163.com", state: "到", recordTime: "17:02",nowstate:"离线" },
       ]
     }
   },
   created() {
-
+    this.InitData()
   },
   methods: {
     filterHandler(value, row, column) {
       const property = column['property'];
       return row[property] === value;
+    },
+    InitData(){
+
+      this.reportName=this.$route.params.name
+      // let now=new Date();
+      // this.reportName=myDate.getFullYear()+myDate.getMonth()+myDate.getDate();
     }
   }
 }

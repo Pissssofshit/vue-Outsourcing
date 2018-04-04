@@ -4,14 +4,14 @@
   <div>
     <el-container>
       <div class="swiper-container" >
-		<div class="swiper-wrapper" >
-			<div class="swiper-slide menu">
+    <div class="swiper-wrapper" >
+      <div class="swiper-slide menu">
          <el-aside width="230px">
         <asidenav :title="title" :data="data"></asidenav>
       </el-aside>
       </div>
       <div class="swiper-slide content"></div>
-		</div>
+    </div>
     </div>
        <el-aside width="230px" v-if="media==='pc'">
         <asidenav :title="title" :data="data"></asidenav>
@@ -85,7 +85,6 @@ type 2
 type 3
 具体项目 不带图表
 */
-
 export default {
   data() {
     return {
@@ -133,14 +132,14 @@ export default {
       initialSlide: 0,
       on:{
         slideChange: function () {
-		      // var slider = this;
+          // var slider = this;
           // if (slider.activeIndex === 0) {
-			
-				  // var sss = document.querySelector('.content');
-					//  sss.style.width="800px";
+      
+          // var sss = document.querySelector('.content');
+          //  sss.style.width="800px";
           // } else {
-				  // var sss = document.querySelector('.content');
-				  // sss.style.width="100%";			 
+          // var sss = document.querySelector('.content');
+          // sss.style.width="100%";       
           // }
         },
       }
@@ -176,7 +175,6 @@ export default {
     },
   }
 }
-
 </script>
 <style scoped>
 @media only screen and (max-width: 700px) {
@@ -204,20 +202,17 @@ export default {
   min-height: 500px;
   height: 100%;
 }
-
 .el-icon-plus {
   padding: 0;
   border: 0;
   font-size: 15px;
   font-weight: bold;
 }
-
 .item-title {
   line-height: 15px;
   padding-left: 1px;
   font-size: 15px;
 }
-
 .container-header {
   width: 100%;
   margin-left: 2vh;
@@ -227,7 +222,6 @@ export default {
   -webkit-flex-direction: row;
   flex-direction: row;
 }
-
 .title {
   -webkit-flex: 1 1 auto;
   flex: 1 1 auto;
@@ -235,7 +229,6 @@ export default {
   font-weight: 500;
   text-align: left;
 }
-
 .right-content {
   -webkit-align-self: center;
   align-self: center;
@@ -245,7 +238,6 @@ export default {
   flex-direction: row;
   padding-right: 3vh;
 }
-
 span {
   margin-left: 2vh;
   display: block;
@@ -253,13 +245,11 @@ span {
   text-align: start;
   font-size: 25px;
 }
-
 .projectlist {
   height: 100%;
   display: flex;
   flex-wrap: wrap;
 }
-
 .el-card {
   /*
   width: 35vh;
@@ -271,6 +261,4 @@ span {
   justify-content: center;
   align-items: center;
 }
-
-
 </style>
