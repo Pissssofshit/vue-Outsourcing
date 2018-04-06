@@ -15,7 +15,6 @@
             </a>
             <DropdownMenu slot="list">
               <DropdownItem>联系我们</DropdownItem>
-              
             </DropdownMenu>
           </Dropdown>
           <Dropdown>
@@ -24,16 +23,14 @@
             </a>
             <DropdownMenu slot="list">
               <DropdownItem>生当为人杰</DropdownItem>
-              <DropdownItem>死亦为鬼雄</DropdownItem>
+              <!-- <DropdownItem>死亦为鬼雄</DropdownItem> -->
             </DropdownMenu>
           </Dropdown>
-          <Dropdown>
-            <a href="javascript:void(0)">
-              <Avatar icon="person" />
-            </a>
+          <Dropdown @on-click="HandlePersonCommand">
+            <Avatar icon="person" />
             <DropdownMenu slot="list">
-              <DropdownItem>个人中心</DropdownItem>
-              <DropdownItem>登出</DropdownItem>
+              <DropdownItem name='个人中心'>个人中心</DropdownItem>
+              <DropdownItem name='登出'>登出</DropdownItem>
             </DropdownMenu>
           </Dropdown>
         </div>
@@ -52,33 +49,31 @@ export default {
   },
   methods: {
     ...mapActions(['ResetStateAction']),
-    loginOut() {
+    toIndex() {
+      this.$router.push({ name: '首页' })
+    },
+    HandlePersonCommand(command) {
+      if (command === '登出') {
+        this.loginOut()
+      } else if (command === '个人中心') {
+         this.$router.push({ name: '个人中心' })
+      }
+    },
+    loginOut: function(event) {
       console.log("loginOut")
       this.ResetStateAction();
       localStorage.removeItem('userInfo')
       // this.$store.commit('ResetState')
       this.$router.push({ name: '登录' })
     },
-    toIndex() {
-      this.$router.push({ name: '首页' })
-    }
   }
 }
 
 </script>
 <style scoped>
 .myheader {
-  /*display: flex;*/
+
   flex: 0 0 auto;
-  /*list-style: none;*/
-  /*display: -webkit-box;*/
-  /*display: -webkit-flex;*/
-  /*-webkit-flex-flow: row nowrap;*/
-  /*justify-content: space-around;*/
-  /*align-content: flex-start;*/
-  /*align-items: flex-start;*/
-  /*background: #ccc;  */
-  /*height: 100%  */
 }
 
 .header>ul div {
@@ -87,21 +82,21 @@ export default {
 
 .header_myleft {
   padding-left: 15px;
-      float: left;
-    line-height: 48px;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-align-items: center;
-    align-items: center;
+  float: left;
+  line-height: 50px;
+  /*display: -webkit-flex;*/
+  /*display: flex;*/
+  /*-webkit-align-items: center;*/
+  /*align-items: center;*/
 }
 
 .header_right {
-      float: right;
-    height: 100%;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-align-items: center;
-    align-items: center;
+  float: right;
+  height: 100%;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-align-items: center;
+  align-items: center;
   /*display: flex;*/
   /*float: right;*/
   /*width: 40%;*/
@@ -109,11 +104,12 @@ export default {
 }
 
 .topbar-product-name {
-  font-size: 25px;
+  font-size: 30px;
   color: #fff;
   margin-right: 20px;
-  vertical-align: middle;
+  /*vertical-align: middle;*/
   font-family: markprolight;
+  margin-top: 10px;
 }
 
 a>img {

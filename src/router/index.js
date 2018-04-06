@@ -16,6 +16,7 @@ import Rightbase1 from '@/pages/My/personaloption/rightbase1'
 import Rightbase2 from '@/pages/My/personaloption/rightbase2'
 import Rightbase3 from '@/pages/My/personaloption/rightbase3'
 import Search from '@/pages/Search/search'
+// import Register from '@/pages/Register/register'
 //second pages
 import ProjectList from '@/pages/Project/projectList'
 import ProjectDetails from '@/pages/Project/projectDetails'
@@ -34,15 +35,17 @@ import test from '../pages/test.vue'
 import SingleReport from '@/pages/Project/ProjectDetails/ProjectReports/singleReport'
 import ProjectData from '@/pages/Project/ProjectDetails/ProjectData/projectData'
 import ProjectStaff from '@/pages/Project/ProjectDetails/ProjectStaff/projectStaff'
-import Work from '@/pages/My/work'
+import personalData from '@/pages/My/personalData'
 import WorkRecord from '@/pages/Project/ProjectDetails/ProjectReports/workRecord'
 import TaskStatistics from '@/pages/Project/ProjectDetails/ProjectReports/taskStatistics.vue'
+import ProjectSetting from '@/pages/Project/ProjectDetails/ProjectSetting/projectSetting'
 Vue.use(Router)
 // 兄弟 or 侄子 用router-to ，父子 包含router-view
 const vueRouter = new Router({
   routes: [
     { path: '', redirect: { name: '登录' } },
     { path: '/login', name: '登录', component: Login },
+    // { path: '/register', name: '注册', component: Register },
     { path: "/au", name: "人脸验证", component: Auth },
     {
       path: '/index',
@@ -71,9 +74,9 @@ const vueRouter = new Router({
               component: Rightbase3
             },
             {
-              path: 'Work',
-              name: '工作',
-              component: Work
+              path: 'personalData',
+              name: '个人文件',
+              component: personalData
             },
           ]
         },
@@ -198,6 +201,11 @@ const vueRouter = new Router({
               path: 'TaskStatistics',
               name: '任务统计',
               component: TaskStatistics
+            },
+            {
+              path: 'ProjectSetting',
+              name: '项目设置',
+              component: ProjectSetting
             },
           ]
         }

@@ -75,7 +75,7 @@ export default {
         "Content-Type": "application/x-www-form-urlencoded"
       },
       TabsValue: '普通资料',
-      placeholder: '搜索项目成员',
+      placeholder: '搜索普通资料',
       searchKey: '',
       tabPosition: 'left',
       MyTabs: [{
@@ -123,11 +123,10 @@ export default {
   },
   methods: {
     handleChange(file, fileList) {
- 
       this.fileList=fileList
     },
     HandleClick() {
-
+      this.placeholder='搜索'+this.TabsValue
     },
     AddStaff() {
       // console.log(fileList);

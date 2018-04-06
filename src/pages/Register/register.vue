@@ -1,142 +1,133 @@
 <template>
-  <div>
-      <el-form ref="form" :model="form" label-width="100px">
-  <el-form-item label="账号">
-      <el-col :span="10">
-    <el-input v-model="form.zhanghao"></el-input>
-      </el-col>
-  </el-form-item>
-  <el-form-item label="密码">
-      <el-col :span="10">
-    <el-input v-model="form.mima"></el-input>
-      </el-col>
-  </el-form-item>
-  <el-form-item label="重复密码">
-      <el-col :span="10">
-    <el-input v-model="form.repeatmima" @blur="checkmima">
-    </el-input>
-    <div v-if="yizhi" class="waring"> 两次密码不一致</div>
-      </el-col>
-  </el-form-item>
-  <el-form-item label="所属公司">
-      <el-col :span="10">
-    <el-input v-model="form.company"></el-input>
-      </el-col>
-  </el-form-item>
-  <el-form-item label="参与项目">
-      <el-col :span="10">
-    <el-input v-model="form.project"></el-input>
-      </el-col>
-  </el-form-item>
-  <el-form-item label="邮箱验证">
-      <el-col :span="10">
-    <el-input v-model="form.email"></el-input>
-      </el-col>
-  </el-form-item>
-  <el-form-item label="身份证上传">
-      <el-upload
-  class="avatar-uploader"
-  action="https://jsonplaceholder.typicode.com/posts/"
-  :show-file-list="false"
-  :on-success="handleAvatarSuccess"
-  :before-upload="beforeAvatarUpload">
-  <img v-if="imageUrl" :src="imageUrl" class="avatar">
-  <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-</el-upload>
-  </el-form-item>
-  <el-form-item>
-    <el-button :plain="true" type="primary" @click="submitForm('ruleForm')">提交</el-button>
-    <el-button :plain="true" @click="resetForm('ruleForm')">重置</el-button>
-  </el-form-item>
-      </el-form>
-
+  <div class="page">
+    <div class="page_context">
+      <div class="register_title">
+        <p>注册</p>
+      </div>
+      <div class="register_context">
+        <el-form :rules="rules" ref="form" :model="form">
+          <el-form-item label="用户名" size="mediunm" prop="account">
+            <el-input class="input" v-model="form.zhanghao"></el-input>
+          </el-form-item>
+          <el-form-item label="密码" size="mediunm" prop="password">
+            <el-input class="input" v-model="form.mima"></el-input>
+          </el-form-item>
+          <el-form-item label="邮箱" size="mediunm" prop="email">
+            <el-input class="input" v-model="form.email"></el-input>
+          </el-form-item>
+          <el-form-item>
+            <el-button class="btn" type="primary" @click="onSubmit('ruleForm')">下一步</el-button>
+          </el-form-item>
+        </el-form>
+      </div>
+    </div>
   </div>
 </template>
 <style scoped>
-.avatar-uploader .el-upload {
-    border: 1px dashed #d9d9d9;
-    border-radius: 6px;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-  }
-  .avatar-uploader .el-upload:hover {
-    border-color: #409EFF;
-  }
-  .avatar-uploader-icon {
-    font-size: 28px;
-    color: #8c939d;
-    width: 178px;
-    height: 178px;
-    line-height: 178px;
-    text-align: center;
-  }
-  .avatar {
-    width: 178px;
-    height: 178px;
-    display: block;
-  }
-.warning{
-    color: red;
+.btn {
+  /*margin-right: 80px;*/
 }
-.el-form{
-    width: 800px;
-    margin: 0 auto;
+
+.page {
+  background-color: #324057;
+  /*margin:0;*/
+  /*width:auto;*/
+  height: 100%;
 }
+
+.register_context {
+  margin-top: 5px;
+  /*font-size: 28px;*/
+}
+
+.page_context {
+  border-radius: 5px;
+  position: absolute;
+  width: 400px;
+  height: 430px;
+  background-color: #fff;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 15px;
+}
+
+.register_title {
+  /*padding-top: 1%;*/
+  padding-bottom: 2%;
+  width: 100%;
+  top: 80px;
+  left: 0;
+  border-bottom: 1px solid #e6e9ec;
+}
+
+.register_title p {
+  font-size: 24px;
+}
+
 </style>
-
 <script>
-  export default {
-    data() {
-      return {
-        imageUrl: '',
-        yizhi: false,
-        form: {
-          zhanghao: '',
-          mima: '',
-          repeatmima:'',
-          company: '',
-          project: '',
-          emial: ''
-        }
-      }
-    },
-    methods: {
-      handleAvatarSuccess(res, file) {
-        this.imageUrl = URL.createObjectURL(file.raw);
+export default {
+  data() {
+    return {
+      labelPosition: 'right',
+      imageUrl: '',
+      yizhi: false,
+      form: {
+        account: '',
+        password: '',
+        email: ''
       },
-      beforeAvatarUpload(file) {
-        const isJPG = file.type === 'image/jpeg';
-        const isLt2M = file.size / 1024 / 1024 < 2;
-
-        if (!isJPG) {
-          this.$message.error('上传头像图片只能是 JPG 格式!');
-        }
-        if (!isLt2M) {
-          this.$message.error('上传头像图片大小不能超过 2MB!');
-        }
-        
-        return isJPG && isLt2M;
+      rules: {
+        account: [
+          { required: true, message: '用户名不能为空' },
+          { min: 3, max: 10, message: '长度在 3 到 10 个字符' }
+        ],
+        password: [
+          { required: true, message: '密码不能为空', trigger: 'change' },
+           { min: 6, max: 12, message: '长度在 6 到 12 个字符', trigger: 'blur' }
+        ],
+        email: [
+          { required: true, message: '邮箱不能为空', trigger: 'change' }
+        ],
       }
-    ,
-      onSubmit() {
-        console.log('submit!');
-      },
-      checkmima(){
-          console.log('sss')
-          console.log(this.form.mima instanceof String)
-
-          console.log(this.form.repeatmima)
-          if(this.form.mima.toString()!=this.form.repeatmima.toString()){
-              console.log('yizhi is true')
-              this.yizhi=true
-          }else{
-              this.yizhi=false
-              console.log('yizhi is false')
-          }
-      }
-    },
-    watch:{
     }
-  }
+  },
+  methods: {
+    handleAvatarSuccess(res, file) {
+      this.imageUrl = URL.createObjectURL(file.raw);
+    },
+    beforeAvatarUpload(file) {
+      const isJPG = file.type === 'image/jpeg';
+      const isLt2M = file.size / 1024 / 1024 < 2;
+
+      if (!isJPG) {
+        this.$message.error('上传头像图片只能是 JPG 格式!');
+      }
+      if (!isLt2M) {
+        this.$message.error('上传头像图片大小不能超过 2MB!');
+      }
+
+      return isJPG && isLt2M;
+    },
+    onSubmit() {
+      console.log('submit!');
+    },
+    checkmima() {
+      console.log('sss')
+      console.log(this.form.mima instanceof String)
+
+      console.log(this.form.repeatmima)
+      if (this.form.mima.toString() != this.form.repeatmima.toString()) {
+        console.log('yizhi is true')
+        this.yizhi = true
+      } else {
+        this.yizhi = false
+        console.log('yizhi is false')
+      }
+    }
+  },
+  watch: {}
+}
+
 </script>

@@ -32,7 +32,7 @@ export default {
                 {type:3,menuname:'报表',url:'报表'},
                 {type:3,menuname:'成员',url:'人员'},
                 {type:3,menuname:'资料',url:'项目资料'},
-                {type:3,menuname:'设置',url:'设置'},
+                {type:3,menuname:'设置',url:'项目设置'},
                 // {type:3,menuname:'个人',url:'项目个人'},
               ]
           ],
