@@ -9,13 +9,8 @@
                 <asidenav　class="menuitem" :title="title" :data="data"></asidenav>
               </el-aside>
             </div>
-            <div class="swiper-slide content"></div>
-          </div>
-        </div>
-        <el-aside width="230px" v-if="media==='pc'">
-          <asidenav :title="title" :data="data"></asidenav>
-        </el-aside>
-        <el-main>
+            <div class="swiper-slide content">
+               <el-main>
           <div>
             <div class="container-header">
               <div class="title">进行中的项目</div>
@@ -60,6 +55,13 @@
             </div>
           </div>
         </el-main>
+            </div>
+          </div>
+        </div>
+        <!-- <el-aside width="230px" v-if="media==='pc'">
+          <asidenav :title="title" :data="data"></asidenav>
+        </el-aside> -->
+       
       </el-container>
     </div>
   </div>
@@ -124,18 +126,9 @@ export default {
       console.log('excuted');
       var swiper = new Swiper('.swiper-container', {
         slidesPerView: 'auto',
-        initialSlide: 0,
+        initialSlide: 1,
         on: {
           slideChange: function() {
-            // var slider = this;
-            // if (slider.activeIndex === 0) {
-
-            // var sss = document.querySelector('.content');
-            //  sss.style.width="800px";
-            // } else {
-            // var sss = document.querySelector('.content');
-            // sss.style.width="100%";       
-            // }
           },
         }
       });
@@ -178,7 +171,7 @@ export default {
 }
 @media only screen and (max-width: 700px) {
   .menu {
-    width: 320px;
+    width: 200px;
     z-index: 1000 !important;
   }
   .menuitem{
@@ -201,6 +194,7 @@ export default {
   }
   .el-aside {
     height: 100%;
+    width: 200px !important;
     background-color: rgb(241, 241, 241);
   }
 }

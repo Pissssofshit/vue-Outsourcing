@@ -14,7 +14,7 @@
                 <el-input class="search" size="medium" :placeholder="placeholder" prefix-icon="el-icon-search" v-model="searchKey">
                 </el-input>
               </el-col>
-              <el-col :span="14" style=" float: right;">
+              <el-col class="buttons" :span="14" style=" float: right;">
                 <el-button class="button" type="primary" size="small" @click="addStaffDialog.dialogVisible = true">管理成员</el-button>
                 <el-button class="button" size="small" @click="managerDialog.dialogVisible = true">管理角色</el-button>
               </el-col>
@@ -255,10 +255,16 @@ export default {
 
 </script>
 <style scoped>
-.dialog {
-  text-align: left;
+@media only screen and (max-width: 700px) {
+.tools{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
 }
-
+.buttons{
+  display: flex;
+}
+}
 .dialog p {
   font-size: 16px;
   margin-left: 5px;

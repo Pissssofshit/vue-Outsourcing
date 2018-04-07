@@ -16,12 +16,13 @@
                 <asidenav　class="menuitem" :title="title" :data="data"></asidenav>
               </el-aside>
             </div>
-            <div class="swiper-slide content"></div>
+            <div class="swiper-slide content">
+              <el-main>
+        <router-view></router-view>
+      </el-main></div>
           </div>
       </div>
-      <el-main>
-        <router-view></router-view>
-      </el-main>
+      
     </el-container>
   </div>
 </template>
@@ -88,13 +89,12 @@ export default {
 </script>
 <style scoped>
 @media only screen and (max-width: 700px) {
-  .menu {
-    width: 320px;
-    z-index: 1000;
+   .menu {
+    width: 200px;
+    z-index: 1000 !important;
   }
   .menuitem{
     background-color: rgb(241, 241, 241);
-    /* z-index: 1000 !important; *//*为什么这个覆盖不了下面的按钮*/
   }
   .projectitem{
     width: 100% !important; 
@@ -102,7 +102,7 @@ export default {
   .swiper-container {
     width: 100%;
     height: 100%;
-    /* z-index: 900; */
+    /* z-index: -1; */
     position: absolute;
   }
   .swiper-wrapper {
@@ -113,9 +113,8 @@ export default {
   }
   .el-aside {
     height: 100%;
+    width: 200px !important;
     background-color: rgb(241, 241, 241);
-    position: absolute !important;
-    z-index: 1000 !important;
   }
 }
 .ss{
