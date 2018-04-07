@@ -179,6 +179,20 @@ export default {
 
 </script>
 <style scoped>
+@media only screen and (max-width: 700px) {
+  .create_page{
+    width: 100% !important;
+    height: 100% !important; 
+  }
+  .next{
+    position: static !important;
+    display: flex;
+    margin-left: 23px;
+  }
+  /deep/ .is-top{
+    height: 0px !important;
+  }
+}
 .file_title span {
   padding-left: 10px;
   font-size: 12px;

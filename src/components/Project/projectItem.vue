@@ -1,7 +1,8 @@
 <template>
-  <div>
+  <div class="bb">
     <el-card height="100%">
-      <el-row type="flex">
+      <div class="formedia">
+        <el-row type="flex">
         <div class="showcase_img">
           <img :src="img" alt="Smiley face" width="100%" height="180px">
           <div class="showcase_meta">
@@ -21,12 +22,10 @@
           </el-col>
         </el-row>
       </el-row>
+      </div>
     </el-card>
   </div>
 </template>
-<style>
-
-</style>
 <script>
 export default {
   data() {
@@ -51,6 +50,22 @@ export default {
 
 </script>
 <style scoped>
+@media only screen and (max-width: 700px) {
+  img{
+    height: 60px !important;
+    width: 60px !important;
+  }
+  .formedia{
+    display: flex;
+  }
+  .el-card{
+    width: 100% !important;
+    height: 60px !important;
+  }
+  .bb{
+    width: 100% !important;
+  }
+}
 /deep/ .el-card__body {
   /* position: relative;*/
   top: 0px;

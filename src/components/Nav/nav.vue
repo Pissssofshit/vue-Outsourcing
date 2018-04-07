@@ -1,12 +1,10 @@
 <template>
-
     <div class="base">
         <h5 class="nowname">{{title}}</h5>
         <div v-for="(item,index) in data" :key="index">
             <menublock :menulist="item"></menublock>
         </div>
-    </div>
-   
+    </div>   
 </template>
 <script>
 
@@ -57,6 +55,7 @@ export default {
 }
 </script>
 <style scoped>
+
 h5{
     font-size: 25px;
 }
