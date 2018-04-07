@@ -2,7 +2,7 @@
   <div class="page">
     <div>
       <el-container>
-        <div class="swiper-container">
+        <div class="swiper-container" v-if="media < 700">
           <div class="swiper-wrapper">
             <div class="swiper-slide menu">
               <el-aside width="230px">
@@ -58,10 +58,54 @@
             </div>
           </div>
         </div>
-        <!-- <el-aside width="230px" v-if="media==='pc'">
+        <el-aside width="230px" v-if="media > 700">
           <asidenav :title="title" :data="data"></asidenav>
-        </el-aside> -->
-       
+        </el-aside>
+       <el-main v-if="media > 700">
+          <div>
+            <div class="container-header">
+              <div class="title">进行中的项目</div>
+              <div class="right-content">
+                <router-link :to="{name: '新建项目'}">
+                  <i class="el-icon-plus"></i>
+                </router-link>
+                <span class="item-title">新建项目</span>
+              </div>
+            </div>
+            <div class="projectlist" v-loading="startLoading">
+              <div class="projectitem" v-for="item in projectList.prepareProjectList" :key="item.projectId">
+                <router-link :to="{name: '项目详情', params: {projectId: item.projectId}}">
+                  <projectItem :name="item.projectName" :img="item.projectLogo" :proid="item.projectId">
+                  </projectItem>
+                </router-link>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="container-header">
+              <div class="title">准备中的项目</div>
+            </div>
+            <div class="projectlist" v-loading="prepareLoading">
+              <div class="projectitem" v-for="item in projectList.startProjectList" :key="item.projectId">
+                <router-link :to="{name: '项目详情', params: {projectId: item.projectId}}">
+                  <projectItem :name="item.projectName" :img="item.projectLogo" :proid="item.projectId"></projectItem>
+                </router-link>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="container-header">
+              <div class="title">已完结的项目</div>
+            </div>
+            <div class="projectlist" v-loading="finishLoading">
+              <div class="projectitem" v-for="item in projectList.finishProjectList" :key="item.projectId">
+                <router-link :to="{name: '项目详情', params: {projectId: item.projectId}}">
+                  <projectItem :name="item.projectName" :img="item.projectLogo" :proid="item.projectId"></projectItem>
+                </router-link>
+              </div>
+            </div>
+          </div>
+        </el-main>
       </el-container>
     </div>
   </div>
@@ -84,7 +128,7 @@ type 3
 export default {
   data() {
     return {
-      media: 'phone',
+      media: document.body.clientWidth,
       title: '地狱咆哮',
       data: [
         [{ type: 2, menuname: '概览' },
