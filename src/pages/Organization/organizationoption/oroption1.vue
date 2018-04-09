@@ -1,15 +1,15 @@
 <template>
   <div class="chunquchunhuilaihuaxiehuahuikai">
       <div class="content">
-          <div class="title">organization info</div>
+          <div class="title">团队信息</div>
           <div class="group1">
-            <div class="first">orname</div>
+            <div class="first">团队名称</div>
             <div class="second">
                 <el-input v-model="ss" placeholder="please enter the or name"></el-input>
             </div>
           </div>
           <div class="group1">
-            <div class="first">orlogo</div>
+            <div class="first">团队logo</div>
             <div class="second">
                  <img   :src="imageUrl" class="avatar">                 
             </div>
@@ -22,7 +22,7 @@
                     :show-file-list="false"
                     :on-success="handleAvatarSuccess"
                     :before-upload="beforeAvatarUpload">
-                    <el-button>upload logo</el-button>
+                    <el-button>上传logo</el-button>
                 </el-upload>
            </el-row>
            
@@ -77,7 +77,7 @@ img{
     data() {
       return {
           ss:'healroar',
-        imageUrl: '../../../../assets/logo.png',
+        imageUrl: '../../../../../static/2.jpg',
         myheaders: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
@@ -85,6 +85,7 @@ img{
     },
     methods: {
       handleAvatarSuccess(res, file) {
+        console.log('upload success');
         this.imageUrl = URL.createObjectURL(file.raw);
         console.log(this.imageUrl);
       },

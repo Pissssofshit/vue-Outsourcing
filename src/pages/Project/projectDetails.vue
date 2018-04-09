@@ -74,7 +74,7 @@ export default {
       console.log('excuted');
       var swiper = new Swiper('.swiper-container', {
         slidesPerView: 'auto',
-        initialSlide: 0,
+        initialSlide: 1,
         on: {
           slideChange: function() {
             

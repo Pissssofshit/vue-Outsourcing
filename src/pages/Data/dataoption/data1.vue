@@ -19,6 +19,11 @@
   </div>
 </template>
 <style scoped>
+@media screen and (max-width: 700){
+  /* .notbasewhatcanicall{   i can't handle
+    height: 100%;
+  } */
+}
 .notbasewhatcanicall {
   flex-wrap: wrap;
   padding-top: 20px;

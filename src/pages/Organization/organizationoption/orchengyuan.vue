@@ -274,7 +274,8 @@ export default {
 
 .button {
   float: right;
-  margin-right: 20px;
+  margin-right: 5px;
+  margin-left: 20px;
 }
 
 
