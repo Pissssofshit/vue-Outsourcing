@@ -77,7 +77,7 @@ img{
     data() {
       return {
           ss:'healroar',
-        imageUrl: '../../../../../static/2.jpg',
+        imageUrl: '../../../../static/2.jpg',
         myheaders: {
         "Content-Type": "application/x-www-form-urlencoded"
       },

@@ -90,11 +90,42 @@ export default {
           name: '机密资料',
         },
       ],
-      tableData: [
-        { name: "九阴真经", userName: "spongebob", updateTime: "2018-03-29", type: "文件" },
-        { name: "乾坤大挪移", userName: "spongebob", updateTime: "2018-03-29", type: "文件" },
-        { name: "辟邪剑法", userName: "spongebob", updateTime: "2018-03-29", type: "文件" },
-        { name: "清风", userName: "spongebob", updateTime: "2018-03-29", type: "图片" },
+      tableData: [],
+      allTableData: [
+        [
+          { name: "普通资料1", userName: "tom", updateTime: "2018-03-29" },
+          { name: "普通资料2", userName: "tom", updateTime: "2018-03-29" },
+          { name: "普通资料3", userName: "tom", updateTime: "2018-03-29" },
+          { name: "普通资料4", userName: "tom", updateTime: "2018-03-29" },
+          { name: "普通资料4", userName: "tom", updateTime: "2018-03-29" },
+          { name: "普通资料4", userName: "tom", updateTime: "2018-03-29" },
+          { name: "普通资料4", userName: "tom", updateTime: "2018-03-29" },
+          { name: "普通资料4", userName: "tom", updateTime: "2018-03-29" },
+          { name: "普通资料4", userName: "tom", updateTime: "2018-03-29" },
+        ],
+        [
+          { name: "重要资料", userName: "hector", updateTime: "2018-03-29" },
+          { name: "重要资料", userName: "hector", updateTime: "2018-03-29" },
+          { name: "重要资料", userName: "hector", updateTime: "2018-03-29" },
+          { name: "重要资料", userName: "hector", updateTime: "2018-03-29" },
+          { name: "重要资料", userName: "hector", updateTime: "2018-03-29" },
+          { name: "重要资料", userName: "hector", updateTime: "2018-03-29" },
+          { name: "重要资料", userName: "hector", updateTime: "2018-03-29" },
+          { name: "重要资料", userName: "hector", updateTime: "2018-03-29" },
+          { name: "重要资料", userName: "hector", updateTime: "2018-03-29" },
+        ],
+        [
+          { name: "机密文件", userName: "spongebob", updateTime: "2018-03-29" },
+          { name: "机密文件", userName: "spongebob", updateTime: "2018-03-29" },
+          { name: "机密文件", userName: "spongebob", updateTime: "2018-03-29" },
+          { name: "机密文件", userName: "spongebob", updateTime: "2018-03-29" },
+          { name: "机密文件", userName: "spongebob", updateTime: "2018-03-29" },
+          { name: "机密文件", userName: "spongebob", updateTime: "2018-03-29" },
+          { name: "机密文件", userName: "spongebob", updateTime: "2018-03-29" },
+          { name: "机密文件", userName: "spongebob", updateTime: "2018-03-29" },
+          { name: "机密文件", userName: "spongebob", updateTime: "2018-03-29" },
+          { name: "机密文件", userName: "spongebob", updateTime: "2018-03-29" },
+        ]
       ],
       addDataDialog: {
         value: '普通资料',
@@ -107,35 +138,43 @@ export default {
   },
   mounted() {},
   watch: {
-
+  },
+  created() {
+    this.tableData = this.allTableData[0]
   },
   computed: {
     AddConfirm: function() {
-      if ((this.addDataDialog.input.length>0) && (this.fileList.length === 1)) {
+      if ((this.addDataDialog.input.length > 0) && (this.fileList.length === 1)) {
         console.log(false)
         this.addstate = false
       } else {
         console.log(true)
         this.addstate = true
       }
-
     },
   },
   methods: {
     handleChange(file, fileList) {
-      this.fileList=fileList
+      this.fileList = fileList
     },
     HandleClick() {
-      this.placeholder='搜索'+this.TabsValue
+      this.placeholder = '搜索' + this.TabsValue
+      if (this.TabsValue === '普通资料') {
+        this.tableData = this.allTableData[0]
+      } else if (this.TabsValue === '重要资料') {
+        this.tableData = this.allTableData[1]
+      } else if (this.TabsValue === '机密资料') {
+        this.tableData = this.allTableData[2]
+      }
     },
     AddStaff() {
       // console.log(fileList);
       if (this.addDataDialog.value === '普通资料') {
-        this.tableData.push({ name: this.addDataDialog.input, userName: "spongebob", updateTime: "2018-03-29", type: "文件" });
+        this.allTableData[0].push({ name: this.addDataDialog.input, userName: "spongebob", updateTime: "2018-03-29", type: "文件" })
       } else if (this.addDataDialog.value === '重要资料') {
-        this.tableData.push({ name: this.addDataDialog.input, userName: "spongebob", updateTime: "2018-03-29", type: "文件" });
+        this.allTableData[1].push({ name: this.addDataDialog.input, userName: "spongebob", updateTime: "2018-03-29", type: "文件" })
       } else if (this.addDataDialog.value === '机密资料') {
-        this.tableData.push({ name: this.addDataDialog.input, userName: "spongebob", updateTime: "2018-03-29", type: "文件" });
+        this.allTableData[2].push({ name: this.addDataDialog.input, userName: "spongebob", updateTime: "2018-03-29", type: "文件" })
       }
       this.$message.success('添加成功');
       this.addDataDialog.dialogVisible = false;
@@ -148,76 +187,61 @@ export default {
     }
   }
 }
-
 </script>
 <style scoped>
 .upload-demo {
   padding-top: 10px;
 }
-
 .dialog {
   text-align: left;
 }
-
 .dialog p {
   font-size: 16px;
   margin-left: 5px;
   margin-bottom: 5px;
 }
-
 .dialog .el-select {
   width: 100%;
   margin-bottom: 5px;
 }
-
 .tools {
   margin-left: 10px;
   margin-top: 5px;
 }
-
 .small {
-  width: 100%^;
+  width: 100%;
   /*eight: 520px;*/
 }
-
 .context_tabs {
   text-align: right;
   margin-right: 10px;
   margin-top: 5px;
   /*background: */
 }
-
-
 .search {
   width: 200px;
   float: left;
   margin-bottom: 5px;
 }
-
 .el-icon-search {
   font-weight: bold;
 }
-
 .tools {
   margin-left: 10px;
   margin-top: 5px;
 }
-
 .button {
   float: right;
   margin-right: 20px;
 }
-
 .base {
   box-shadow: 0 4px 6px 0 rgba(31, 31, 31, 0.05), 0 0 2px 0 rgba(31, 31, 31, 0.2);
   margin: 10px;
 }
-
 .el-row {
   background-color: white;
   border-bottom: 1px solid #dedede;
 }
-
 .title {
   /* min-height: 40px; */
   height: 44px;
@@ -226,20 +250,16 @@ export default {
   margin-top: 10px;
   margin-left: 15px;
 }
-
 .el-container {
   height: 100%;
   min-height: 1000px;
   padding-top: 0px;
 }
-
 .el-main {
   padding: 0px;
   background-color: white;
 }
-
 .el-header {
   padding: 0px;
 }
-
 </style>

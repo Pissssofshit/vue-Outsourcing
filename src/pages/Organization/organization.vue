@@ -30,8 +30,8 @@ export default {
               [
                   {type:1,menuname:'成员'},
                   {type:2,menuname:'团队成员',url:"团队成员"},
-                  {type:2,menuname:'组织架构',url:"组织架构"},
-                  {type:2,menuname:'用户组',url:"用户组"},
+                  // {type:2,menuname:'组织架构',url:"组织架构"},
+                  // {type:2,menuname:'用户组',url:"用户组"},
               ],
               [
                   {type:1,menuname:'权限',url:""},

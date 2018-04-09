@@ -9,7 +9,7 @@
                   <div class="despgroup">
                       <div class="desp1">头像</div>
                       <div class="desp2 p-logo">
-                          <img>
+                          <img src="../../../../static/1.jpg">
                       </div>
                   </div>
                   <div class="despgroup">
@@ -80,7 +80,8 @@ export default {
     width: 100px;
     height: 100px;
     border-radius: 100%;
-    background-color: black;
+    /* background-color: black; */
+    overflow: hidden;
 }
 .rightbase{
     width: 1200px;
