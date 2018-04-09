@@ -1,12 +1,28 @@
 <template>
   <div>
-    <el-container>
+    <el-container　v-if="media > 700">
       <el-aside width="230px">
         <asidenav class="ss" :title="title" :data="data"></asidenav>
       </el-aside>
       <el-main>
         <router-view></router-view>
       </el-main>
+    </el-container>
+    <el-container v-else >
+      <div class="swiper-container">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide menu">
+              <el-aside width="230px">
+                <asidenav　class="menuitem" :title="title" :data="data"></asidenav>
+              </el-aside>
+            </div>
+            <div class="swiper-slide content">
+              <el-main>
+        <router-view></router-view>
+      </el-main></div>
+          </div>
+      </div>
+      
     </el-container>
   </div>
 </template>
@@ -15,9 +31,12 @@
 //试看手，补天裂
 import Asidenav from '../../components/Nav/nav.vue'
 import { mapActions } from 'vuex'
+import Swiper from 'swiper'
 export default {
   data() {
     return {
+
+      media:document.body.clientWidth, //如果屏幕大于700像素　就认为是pc端　，不然就是移动段了
       title:'项目管理',
           data:[
           // 里面设置了按照 命名路由，所以url只需要是router name就ok
@@ -47,11 +66,57 @@ export default {
   },
   components:{
     Asidenav
+  },
+  mounted: function() {
+    // console.log('width'+width);
+
+    if (this.media < 700 ) {
+      console.log('excuted');
+      var swiper = new Swiper('.swiper-container', {
+        slidesPerView: 'auto',
+        initialSlide: 0,
+        on: {
+          slideChange: function() {
+            
+          },
+        }
+      });
+    }
+
   }
 }
 
 </script>
 <style scoped>
+@media only screen and (max-width: 700px) {
+   .menu {
+    width: 200px;
+    z-index: 1000 !important;
+  }
+  .menuitem{
+    background-color: rgb(241, 241, 241);
+  }
+  .projectitem{
+    width: 100% !important; 
+  }
+  .swiper-container {
+    width: 100%;
+    height: 100%;
+    /* z-index: -1; */
+    position: absolute;
+  }
+  .swiper-wrapper {
+    height: 100%;
+  }
+  .swiper-silde {
+    width: 100%;
+  }
+  .el-aside {
+    height: 100%;
+    width: 200px !important;
+    background-color: rgb(241, 241, 241);
+  }
+}
 .ss{
   width: 230px;
 }

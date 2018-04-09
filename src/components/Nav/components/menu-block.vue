@@ -1,5 +1,5 @@
 <template>
-  <div class="base">
+  <div class="base ty">
     <el-menu class="el-menu-vertical-demo">
       <div v-for="(item,index) in menulist" :key="index">
         <div v-if="item.type===1" class="menuitem gg">
@@ -23,6 +23,13 @@
   </div>
 </template>
 <style scoped>
+@media screen and (max-width: 700){ 
+  .ty{
+    z-index: 1000 !important;
+    position: absolute !important; /*why it doesnt work?*/
+  }
+ 
+}
 .no {
   margin-bottom: 10px;
   height: 20px;
