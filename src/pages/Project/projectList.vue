@@ -2,20 +2,15 @@
   <div class="page">
     <div>
       <el-container>
-        <div class="swiper-container">
+        <div class="swiper-container" v-if="media < 700">
           <div class="swiper-wrapper">
             <div class="swiper-slide menu">
               <el-aside width="230px">
-                <asidenav :title="title" :data="data"></asidenav>
+                <asidenav　class="menuitem" :title="title" :data="data"></asidenav>
               </el-aside>
             </div>
-            <div class="swiper-slide content"></div>
-          </div>
-        </div>
-        <el-aside width="230px" v-if="media==='pc'">
-          <asidenav :title="title" :data="data"></asidenav>
-        </el-aside>
-        <el-main>
+            <div class="swiper-slide content">
+               <el-main>
           <div>
             <div class="container-header">
               <div class="title">进行中的项目</div>
@@ -27,7 +22,7 @@
               </div>
             </div>
             <div class="projectlist" v-loading="startLoading">
-              <div v-for="item in projectList.prepareProjectList" :key="item.projectId">
+              <div class="projectitem" v-for="item in projectList.prepareProjectList" :key="item.projectId">
                 <router-link :to="{name: '项目详情', params: {projectId: item.projectId}}">
                   <projectItem :name="item.projectName" :img="item.projectLogo" :proid="item.projectId">
                   </projectItem>
@@ -40,7 +35,7 @@
               <div class="title">准备中的项目</div>
             </div>
             <div class="projectlist" v-loading="prepareLoading">
-              <div v-for="item in projectList.startProjectList" :key="item.projectId">
+              <div class="projectitem" v-for="item in projectList.startProjectList" :key="item.projectId">
                 <router-link :to="{name: '项目详情', params: {projectId: item.projectId}}">
                   <projectItem :name="item.projectName" :img="item.projectLogo" :proid="item.projectId"></projectItem>
                 </router-link>
@@ -52,7 +47,58 @@
               <div class="title">已完结的项目</div>
             </div>
             <div class="projectlist" v-loading="finishLoading">
-              <div v-for="item in projectList.finishProjectList" :key="item.projectId">
+              <div class="projectitem" v-for="item in projectList.finishProjectList" :key="item.projectId">
+                <router-link :to="{name: '项目详情', params: {projectId: item.projectId}}">
+                  <projectItem :name="item.projectName" :img="item.projectLogo" :proid="item.projectId"></projectItem>
+                </router-link>
+              </div>
+            </div>
+          </div>
+        </el-main>
+            </div>
+          </div>
+        </div>
+        <el-aside width="230px" v-if="media > 700">
+          <asidenav :title="title" :data="data"></asidenav>
+        </el-aside>
+       <el-main v-if="media > 700">
+          <div>
+            <div class="container-header">
+              <div class="title">进行中的项目</div>
+              <div class="right-content">
+                <router-link :to="{name: '新建项目'}">
+                  <i class="el-icon-plus"></i>
+                </router-link>
+                <span class="item-title">新建项目</span>
+              </div>
+            </div>
+            <div class="projectlist" v-loading="startLoading">
+              <div class="projectitem" v-for="item in projectList.prepareProjectList" :key="item.projectId">
+                <router-link :to="{name: '项目详情', params: {projectId: item.projectId}}">
+                  <projectItem :name="item.projectName" :img="item.projectLogo" :proid="item.projectId">
+                  </projectItem>
+                </router-link>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="container-header">
+              <div class="title">准备中的项目</div>
+            </div>
+            <div class="projectlist" v-loading="prepareLoading">
+              <div class="projectitem" v-for="item in projectList.startProjectList" :key="item.projectId">
+                <router-link :to="{name: '项目详情', params: {projectId: item.projectId}}">
+                  <projectItem :name="item.projectName" :img="item.projectLogo" :proid="item.projectId"></projectItem>
+                </router-link>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="container-header">
+              <div class="title">已完结的项目</div>
+            </div>
+            <div class="projectlist" v-loading="finishLoading">
+              <div class="projectitem" v-for="item in projectList.finishProjectList" :key="item.projectId">
                 <router-link :to="{name: '项目详情', params: {projectId: item.projectId}}">
                   <projectItem :name="item.projectName" :img="item.projectLogo" :proid="item.projectId"></projectItem>
                 </router-link>
@@ -82,7 +128,7 @@ type 3
 export default {
   data() {
     return {
-      media: 'phone',
+      media: document.body.clientWidth,
       title: '地狱咆哮',
       data: [
         [{ type: 2, menuname: '概览' },
@@ -124,18 +170,9 @@ export default {
       console.log('excuted');
       var swiper = new Swiper('.swiper-container', {
         slidesPerView: 'auto',
-        initialSlide: 0,
+        initialSlide: 1,
         on: {
           slideChange: function() {
-            // var slider = this;
-            // if (slider.activeIndex === 0) {
-
-            // var sss = document.querySelector('.content');
-            //  sss.style.width="800px";
-            // } else {
-            // var sss = document.querySelector('.content');
-            // sss.style.width="100%";       
-            // }
           },
         }
       });
@@ -173,14 +210,24 @@ export default {
 
 </script>
 <style scoped>
+.right-content{
+  z-index: 10;
+}
 @media only screen and (max-width: 700px) {
   .menu {
-    width: 320px;
+    width: 200px;
+    z-index: 1000 !important;
+  }
+  .menuitem{
+    background-color: rgb(241, 241, 241);
+  }
+  .projectitem{
+    width: 100% !important; 
   }
   .swiper-container {
     width: 100%;
     height: 100%;
-    z-index: 1000;
+    /* z-index: -1; */
     position: absolute;
   }
   .swiper-wrapper {
@@ -191,6 +238,7 @@ export default {
   }
   .el-aside {
     height: 100%;
+    width: 200px !important;
     background-color: rgb(241, 241, 241);
   }
 }

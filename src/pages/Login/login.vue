@@ -46,8 +46,8 @@ export default {
     }
   },
   mounted() {
-  //   this.$router.push({ name: '首页' })
-  //   this.LoginAction({username:'123',userid:'asd'})
+    this.$router.push({ name: '首页' })
+    this.LoginAction({username:'123',userid:'asd'})
     this.showLogin = true;
     let userInfo = JSON.parse(localStorage.getItem("userInfo"))
     console.log(userInfo)

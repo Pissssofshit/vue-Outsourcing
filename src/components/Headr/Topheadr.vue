@@ -71,6 +71,11 @@ export default {
 
 </script>
 <style scoped>
+@media only screen and (max-width: 700px) {
+  .header_right{
+    padding: 0px !important;
+  }
+}
 .myheader {
 
   flex: 0 0 auto;
