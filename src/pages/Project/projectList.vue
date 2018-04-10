@@ -154,19 +154,10 @@ export default {
     this.getFinishProjectList()
     // console.log("projectList.vue：" + JSON.stringify(this.$store.state.userInfo));
   },
-  beforecreate: function() {
-    //   var width=document.body.clientWidth;   it's um... it doesnt works
-    // if(width<700){
-    //     this.media='phone';
-    //   }else{
-    //     this.media='pc';
-    //   }
-    //   console.log('sss');
-  },
   mounted: function() {
     // console.log('width'+width);
 
-    if (this.media === 'phone') {
+    if (this.media < 700) {
       console.log('excuted');
       var swiper = new Swiper('.swiper-container', {
         slidesPerView: 'auto',

@@ -1,18 +1,12 @@
 <template>
   <div>
-    <el-container>
-      <el-aside width="230px">
-        <asidenav :title="title" :data="data"></asidenav>
-      </el-aside>
-      <el-main>
-        <router-view></router-view>
-      </el-main>
-    </el-container>
+    <basiclayout :title=title :data=data></basiclayout>
   </div>
 </template>
 <script>
 import { mapState, mapGetters, mapActions } from 'vuex'
 import Asidenav from '../../components/Nav/nav.vue'
+import Basiclayout from '../../components/layout/basiclayout.vue'
 export default {
   data() {
     return {
@@ -29,7 +23,8 @@ export default {
     }
   },
   components: {
-    Asidenav
+    Asidenav,
+    Basiclayout
   }
 
 }
