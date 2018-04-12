@@ -6,7 +6,8 @@
         <div></div>
       </el-row>
       <el-row>
-        <div class="tasktitle">{{form.taskname}}</div>
+        <div class="tasktitle">
+          <router-link to="/index/taskpage">{{form.taskname}}</router-link></div>
       </el-row>
       <el-row class="peijian">
         <peijian :firsttext=form.exo secondtext="负责人" url="../../assets/logo.png"></peijian>
@@ -16,7 +17,7 @@
       <el-row>
         <div class="tags">任务描述</div>
       </el-row>
-      <el-row>
+      <el-row class="aha">
         <el-input class="www"
   type="textarea"
   :rows="2"
@@ -144,6 +145,9 @@
   </div>
 </template>
 <style scoped>
+.aha{
+  text-align: start;
+}
 .sfg{
   display: flex;
   justify-content: space-between;
@@ -189,6 +193,7 @@
 }
 .www{
   width: 400px;
+
 }
 .tags{
   font-size: 15px;
