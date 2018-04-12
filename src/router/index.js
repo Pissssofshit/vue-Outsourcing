@@ -30,6 +30,8 @@ import ProjectReports from '@/pages/Project/ProjectDetails/ProjectReports/projec
 import Tasklist from '@/pages/Project/ProjectDetails/tasklist'
 import Attendance from '@/pages/Project/ProjectDetails/attendance'
 import Data from '@/pages/Data/data'
+import TaskPage from '@/pages/Task/taskpage'
+import Taskmainbody from '@/pages/Task/taskmainbody'
 import Dataoption1 from '@/pages/Data/dataoption/data1.vue'
 import test from '../pages/test.vue'
 import SingleReport from '@/pages/Project/ProjectDetails/ProjectReports/singleReport'
@@ -80,6 +82,17 @@ const vueRouter = new Router({
             },
           ]
         },
+        {
+          path: 'taskpage',
+          name: '任务详情页',
+          component: TaskPage,
+          redirect: { name: 'mainf' },
+          children: [{
+              path: 'mainf',
+              name: 'mainf',
+              component: Taskmainbody
+            }]
+          },
         {
           path: 'organization',
           name: '团队配置中心',

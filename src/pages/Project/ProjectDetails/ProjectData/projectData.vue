@@ -104,7 +104,6 @@ export default {
           { name: "普通资料4", userName: "tom", updateTime: "2018-03-29" },
         ],
         [
-
           { name: "重要资料", userName: "hector", updateTime: "2018-03-29" },
           { name: "重要资料", userName: "hector", updateTime: "2018-03-29" },
           { name: "重要资料", userName: "hector", updateTime: "2018-03-29" },
@@ -116,7 +115,6 @@ export default {
           { name: "重要资料", userName: "hector", updateTime: "2018-03-29" },
         ],
         [
-
           { name: "机密文件", userName: "spongebob", updateTime: "2018-03-29" },
           { name: "机密文件", userName: "spongebob", updateTime: "2018-03-29" },
           { name: "机密文件", userName: "spongebob", updateTime: "2018-03-29" },
@@ -140,7 +138,9 @@ export default {
   },
   mounted() {},
   watch: {
-
+  },
+  created() {
+    this.tableData = this.allTableData[0]
   },
   created() {
     this.tableData = this.allTableData[0]
@@ -154,7 +154,6 @@ export default {
         console.log(true)
         this.addstate = true
       }
-
     },
   },
   methods: {
@@ -170,7 +169,6 @@ export default {
       } else if (this.TabsValue === '机密资料') {
         this.tableData = this.allTableData[2]
       }
-
     },
     AddStaff() {
       // console.log(fileList);
@@ -192,76 +190,61 @@ export default {
     }
   }
 }
-
 </script>
 <style scoped>
 .upload-demo {
   padding-top: 10px;
 }
-
 .dialog {
   text-align: left;
 }
-
 .dialog p {
   font-size: 16px;
   margin-left: 5px;
   margin-bottom: 5px;
 }
-
 .dialog .el-select {
   width: 100%;
   margin-bottom: 5px;
 }
-
 .tools {
   margin-left: 10px;
   margin-top: 5px;
 }
-
 .small {
-  width: 100%^;
+  width: 100%;
   /*eight: 520px;*/
 }
-
 .context_tabs {
   text-align: right;
   margin-right: 10px;
   margin-top: 5px;
   /*background: */
 }
-
-
 .search {
   width: 200px;
   float: left;
   margin-bottom: 5px;
 }
-
 .el-icon-search {
   font-weight: bold;
 }
-
 .tools {
   margin-left: 10px;
   margin-top: 5px;
 }
-
 .button {
   float: right;
   margin-right: 20px;
 }
-
 .base {
   box-shadow: 0 4px 6px 0 rgba(31, 31, 31, 0.05), 0 0 2px 0 rgba(31, 31, 31, 0.2);
   margin: 10px;
 }
-
 .el-row {
   background-color: white;
   border-bottom: 1px solid #dedede;
 }
-
 .title {
   /* min-height: 40px; */
   height: 44px;
@@ -270,20 +253,16 @@ export default {
   margin-top: 10px;
   margin-left: 15px;
 }
-
 .el-container {
   height: 100%;
   min-height: 1000px;
   padding-top: 0px;
 }
-
 .el-main {
   padding: 0px;
   background-color: white;
 }
-
 .el-header {
   padding: 0px;
 }
-
 </style>

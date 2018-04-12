@@ -23,20 +23,6 @@ export default {
   components: {
     Asidenav,
     Basiclayout
-  },
-  mounted: function() {
-    if (this.media < 700) {
-      console.log('excuted');
-      var swiper = new Swiper('.swiper-container', {
-        slidesPerView: 'auto',
-        initialSlide: 1,
-        on: {
-          slideChange: function() {
-          },
-        }
-      });
-    }
-
   }
   
 }
