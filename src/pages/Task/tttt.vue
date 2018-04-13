@@ -8,6 +8,7 @@
           </el-col>
           <el-col class="ssf" width="100%">{{showdata}}</el-col>
       </el-row>
+      
   </div>
 </template>
 <script>
@@ -90,6 +91,7 @@ export default {
 </script>
 
 <style scoped>
+
 .sf{
     display: flex;
 }

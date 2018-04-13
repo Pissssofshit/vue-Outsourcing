@@ -322,7 +322,7 @@ export default {
             id:"#1255",
             exo:"1412143367@qq.com",
             project:"红软外包服务平台",
-            textarea:"i will let u down i will let u fail you will have it all my empire of dirt",
+            textarea:"在登录平台前进行权限验证",
             value1:"2018-04-17",
             role:'myduty'},
           tableData: [
@@ -334,7 +334,7 @@ export default {
             id:"#1255",
             exo:"1412143367@qq.com",
             project:"红软外包服务平台",
-            textarea:"i will let u down i will let u fail you will have it all my empire of dirt",
+            textarea:"在登录平台前进行权限验证",
             value1:"2018-04-17",
             role:'myduty'
           },
@@ -346,7 +346,7 @@ export default {
             id:"#213",
             exo:"1412143367@qq.com",
             project:"红软外包服务平台",
-            textarea:"i will let u down i will let u fail you will have it all my empire of dirt",
+            textarea:"在登录平台前进行权限验证",
             value1:"2018-04-17",
             role:'myduty'
           },
@@ -358,7 +358,7 @@ export default {
             id:"#6226",
             exo:"1412143367@qq.com",
             project:"红软外包服务平台",
-            textarea:"i will let u down i will let u fail you will have it all my empire of dirt",
+            textarea:"在登录平台前进行权限验证",
             value1:"2018-04-17",
             role:'myduty'
           }
