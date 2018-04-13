@@ -45,54 +45,36 @@ export default {
     Noheadtable,
     Ttt
   },
-  data(){
-      return{
-          items:[
-              
-          [
-                  {row:{
-              id:'#1245',
-              commitname:'第一次样本采集',
-              logoimg:'../../../static/1.jpg',
-              data:'2018-4-7',
-              commiter:'pisofshit'
-          }},
-               {row:{
-              id:'#126',
-              commitname:'第二次样本采集',
-              logoimg:'../../../static/1.jpg',
-              data:'2018-4-7',
-              commiter:'pisofshit'
-          }},
-          ],[
-                  {row:{
-              id:'#312',
-              commitname:'图形优化',
-              logoimg:'../../../static/2.jpg',
-              data:'2018-4-4',
-              commiter:'Yamilaw'
-          }},
-               {row:{
-              id:'#612',
-              commitname:'素材归类',
-              logoimg:'../../../static/3.jpg',
-              data:'2018-4-4',
-              commiter:'Nevermore'
-          }},
-          ]
-          ],
-          selecttask:{
-              taskname:"红软外包服务平台 登录权限",
-            youxianji:"普通",
-            state:"进行中",
-            creator:"1412143367@qq.com",
-            id:"#1255",
-            exo:"1412143367@qq.com",
-            project:"红软外包服务平台",
-            textarea:"需要在登录的时候进行权限验证",
-            data:"2018-04-17",
-            role:'myduty'
+  data() {
+    return {
+      items: [
 
+        [{
+            row: {
+              id: '#1245',
+              commitname: '第一次样本采集',
+              logoimg: '../../../static/1.jpg',
+              data: '2018-4-7',
+              commiter: 'pisofshit'
+            }
+          },
+          {
+            row: {
+              id: '#126',
+              commitname: '第二次样本采集',
+              logoimg: '../../../static/1.jpg',
+              data: '2018-4-7',
+              commiter: 'pisofshit'
+            }
+          },
+        ],
+        [{
+            row: {
+              id: '#312',
+              commitname: '图形优化',
+              logoimg: '../../../static/2.jpg',
+              data: '2018-4-4',
+              commiter: 'Yamilaw'
             }
           },
           {
@@ -107,7 +89,28 @@ export default {
         ]
       ],
       selecttask: {
-        taskname: "红软外包服务平台 登录权限",
+        taskname: "虹软外包服务平台 登录权限",
+        youxianji: "普通",
+        state: "进行中",
+        creator: "1412143367@qq.com",
+        id: "#1255",
+        exo: "1412143367@qq.com",
+        project: "红软外包服务平台",
+        textarea: "需要在登录的时候进行权限验证",
+        data: "2018-04-17",
+        role: 'myduty'
+
+      },
+      row: {
+        id: '#612',
+        commitname: '素材归类',
+        logoimg: '../../../static/3.jpg',
+        data: '2018-4-4',
+        commiter: 'Nevermore'
+      },
+
+      selecttask: {
+        taskname: "虹软外包服务平台 登录权限",
         youxianji: "普通",
         state: "进行中",
         creator: "1412143367@qq.com",

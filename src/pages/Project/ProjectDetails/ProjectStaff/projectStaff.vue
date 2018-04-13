@@ -29,15 +29,17 @@
                     <span style="margin-left: 0px">{{ scope.row.name }}</span>
                   </template>
                 </el-table-column>
-                <el-table-column label="在职情况" align="left" prop="alive">
+                <el-table-column sortable label="在职情况" align="left" prop="alive">
                 </el-table-column>
-                <el-table-column label="邮箱" align="left" prop="email">
+                <!--      <el-table-column label="邮箱" align="left" prop="email">
+                </el-table-column> -->
+                <el-table-column label="入职(离职)时间" align="left" prop="time">
                 </el-table-column>
-                <el-table-column label="角色" align="left"  prop="position">
+                <el-table-column label="角色" align="left" prop="position">
                 </el-table-column>
-                <el-table-column label="个人仓库" align="left" >
+                <el-table-column label="个人仓库" align="left">
                   <template slot-scope="scope">
-                  <router-link :to="{name:'成员个人仓库'}">
+                    <router-link :to="{name:'成员个人仓库'}">
                       <div>
                         <span style="color:blue;">查看</span>
                       </div>
@@ -127,26 +129,35 @@ export default {
       MyTabs: [{
           position: '项目成员',
           name: '项目成员',
-          number: 4,
+          number: 9,
         }, {
           position: '负责人',
           name: '负责人',
-          number: 1,
+          number: 2,
         },
 
       ],
       tableData: [
-        { name: "zhuyunwu", email: "zhuyunwu@163.com", position: "普通成员", alive: '在职' },
-        { name: "wanghoulun", email: "wanghoulun@163.com", position: "普通成员", alive: '在职' },
-        { name: "fanping", email: "fanping@163.com", position: "普通成员", alive: '在职' },
-        { name: "spongebob ", email: "fanping@163.com", position: "负责人", alive: '在职' },
+        { name: "zhuyunwu", email: "zhuyunwu@163.com", position: "普通成员", alive: '在职', time: '2018-04-10' },
+        { name: "wanghoulun", email: "wanghoulun@163.com", position: "普通成员", alive: '在职', time: '2018-04-11' },
+        { name: "fanping", email: "fanping@163.com", position: "普通成员", alive: '在职', time: '2018-04-11' },
+        { name: "zhoujiel", email: "zhoujiel@163.com", position: "普通成员", alive: '在职', time: '2018-04-08' },
+        { name: "spongebob ", email: "spongebob@163.com", position: "负责人", alive: '在职', time: '2018-04-06' },
+        { name: "forg", email: "forg@163.com", position: "负责人", alive: '在职', time: '2018-04-05' },
+        { name: "cherry ", email: "cherry@163.com", position: "普通成员", alive: '离职', time: '2018-04-11' },
+        { name: "peter ", email: "peter@163.com", position: "普通成员", alive: '离职', time: '2018-04-10' },
+        { name: "brick", email: "brick@163.com", position: "普通成员", alive: '离职', time: '2018-04-08' },
       ],
       tabs: [
-        { name: "zhuyunwu", email: "zhuyunwu@163.com", position: "普通成员", alive: '在职' },
-        { name: "wanghoulun", email: "wanghoulun@163.com", position: "普通成员", alive: '在职' },
-        { name: "spongebob ", email: "fanping@163.com", position: "负责人", alive: '在职' },
-        { name: "fanping", email: "fanping@163.com", position: "普通成员", alive: '在职' },
-
+        { name: "zhuyunwu", email: "zhuyunwu@163.com", position: "普通成员", alive: '在职', time: '2018-04-10' },
+        { name: "wanghoulun", email: "wanghoulun@163.com", position: "普通成员", alive: '在职', time: '2018-04-11' },
+        { name: "fanping", email: "fanping@163.com", position: "普通成员", alive: '在职', time: '2018-04-11' },
+        { name: "zhoujiel", email: "zhoujiel@163.com", position: "普通成员", alive: '在职', time: '2018-04-08' },
+        { name: "spongebob ", email: "spongebob@163.com", position: "负责人", alive: '在职', time: '2018-04-06' },
+        { name: "forg", email: "forg@163.com", position: "负责人", alive: '在职', time: '2018-04-05' },
+        { name: "cherry ", email: "cherry@163.com", position: "普通成员", alive: '离职', time: '2018-04-11' },
+        { name: "peter ", email: "peter@163.com", position: "普通成员", alive: '离职', time: '2018-04-10' },
+        { name: "brick", email: "brick@163.com", position: "普通成员", alive: '离职', time: '2018-04-08' },
       ],
 
     }
@@ -248,10 +259,28 @@ export default {
           break
         }
       }
-      this.tabs.splice(i, 1)
-      this.HandleClick({}, {});
-      this.UpNumber();
-      this.$message.success('删除成功');
+      this.$confirm('此操作将删除该成员, 是否继续?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        this.tabs.splice(i, 1)
+        this.$message({
+          type: 'success',
+          message: '删除成功!请处理后续事情'
+        });
+        this.HandleClick({}, {});
+        this.UpNumber();
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: '已取消删除'
+        });
+        this.HandleClick({}, {});
+        this.UpNumber();
+      });
+
+
     },
     UpNumber() {
       this.MyTabs[0].number = this.tabs.length

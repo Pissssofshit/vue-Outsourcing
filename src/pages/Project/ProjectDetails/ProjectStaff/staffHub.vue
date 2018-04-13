@@ -1,9 +1,10 @@
 <template>
   <div class="base" v-loading="loading">
     <el-container>
-      <el-header height="55px">
+      <el-header height="70px">
         <el-row>
           <div class="title">个人资料仓库</div>
+          <div class="title2">所属人:zhuyunwu</div>
         </el-row>
       </el-header>
       <el-container>
@@ -101,49 +102,31 @@ export default {
       tableData: [],
       allTableData: [
         [
-          { name: "说明", userName: "tom", updateTime: "2018-03-29", type: '文件夹', needpower: 1 },
-          { name: "普通资料1", userName: "tom", updateTime: "2018-03-29", type: '文件夹', needpower: 1 },
-          { name: "普通资料2", userName: "tom", updateTime: "2018-03-29", type: '文件夹', needpower: 1 },
-          { name: "普通资料3", userName: "tom", updateTime: "2018-03-29", type: '文件夹', needpower: 1 },
-          { name: "普通资料4", userName: "tom", updateTime: "2018-03-29", type: '文件夹', needpower: 1 },
-          { name: "普通资料4", userName: "tom", updateTime: "2018-03-29", type: '文件夹', needpower: 1 },
-          { name: "普通资料4", userName: "tom", updateTime: "2018-03-29", type: '文件夹', needpower: 1 },
-          { name: "普通资料4", userName: "tom", updateTime: "2018-03-29", type: '文件夹', needpower: 1 },
-          { name: "普通资料4", userName: "tom", updateTime: "2018-03-29", type: '视频', needpower: 0 },
+          { name: "我的资料1", userName: "zhuyunwu", updateTime: "2018-04-09", type: '文件夹' ,needpower:0},
+          { name: "我的资料2", userName: "zhuyunwu", updateTime: "2018-04-11", type: '文件夹' ,needpower:0},
+          { name: "我的资料3", userName: "zhuyunwu", updateTime: "2018-04-10", type: '文件夹' ,needpower:0},
         ],
         [
-          { name: "重要资料", userName: "hector", updateTime: "2018-03-29", type: '文件夹', needpower: 2 },
-          { name: "重要资料", userName: "hector", updateTime: "2018-03-29", type: '文件夹', needpower: 2 },
-          { name: "重要资料", userName: "hector", updateTime: "2018-03-29", type: '文件夹', needpower: 2 },
-          { name: "重要资料", userName: "hector", updateTime: "2018-03-29", type: '文件夹', needpower: 2 },
-          { name: "重要资料", userName: "hector", updateTime: "2018-03-29", type: '文件夹', needpower: 2 },
-          { name: "重要资料", userName: "hector", updateTime: "2018-03-29", type: '文件夹', needpower: 2 },
-          { name: "重要资料", userName: "hector", updateTime: "2018-03-29", type: '文件夹', needpower: 2 },
-          { name: "重要资料", userName: "hector", updateTime: "2018-03-29", type: '文件夹', needpower: 2 },
-          { name: "重要资料", userName: "hector", updateTime: "2018-03-29", type: '文件夹', needpower: 2 },
+          { name: "迁移文件1", userName: "zhuyunwu", updateTime: "2018-04-11", type: '文件夹' ,needpower:0},
+          { name: "迁移文件2", userName: "zhuyunwu", updateTime: "2018-04-09", type: '文件夹' ,needpower:0},
+          { name: "迁移文件3", userName: "hector", updateTime: "2018-04-10", type: '文件夹' ,needpower:0},
+          { name: "迁移文件4", userName: "hector", updateTime: "2018-04-10", type: '文件夹' ,needpower:0},
         ],
         [
-          { name: "机密文件", userName: "spongebob", updateTime: "2018-03-29", type: '文件夹', needpower: 3 },
-          { name: "机密文件", userName: "spongebob", updateTime: "2018-03-29", type: '文件夹', needpower: 3 },
-          { name: "机密文件", userName: "spongebob", updateTime: "2018-03-29", type: '文件夹', needpower: 3 },
-          { name: "机密文件", userName: "spongebob", updateTime: "2018-03-29", type: '文件夹', needpower: 3 },
-          { name: "机密文件", userName: "spongebob", updateTime: "2018-03-29", type: '文件夹', needpower: 3 },
-          { name: "机密文件", userName: "spongebob", updateTime: "2018-03-29", type: '文件夹', needpower: 3 },
-          { name: "机密文件", userName: "spongebob", updateTime: "2018-03-29", type: '文件夹', needpower: 3 },
-          { name: "机密文件", userName: "spongebob", updateTime: "2018-03-29", type: '文件夹', needpower: 3 },
-          { name: "机密文件", userName: "spongebob", updateTime: "2018-03-29", type: '文件夹', needpower: 3 },
-          { name: "机密文件", userName: "spongebob", updateTime: "2018-03-29", type: '文件夹', needpower: 3 },
+          { name: "保存文件1", userName: "zhuyunwu", updateTime: "2018-04-10", type: '文件夹' ,needpower:0},
+          { name: "机密文件2", userName: "zhuyunwu", updateTime: "2018-04-10", type: '文件夹' ,needpower:0},
+          { name: "保存文件3", userName: "zhuyunwu", updateTime: "2018-04-10", type: '文件夹' ,needpower:0},
+          { name: "保存文件4", userName: "zhuyunwu", updateTime: "2018-04-10", type: '文件夹' ,needpower:0},
+          { name: "保存文件5", userName: "zhuyunwu", updateTime: "2018-04-10", type: '文件夹' ,needpower:0},
         ]
       ],
       normalData: [
         [
-          { name: "person#001.jpg", userName: "tom", updateTime: "2018-03-29", type: '图片' },
-          { name: "person#002.jpg", userName: "tom", updateTime: "2018-03-29", type: '图片' },
-          { name: "person#003.jpg", userName: "tom", updateTime: "2018-03-29", type: '图片' },
-          { name: "person#004.jpg", userName: "tom", updateTime: "2018-03-29", type: '图片' },
-          { name: "person#005.jpg", userName: "tom", updateTime: "2018-03-29", type: '图片' },
-          { name: "person#006.jpg", userName: "tom", updateTime: "2018-03-29", type: '图片' },
-          { name: "识别过程.mp4", userName: "tom", updateTime: "2018-03-29", type: '视频' },
+          { name: "person#001.jpg", userName: "zhuyunwu", updateTime: "2018-04-10", type: '图片' },
+          { name: "person#002.jpg", userName: "zhuyunwu", updateTime: "2018-04-10", type: '图片' },
+          { name: "person#003.jpg", userName: "zhuyunwu", updateTime: "2018-04-10", type: '图片' },
+          { name: "person#004.jpg", userName: "zhuyunwu", updateTime: "2018-04-11", type: '图片' },
+          { name: "person#005.jpg", userName: "zhuyunwu", updateTime: "2018-04-11", type: '图片' },
         ],
       ],
       addDataDialog: {
@@ -179,6 +162,7 @@ export default {
       this.downloadName = name ;
     },
     FilterPower(mypower, needpower) {
+
       if (needpower === 0) {
         return 'false'
       } else if (mypower >= needpower) {
@@ -207,9 +191,9 @@ export default {
       let mypower = 1
       let res = this.FilterPower(mypower, needpower)
       console.log("1" + res + "1")
-      if (res === 'true') {
+   
         this.tableData = this.normalData[0]
-      }
+
     },
     handleChange(file, fileList) {
       this.fileList = fileList
@@ -227,11 +211,11 @@ export default {
     AddStaff() {
       // console.log(fileList);
       if (this.addDataDialog.value === '我的资料') {
-        this.allTableData[0].push({ name: this.addDataDialog.input, userName: "spongebob", updateTime: "2018-03-29", type: "文件" })
+        this.allTableData[0].push({ name: this.addDataDialog.input, userName: "zhuyunwu", updateTime: "2018-03-29", type: "文件" })
       } else if (this.addDataDialog.value === '迁移文件') {
-        this.allTableData[1].push({ name: this.addDataDialog.input, userName: "spongebob", updateTime: "2018-03-29", type: "文件" })
+        this.allTableData[1].push({ name: this.addDataDialog.input, userName: "zhuyunwu", updateTime: "2018-03-29", type: "文件" })
       } else if (this.addDataDialog.value === '保存文件') {
-        this.allTableData[2].push({ name: this.addDataDialog.input, userName: "spongebob", updateTime: "2018-03-29", type: "文件" })
+        this.allTableData[2].push({ name: this.addDataDialog.input, userName: "zhuyunwu", updateTime: "2018-03-29", type: "文件" })
       }
       this.$message.success('添加成功');
       this.addDataDialog.dialogVisible = false;
@@ -319,6 +303,15 @@ export default {
   font-size: 25px;
   text-align: start;
   margin-top: 10px;
+  margin-left: 15px;
+}
+.title2 {
+  /* min-height: 40px; */
+  /*height: 40px;*/
+  color: #909090;
+  font-size: 15px;
+  text-align: start;
+  /*margin-top: 10px;*/
   margin-left: 15px;
 }
 
