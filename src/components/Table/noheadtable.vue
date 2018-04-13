@@ -5,44 +5,52 @@
     style="width: 100%">
     <el-table-column
       label="日期"
+      width="100%"
+      prop="row"
      >
       <template slot-scope="scope">
-        <slot name="firstslot"></slot>
+        <!-- <slot　></slot> -->
+        <!-- <slot>{{scope.row.row}}</slot> -->
+        <!-- <div>{{scope.row.row}}</div> -->
+        <tttt :form1="scope.row.row"></tttt>
       </template>
     </el-table-column>
-    <el-table-column
+    <!-- <el-table-column
       label="日期"
       >
       <template slot-scope="scope">
         <slot name="firstslot"></slot>
       </template>
-    </el-table-column>
+    </el-table-column> -->
     </el-table>
 </template>
+<style scoped>
+/deep/ .el-table__body{
+    width: 100% !important;
+}
+</style>
 
 <script>
+import Tttt from '../../pages/Task/tttt.vue'
   export default {
     data() {
       return {
-        tableData: [{
-          date: '2016-05-02',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
-          date: '2016-05-04',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1517 弄'
-        }, {
-          date: '2016-05-01',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1519 弄'
-        }, {
-          date: '2016-05-03',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1516 弄'
-        }]
       }
     },
+    components:{
+      Tttt
+    },
+    // watch:{
+    //     test: function(){
+    //         console.log(';ssss');
+    //         for(item in test){
+    //             console.log(""+item+test[item]);
+    //         }
+    //     }
+    // },
+    props:[
+        'tableData'
+        ],
     methods: {
       handleEdit(index, row) {
         console.log(index, row);

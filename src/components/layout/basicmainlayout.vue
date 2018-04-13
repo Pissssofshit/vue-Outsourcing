@@ -8,7 +8,8 @@
 
 .rightbase{
     width: 1200px;
-    height: 1000px;
+    min-height: 1000px;
+    height: 100%;
     /* height: 100%; */
     background-color: white;
     box-shadow: 0 4px 6px 0 rgba(31, 31, 31, 0.05), 0 0 2px 0 rgba(31, 31, 31, 0.2);
