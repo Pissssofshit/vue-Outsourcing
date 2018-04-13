@@ -127,9 +127,25 @@
   :limit="3"
   :on-exceed="handleExceed"
   :file-list="fileList">
-  <el-button size="small" type="primary">点击上传</el-button>
+  <el-button >点击上传</el-button>
 </el-upload>
-  <el-button class="submit" size="small" @click="dialogVisible = true">提交任务</el-button>
+　<el-button　class="submit" @click="dialogVisible２ = true">提交</el-button>
+<el-dialog
+  title="附加信息"
+  :visible.sync="dialogVisible２"
+  width="30%"
+  :before-close="handleClose">
+    <el-input class="www"
+        type="textarea"
+        :rows="2"
+        placeholder="请输入内容"
+        v-model="form3.textarea"></el-input>
+  <span slot="footer" class="dialog-footer">
+    <el-button @click="dialogVisible２ = false">取 消</el-button>
+    <el-button  type="primary" @click="commitstask">确 定</el-button>
+  </span>
+</el-dialog>
+  <el-button class="submit" size="small" @click="dialogVisible = true">完成任务</el-button>
   <el-dialog
   title="提示信息"
   :visible.sync="dialogVisible"
@@ -240,10 +256,14 @@
 </style>
 <script>
 import Peijian from './peijian.vue'
+import Vue from 'vue'
 export default {
   data(){
     return{
+      form4:{},
+      dialogVisible２:false,
       form2:{},
+      form3:{},
       dialogFormVisible: false,
       xiangmu:'ss',
       dialogVisible: false,
@@ -265,23 +285,47 @@ export default {
   ],
   mounted(){
     this.form=this.form1;
-    console.log('mounted');
-    console.log(''+this.form1);
-    for(var item in this.form1){
-    console.log(this.form1[item]);
-    }  
+    // console.log('mounted');
+    // console.log(''+this.form1);
+    // for(var item in this.form1){
+    // console.log(this.form1[item]);
+    // }  
     },
-  watch:{
-    form1:function(){
-      console.log('watch')
-      this.form=this.form1;
-    }
-  },
   methods: {
+    getNowFormatDate:function() {
+        var date = new Date();
+        var seperator1 = "-";
+        var year = date.getFullYear();
+        var month = date.getMonth() + 1;
+        var strDate = date.getDate();
+        if (month >= 1 && month <= 9) {
+            // month = "0" + month;
+        }
+        if (strDate >= 0 && strDate <= 9) {
+            // strDate = "0" + strDate;
+        }
+        var currentdate = year + seperator1 + month + seperator1 + strDate;
+        return currentdate;
+    },
+    commitstask(){
+      Vue.set(this.form4,"commitname",this.form3.textarea);
+      Vue.set(this.form4,"commiter","pisofshit");
+      Vue.set(this.form4,"logoimg","../../../static/1.jpg");
+      Vue.set(this.form4,"id","#8563");
+      var t=this.getNowFormatDate();
+      // console.log("ttt"+t);
+      Vue.set(this.form4,"data",t);
+      this.dialogVisible２ = false;
+      // console.log('this.form4');
+      //   for(var items in this.form4){
+      //     console.log(this.form4[items]);
+      //   }
+      this.$emit('child-say',this.form4);
+    },
     submitform(){
-      for(var item in this.form2){
-        console.log(''+item+' '+this.form2[item]);
-      }
+      // for(var item in this.form2){
+      //   console.log(''+item+' '+this.form2[item]);
+      // }
       this.form2.parentid=this.form2.id;
       var ii=Math.floor(Math.random()*10000+1);//假装这是一个不会重复的Id 后端啊后端 你在哪里
       this.form2.id="#"+ii;
