@@ -61,9 +61,10 @@ export default {
           message: "检测出" + response.body.faces.length + "人",
           type: 'success'
         });
-          this.$router.push({ name: '首页' })
+        this.$router.push({ name: '首页' })
       }, (error) => {
         this.$message.error('检测失败');
+        this.loading = false;
       });
     },
 

@@ -41,6 +41,8 @@ import personalData from '@/pages/My/personalData'
 import WorkRecord from '@/pages/Project/ProjectDetails/ProjectReports/workRecord'
 import TaskStatistics from '@/pages/Project/ProjectDetails/ProjectReports/taskStatistics.vue'
 import ProjectSetting from '@/pages/Project/ProjectDetails/ProjectSetting/projectSetting'
+import EntryAndExit from '@/pages/Project/ProjectDetails/EntryAndExit/entryAndExit'
+import staffHub from '@/pages/Project/ProjectDetails/ProjectStaff/staffHub'
 Vue.use(Router)
 // 兄弟 or 侄子 用router-to ，父子 包含router-view
 const vueRouter = new Router({
@@ -88,11 +90,11 @@ const vueRouter = new Router({
           component: TaskPage,
           redirect: { name: 'mainf' },
           children: [{
-              path: 'mainf',
-              name: 'mainf',
-              component: Taskmainbody
-            }]
-          },
+            path: 'mainf',
+            name: 'mainf',
+            component: Taskmainbody
+          }]
+        },
         {
           path: 'organization',
           name: '团队配置中心',
@@ -200,12 +202,12 @@ const vueRouter = new Router({
               name: '项目资料',
               component: ProjectData
             },
-             {
+            {
               path: 'ProjectStaff',
               name: '人员',
               component: ProjectStaff
             },
-             {
+            {
               path: 'WorkRecord',
               name: '工作记录',
               component: WorkRecord
@@ -220,6 +222,16 @@ const vueRouter = new Router({
               name: '项目设置',
               component: ProjectSetting
             },
+            {
+              path: 'EntryAndExit',
+              name: '出入职',
+              component: EntryAndExit
+            }, 
+            {
+              path: 'staffHub',
+              name: '成员个人仓库',
+              component: staffHub
+            }
           ]
         }
       ]
