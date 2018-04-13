@@ -1,62 +1,85 @@
 <template>
-  <div class="base">
+  <div class="base" v-loading="loading" element-loading-text="正在迁移中" element-loading-spinner="el-icon-loading" element-loading-background="rgba(0, 0, 0, 0.8)">
     <el-container>
       <el-header height="55px">
-        <el-row>
-          <div class="position">项目成员</div>
+        <el-row class="forel-row">
+          <div class="position">成员出职</div>
         </el-row>
       </el-header>
       <el-container>
         <el-main>
-          <el-row>
-            <div class="tools">
+          <el-row class="forel-row">
+            <el-col :span="22">
+              <div style="text-align:left;margin-left:10px;font-size:14px;margin-top:8px;color:#909090;">请在职人员表和离职人员表中各选择一个,然后点击仓库迁移</div>
+            </el-col>
+            <el-col :span="2">
+              <el-button class="button" type="primary" size="small" @click="dialogVisible = true">仓库迁移</el-button>
+            </el-col>
+          </el-row>
+          <el-row :gutter="20">
+            <el-col :span="8">
+              <h2 style="margin-top:5px;">在职人员</h2>
               <el-col :span="6">
-                <el-input class="search" size="medium" :placeholder="placeholder" prefix-icon="el-icon-search" v-model="searchKey">
+                <el-input class="search" size="medium" placeholder="在职人员搜索" prefix-icon="el-icon-search" v-model="searchKey">
                 </el-input>
               </el-col>
-              <el-col class="buttons" :span="14" style=" float: right;">
-                <el-button class="button" type="primary" size="small" @click="addStaffDialog.dialogVisible = true">管理成员</el-button>
-                <el-button class="button" size="small" @click="managerDialog.dialogVisible = true">管理角色</el-button>
-              </el-col>
-            </div>
-          </el-row>
-          <el-tabs v-model="TabsValue" :tab-position="tabPosition" style="height: 90% " @tab-click="HandleClick">
-            </el-tab-pane>
-            <el-tab-pane v-for="(item, index) in MyTabs" :key="item.name" :label="item.position+'('+item.number+')'" :name="item.name">
-              <el-table :data="tableData" style="width: 100% ;margin-top:5px">
+              <el-table :data="tabs[0]" style="width: 100% ;margin-top:5px" border highlight-current-row @current-change="handleCurrentChange1">
                 <el-table-column label="用户名" align="left">
                   <template slot-scope="scope">
                     <span style="margin-left: 0px">{{ scope.row.name }}</span>
                   </template>
                 </el-table-column>
-                <el-table-column label="在职情况" align="left" prop="alive">
+                <el-table-column label="角色" align="left" prop="position">
                 </el-table-column>
-                <el-table-column label="邮箱" align="left" prop="email">
-                </el-table-column>
-                <el-table-column label="角色" align="left"  prop="position">
-                </el-table-column>
-                <el-table-column label="个人仓库" align="left" >
+                <el-table-column label="个人仓库" align="left" width="100px">
                   <template slot-scope="scope">
-                  <router-link :to="{name:'成员个人仓库'}">
+                    <router-link to="home">
                       <div>
                         <span style="color:blue;">查看</span>
                       </div>
                     </router-link>
                   </template>
                 </el-table-column>
-                <el-table-column label="操作" align="left" width="100px">
+              </el-table>
+            </el-col>
+            <el-col :span="16">
+              <h2 style="margin-top:5px;">离职人员</h2>
+              <el-col :span="6">
+                <el-input class="search" size="medium" placeholder="离职人员搜索" prefix-icon="el-icon-search" v-model="searchKey">
+                </el-input>
+              </el-col>
+              <el-table :data="tabs[1]" style="width: 100% ;margin-top:5px" border highlight-current-row @current-change="handleCurrentChange2">
+                <el-table-column label="用户名" align="left">
                   <template slot-scope="scope">
-                    <div @click="RemoveStaff(scope.row)">
-                      <i class="el-icon-close"></i>
-                    </div>
+                    <span style="margin-left: 0px">{{ scope.row.name }}</span>
                   </template>
                 </el-table-column>
+                <el-table-column label="角色" align="left" prop="position">
+                </el-table-column>
+                <el-table-column label="个人仓库" align="left">
+                  <template slot-scope="scope">
+                    <router-link to="home">
+                      <div>
+                        <span style="color:blue;">查看</span>
+                      </div>
+                    </router-link>
+                  </template>
+                </el-table-column>
+                <el-table-column label="是否迁移" align="left" prop="isMove">
+                </el-table-column>
               </el-table>
-            </el-tab-pane>
-          </el-tabs>
+            </el-col>
+          </el-row>
         </el-main>
       </el-container>
     </el-container>
+    <el-dialog title="确认" :visible.sync="dialogVisible" width="30%" :before-close="handleClose">
+      <span>是否确认将{{currentRow1.name}}的个人仓库迁移到{{currentRow2.name}}中</span>
+      <span slot="footer" class="dialog-footer">
+    <el-button @click="dialogVisible = false">取 消</el-button>
+    <el-button type="primary" @click="RunHub()">确 定</el-button>
+  </span>
+    </el-dialog>
     <!--管理成员  -->
     <el-dialog class="dialog" title="管理成员" :visible.sync="addStaffDialog.dialogVisible" width="30%">
       <p>项目角色</p>
@@ -106,6 +129,10 @@
 export default {
   data() {
     return {
+      loading: false,
+      currentRow1: { name: "zhuyunwu", position: "普通成员", },
+      currentRow2: { name: "zhuyunwu", position: "普通成员", },
+      dialogVisible: false,
       managerDialog: {
         input: "",
         dialogVisible: false,
@@ -136,17 +163,24 @@ export default {
 
       ],
       tableData: [
-        { name: "zhuyunwu", email: "zhuyunwu@163.com", position: "普通成员", alive: '在职' },
-        { name: "wanghoulun", email: "wanghoulun@163.com", position: "普通成员", alive: '在职' },
-        { name: "fanping", email: "fanping@163.com", position: "普通成员", alive: '在职' },
-        { name: "spongebob ", email: "fanping@163.com", position: "负责人", alive: '在职' },
+        { name: "zhuyunwu", position: "普通成员", },
+        { name: "wanghoulun", position: "普通成员", },
+        { name: "fanping", position: "普通成员", },
+        { name: "spongebob ", position: "负责人", },
       ],
       tabs: [
-        { name: "zhuyunwu", email: "zhuyunwu@163.com", position: "普通成员", alive: '在职' },
-        { name: "wanghoulun", email: "wanghoulun@163.com", position: "普通成员", alive: '在职' },
-        { name: "spongebob ", email: "fanping@163.com", position: "负责人", alive: '在职' },
-        { name: "fanping", email: "fanping@163.com", position: "普通成员", alive: '在职' },
-
+        [
+          { name: "zhuyunwu", position: "普通成员", },
+          { name: "wanghoulun", position: "普通成员", },
+          { name: "spongebob ", position: "负责人", },
+          { name: "fanping", position: "普通成员", },
+        ],
+        [
+          { name: "zhuyunwu", position: "普通成员", isMove: '否' },
+          { name: "wanghoulun", position: "普通成员", isMove: '否' },
+          { name: "spongebob ", position: "负责人", isMove: '否' },
+          { name: "fanping", position: "普通成员", isMove: '否' },
+        ],
       ],
 
     }
@@ -166,6 +200,36 @@ export default {
 
   },
   methods: {
+    RunHub() {
+      var self = this;
+      this.loading = true
+      self.dialogVisible = false
+      setTimeout(
+        function() {
+
+          for (let i = 0; i < self.tabs[1].length; i++) {
+            if (self.tabs[1][i].name === self.currentRow2.name) {
+              self.tabs[1][i].isMove = '是'
+              break
+            }
+          }
+          self.loading = false
+          self.$message({
+            message: '迁移完成',
+            type: 'success'
+          });
+
+
+
+        }, 3000)
+
+    },
+    handleCurrentChange1(val) {
+      this.currentRow1 = val;
+    },
+    handleCurrentChange2(val) {
+      this.currentRow2 = val;
+    },
     HandleClick(tab, event) {
       // console.log(tab, event);
       // console.log(this.TabsValue);
@@ -304,8 +368,10 @@ export default {
 }
 
 .button {
-  float: right;
+  float: left;
+  margin-top: 5px;
   margin-right: 20px;
+  margin-bottom: 5px;
 }
 
 .el-icon-close {
@@ -332,7 +398,7 @@ export default {
   /*min-width:1200px;*/
 }
 
-.el-row {
+.forel-row {
   background-color: white;
   border-bottom: 1px solid #dedede;
 }

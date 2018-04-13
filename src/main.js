@@ -35,6 +35,7 @@ router.beforeEach(function(to, from, next) {
   // console.log("main.js:"+auth)
   // console.log("main.js:"+nextRoute)
   console.log(to.name)
+  // console.log(to.name)
   //除了登录和注册页面其他都要验证是否登录
   if (from.name==='人脸验证'&&to.name==='登录') {
      router.push({ name: '人脸验证' })
