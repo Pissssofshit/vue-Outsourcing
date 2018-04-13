@@ -91,7 +91,7 @@ export default {
       searchBy: '成员名',
       searchKey: '',
       placeholder: '请输入成员名',
-      taskCount: [20, 30, 40],
+      taskCount: [4, 4, 4],
       tableData: [{
           id: '#123',
           youxianji: '普通',

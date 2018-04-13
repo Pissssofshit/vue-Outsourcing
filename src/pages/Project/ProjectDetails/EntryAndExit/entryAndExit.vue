@@ -17,7 +17,7 @@
             </el-col>
           </el-row>
           <el-row :gutter="20">
-            <el-col :span="8">
+            <el-col :span="10">
               <h2 style="margin-top:5px;">在职人员</h2>
               <el-col :span="6">
                 <el-input class="search" size="medium" placeholder="在职人员搜索" prefix-icon="el-icon-search" v-model="searchKey1">
@@ -31,6 +31,8 @@
                 </el-table-column>
                 <el-table-column label="角色" align="left" prop="position">
                 </el-table-column>
+                <el-table-column sortable label="入职时间" align="left" prop="time">
+                </el-table-column>
                 <el-table-column label="个人仓库" align="left" width="100px">
                   <template slot-scope="scope">
                     <router-link to="home">
@@ -42,7 +44,7 @@
                 </el-table-column>
               </el-table>
             </el-col>
-            <el-col :span="16">
+            <el-col :span="14">
               <h2 style="margin-top:5px;">离职人员</h2>
               <el-col :span="6">
                 <el-input class="search" size="medium" placeholder="离职人员搜索" prefix-icon="el-icon-search" v-model="searchKey2">
@@ -56,6 +58,8 @@
                 </el-table-column>
                 <el-table-column label="角色" align="left" prop="position">
                 </el-table-column>
+                 <el-table-column sortable label="离职时间" align="left" prop="time">
+                </el-table-column>
                 <el-table-column label="个人仓库" align="left">
                   <template slot-scope="scope">
                     <router-link to="home">
@@ -65,7 +69,7 @@
                     </router-link>
                   </template>
                 </el-table-column>
-                <el-table-column label="是否迁移" align="left" prop="isMove">
+                <el-table-column sortable label="是否迁移" align="left" prop="isMove">
                 </el-table-column>
               </el-table>
             </el-col>
@@ -162,40 +166,40 @@ export default {
         },
 
       ],
-      tableData: [
-        { name: "zhuyunwu", position: "普通成员", },
-        { name: "wanghoulun", position: "普通成员", },
-        { name: "fanping", position: "普通成员", },
-        { name: "spongebob ", position: "负责人", },
-      ],
+
       tabs: [
         [
-          { name: "zhuyunwu", position: "普通成员", },
-          { name: "wanghoulun", position: "普通成员", },
-          { name: "spongebob ", position: "负责人", },
-          { name: "fanping", position: "普通成员", },
+          { name: "zhuyunwu", position: "普通成员", time: '2018-04-10' },
+          { name: "wanghoulun", position: "普通成员", time: '2018-04-11' },
+          { name: "fanping", position: "普通成员", time: '2018-04-11' },
+          { name: "zhoujiel", position: "普通成员", time: '2018-04-08' },
+          { name: "spongebob ", position: "负责人", time: '2018-04-06' },
+          { name: "forg", position: "负责人", time: '2018-04-05' },
         ],
         [
-          { name: "zhuyunwu", position: "普通成员", isMove: '否' },
-          { name: "wanghoulun", position: "普通成员", isMove: '否' },
-          { name: "spongebob ", position: "负责人", isMove: '否' },
-          { name: "fanping", position: "普通成员", isMove: '否' },
+          { name: "cherry", position: "普通成员", isMove: '否', time: '2018-04-11' },
+          { name: "peter", position: "普通成员", isMove: '否', time: '2018-04-10' },
+          { name: "brick ", position: "普通成员", isMove: '是', time: '2018-04-08' },
+
         ],
       ],
-       tabs1: [
+      tabs1: [
         [
-          { name: "zhuyunwu", position: "普通成员", },
-          { name: "wanghoulun", position: "普通成员", },
-          { name: "spongebob ", position: "负责人", },
-          { name: "fanping", position: "普通成员", },
+          { name: "zhuyunwu", position: "普通成员", time: '2018-04-10' },
+          { name: "wanghoulun", position: "普通成员", time: '2018-04-11' },
+          { name: "fanping", position: "普通成员", time: '2018-04-11' },
+          { name: "zhoujiel", position: "普通成员", time: '2018-04-08' },
+          { name: "spongebob ", position: "负责人", time: '2018-04-06' },
+          { name: "forg", position: "负责人", time: '2018-04-05' },
         ],
         [
-          { name: "zhuyunwu", position: "普通成员", isMove: '否' },
-          { name: "wanghoulun", position: "普通成员", isMove: '否' },
-          { name: "spongebob ", position: "负责人", isMove: '否' },
-          { name: "fanping", position: "普通成员", isMove: '否' },
+          { name: "cherry", position: "普通成员", isMove: '否', time: '2018-04-11' },
+          { name: "peter", position: "普通成员", isMove: '否', time: '2018-04-10' },
+          { name: "brick ", position: "普通成员", isMove: '是', time: '2018-04-08' },
+
         ],
       ],
+
     }
   },
   watch: {
@@ -216,26 +220,28 @@ export default {
   methods: {
     RunHub() {
       var self = this;
-      this.loading = true
       self.dialogVisible = false
-      setTimeout(
-        function() {
 
-          for (let i = 0; i < self.tabs[1].length; i++) {
-            if (self.tabs[1][i].name === self.currentRow2.name) {
-              self.tabs[1][i].isMove = '是'
-              break
-            }
+      const loading = this.$loading({
+        lock: true,
+        text: 'Loading',
+        spinner: 'el-icon-loading',
+        background: 'rgba(0, 0, 0, 0.7)'
+      });
+      setTimeout(() => {
+        for (let i = 0; i < self.tabs[1].length; i++) {
+          if (self.tabs[1][i].name === self.currentRow2.name) {
+            self.tabs[1][i].isMove = '是'
+            break
           }
-          self.loading = false
-          self.$message({
-            message: '迁移完成',
-            type: 'success'
-          });
+        }
+        loading.close();
+        self.$message({
+          message: '迁移完成',
+          type: 'success'
+        });
+      }, 2000);
 
-
-
-        }, 3000)
 
     },
     handleCurrentChange1(val) {

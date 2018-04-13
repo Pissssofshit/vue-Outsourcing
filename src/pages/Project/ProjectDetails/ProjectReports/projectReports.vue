@@ -24,8 +24,8 @@
             </el-tab-pane>
             <el-tab-pane v-for="(item, index) in MyTabs" :key="item.name" :label="item.category" :name="item.name">
             </el-tab-pane>
-            <el-tabs v-model="ContextTabsValue"  class="context_tabs" type="border-card">
-              <el-tab-pane label="概览" name="概览" >
+            <el-tabs v-model="ContextTabsValue" class="context_tabs" type="border-card">
+              <el-tab-pane label="概览" name="概览">
                 <div class="Chart">
                   <h2>{{ChartName}}</h2>
                   <div class="small">
@@ -37,7 +37,7 @@
               <el-tab-pane label="详情" name="详情">
                 <el-table :data="tableData" style="margin-top:5px">
                   <el-table-column label="考勤报表" align='left'>
-                    <template slot-scope="scope" >
+                    <template slot-scope="scope">
                       <router-link :to="{ name: scope.row.urlName,params: { name: scope.row.name }}">
                         <i class="el-icon-document"></i>
                         <span style="margin-left: 10px;">{{ scope.row.name }}</span>
@@ -89,37 +89,51 @@ export default {
         },
       ],
       tableData: [
-        { name: "2018-03-29 考勤记录", updateTime: "2018-03-29 21:00", urlName: "单个报表" },
-        { name: "2018-03-28 考勤记录", updateTime: "2018-03-28 21:00", urlName: "单个报表" },
-        { name: "2018-03-27 考勤记录", updateTime: "2018-03-27 21:00", urlName: "单个报表" },
+        { name: "2018-04-13 考勤记录", updateTime: "2018-04-13 21:00", urlName: "单个报表" },
+        { name: "2018-04-12 考勤记录", updateTime: "2018-04-12 21:00", urlName: "单个报表" },
+        { name: "2018-04-11 考勤记录", updateTime: "2018-04-11 21:00", urlName: "单个报表" },
+        { name: "2018-04-10 考勤记录", updateTime: "2018-04-10 21:00", urlName: "单个报表" },
+        { name: "2018-04-09 考勤记录", updateTime: "2018-04-09 21:00", urlName: "单个报表" },
+        { name: "2018-04-08 考勤记录", updateTime: "2018-04-08 21:00", urlName: "单个报表" },
       ],
       tables: [{
           key: "考勤报表",
           data: [
-            { name: "2018-03-29 考勤记录", updateTime: "2018-03-29 21:00", urlName: "单个报表" },
-            { name: "2018-03-28 考勤记录", updateTime: "2018-03-28 21:00", urlName: "单个报表" },
-            { name: "2018-03-27 考勤记录", updateTime: "2018-03-27 21:00", urlName: "单个报表" },
+            { name: "2018-04-13 考勤记录", updateTime: "2018-04-13 21:00", urlName: "单个报表" },
+            { name: "2018-04-12 考勤记录", updateTime: "2018-04-12 21:00", urlName: "单个报表" },
+            { name: "2018-04-11 考勤记录", updateTime: "2018-04-11 21:00", urlName: "单个报表" },
+            { name: "2018-04-10 考勤记录", updateTime: "2018-04-10 21:00", urlName: "单个报表" },
+            { name: "2018-04-09 考勤记录", updateTime: "2018-04-09 21:00", urlName: "单个报表" },
+            { name: "2018-04-08 考勤记录", updateTime: "2018-04-08 21:00", urlName: "单个报表" },
           ],
         },
         {
           key: "任务统计",
           data: [
-            { name: "2018-03-29 任务统计", updateTime: "2018-03-29 21:00", urlName: "任务统计" },
-            { name: "2018-03-28 任务统计", updateTime: "2018-03-28 21:00", urlName: "任务统计" },
-            { name: "2018-03-27 任务统计", updateTime: "2018-03-27 21:00", urlName: "任务统计" },
+            { name: "2018-04-13 任务统计", updateTime: "2018-04-13 21:00", urlName: "任务统计" },
+            { name: "2018-04-12 任务统计", updateTime: "2018-04-12 21:00", urlName: "任务统计" },
+            { name: "2018-04-11 任务统计", updateTime: "2018-04-11 21:00", urlName: "任务统计" },
+            { name: "2018-04-10 任务统计", updateTime: "2018-04-10 21:00", urlName: "任务统计" },
+            { name: "2018-04-09 任务统计", updateTime: "2018-04-09 21:00", urlName: "任务统计" },
+            { name: "2018-04-08 任务统计", updateTime: "2018-04-08 21:00", urlName: "任务统计" },
+
           ],
         },
         {
           key: "工作记录",
           data: [
-            { name: "2018-03-29 成员工时记录", updateTime: "2018-03-29 21:00", urlName: "工作记录" },
-            { name: "2018-03-28 成员工时记录", updateTime: "2018-03-28 21:00", urlName: "工作记录" },
-            { name: "2018-03-27 成员工时记录", updateTime: "2018-03-27 21:00", urlName: "工作记录" },
+            { name: "2018-04-13 成员工时记录", updateTime: "2018-04-13 21:00", urlName: "工作记录" },
+            { name: "2018-04-12 成员工时记录", updateTime: "2018-04-12 21:00", urlName: "工作记录" },
+            { name: "2018-04-11 成员工时记录", updateTime: "2018-04-11 21:00", urlName: "工作记录" },
+            { name: "2018-04-10 成员工时记录", updateTime: "2018-04-10 21:00", urlName: "工作记录" },
+            { name: "2018-04-09 成员工时记录", updateTime: "2018-04-09 21:00", urlName: "工作记录" },
+            { name: "2018-04-08 成员工时记录", updateTime: "2018-04-08 21:00", urlName: "工作记录" },
+
           ],
         },
       ],
       datacollection: {
-        labels: ["03-26", "03-27", "03-28", "03-29", "03-30", "03-31"],
+        labels: ["04-08", "04-09", "04-10", "04-11", "04-12", "04-13"],
         datasets: [{
           label: "应到人数",
           borderColor: '#ffcdd2',
@@ -127,7 +141,7 @@ export default {
           borderWidth: 1,
           pointBorderColor: 'white',
           backgroundColor: 'rgba(255, 99, 132, 0.2)',
-          data: [40, 40, 42, 43, 42, 42, 43]
+          data: [2, 1, 3, 4, 5, 5, 5]
         }, {
           label: "实际人数",
           borderColor: '#05CBE1',
@@ -135,7 +149,7 @@ export default {
           pointBorderColor: 'white',
           borderWidth: 1,
           backgroundColor: 'rgba(0, 231, 255, 0.2)',
-          data: [38, 40, 41, 43, 40, 41, 40]
+          data: [2, 1, 3, 3, 4, 5, 4]
         }]
       },
     }
@@ -182,39 +196,40 @@ export default {
       if (this.TabsValue === "任务统计") {
         this.ChartName = "任务统计"
         this.datacollection = {
-          labels: ["03-26", "03-27", "03-28", "03-29", "03-30", "03-31"],
+          labels: ["04-08", "04-09", "04-10", "04-11", "04-12", "04-13"],
           datasets: [{
-            label: "新增任务数",
-            borderColor: '#ffcdd2',
-            pointBackgroundColor: 'white',
-            borderWidth: 1,
-            pointBorderColor: 'white',
-            backgroundColor: 'rgba(255, 99, 132, 0.2)',
-            data: [20, 25, 18, 28, 10, 10, 15]
-          }, {
-            label: "完成任务数",
-            borderColor: '#05CBE1',
-            pointBackgroundColor: 'white',
-            pointBorderColor: 'white',
-            borderWidth: 1,
-            backgroundColor: 'rgba(0, 231, 255, 0.2)',
-            data: [18, 29, 19, 20, 30, 20, 11]
-          },
-          {
-            label: "任务总数",
-            borderColor: '#FFEE58',
-            pointBackgroundColor: 'white',
-            pointBorderColor: 'white',
-            borderWidth: 1,
-            backgroundColor: 'rgba(255,238,88, 0.2)',
-            data: [60, 70, 82, 83, 75, 69, 58]
-          }]
+              label: "新增任务数",
+              borderColor: '#ffcdd2',
+              pointBackgroundColor: 'white',
+              borderWidth: 1,
+              pointBorderColor: 'white',
+              backgroundColor: 'rgba(255, 99, 132, 0.2)',
+              data: [5, 3, 1, 0, 3, 5, 2]
+            }, {
+              label: "完成任务数",
+              borderColor: '#05CBE1',
+              pointBackgroundColor: 'white',
+              pointBorderColor: 'white',
+              borderWidth: 1,
+              backgroundColor: 'rgba(0, 231, 255, 0.2)',
+              data: [0, 0, 4, 4, 2, 2, 4]
+            },
+            {
+              label: "剩余任务数",
+              borderColor: '#FFEE58',
+              pointBackgroundColor: 'white',
+              pointBorderColor: 'white',
+              borderWidth: 1,
+              backgroundColor: 'rgba(255,238,88, 0.2)',
+              data: [5, 8, 5, 1, 2, 5, 3]
+            }
+          ]
         }
       } else if (this.TabsValue === '考勤报表') {
         this.ChartName = "考勤报表"
 
         this.datacollection = {
-          labels: ["03-26", "03-27", "03-28", "03-29", "03-30", "03-31"],
+          labels: ["04-08", "04-09", "04-10", "04-11", "04-12", "04-13"],
           datasets: [{
             label: "应到人数",
             borderColor: '#ffcdd2',
@@ -222,7 +237,7 @@ export default {
             borderWidth: 1,
             pointBorderColor: 'white',
             backgroundColor: 'rgba(255, 99, 132, 0.2)',
-            data: [40, 40, 42, 43, 42, 42, 43]
+            data: [2, 1, 3, 4, 5, 5, 5]
           }, {
             label: "实际人数",
             borderColor: '#05CBE1',
@@ -230,14 +245,14 @@ export default {
             pointBorderColor: 'white',
             borderWidth: 1,
             backgroundColor: 'rgba(0, 231, 255, 0.2)',
-            data: [38, 40, 41, 43, 40, 41, 40]
+            data: [2, 1, 3, 3, 4, 5, 4]
           }]
         }
       } else if (this.TabsValue === '工作记录') {
         this.ChartName = "工作记录"
 
         this.datacollection = {
-          labels: ["03-26", "03-27", "03-28", "03-29", "03-30", "03-31"],
+          labels: ["04-08", "04-09", "04-10", "04-11", "04-12", "04-13"],
           datasets: [{
             label: "记录人数",
             borderColor: '#ffcdd2',
@@ -245,7 +260,7 @@ export default {
             borderWidth: 1,
             pointBorderColor: 'white',
             backgroundColor: 'rgba(255, 99, 132, 0.2)',
-            data: [40, 40, 42, 43, 42, 42, 43]
+            data: [3, 4, 3, 4, 2, 6, 4]
           }]
         }
       }
