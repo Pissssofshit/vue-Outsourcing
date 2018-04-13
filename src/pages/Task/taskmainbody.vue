@@ -89,7 +89,7 @@ export default {
             id:"#1255",
             exo:"1412143367@qq.com",
             project:"红软外包服务平台",
-            textarea:"i will let u down i will let u fail you will have it all my empire of dirt",
+            textarea:"需要在登录的时候进行权限验证",
             data:"2018-04-17",
             role:'myduty'
             }

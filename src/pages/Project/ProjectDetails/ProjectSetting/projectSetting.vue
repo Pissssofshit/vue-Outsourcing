@@ -18,6 +18,9 @@
                 <el-button class='forbutton' type="primary" @click="">更新信息</el-button>
               </div>
             </el-tab-pane>
+            <el-tab-pane label="项目计划"　nmae="项目计划">
+                <projectplan></projectplan>
+            </el-tab-pane>
             <el-tab-pane label="项目权限" name="项目权限">
               <!-- <pdfshower pdfurl="./../../../static/pdf/123a.pdf" scale="1.2" @onErr="onErr"></pdfshower> -->
               <powertable></powertable>
@@ -75,6 +78,7 @@
 <script>
 import Powertable from '../../../../components/Power/powertable.vue'
 import pdfshower from 'vue-pdf-shower';
+import Projectplan from '../projectplan.vue'
 export default {
   data() {
     return {
@@ -100,6 +104,7 @@ export default {
   components: {
     Powertable,
     pdfshower,
+    Projectplan
   }
 }
 

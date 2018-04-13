@@ -12,7 +12,7 @@
           <el-col span=10>
           <div>
               <el-input type="textarea" v-model="prodesp" placeholder="请输入项目概述"></el-input>
-</div>
+          </div>
         </el-col>
         </el-row>
         <el-row type="flex" justify="baseline">
@@ -103,9 +103,9 @@
         </el-col>
       </el-row>
         <ul>
-            <li class="member">成员2</li>
+            <!-- <li class="member">成员2</li>
             <li class="member">成员3</li>
-            <li class="member">成员4</li>
+            <li class="member">成员4</li> -->
         </ul>
     </div>
   </div>
@@ -143,13 +143,9 @@ export default {
         buttontai:'编辑',   
           input:'',
           tableData: [{
-            name:'',
+            name:'项目里程碑',
             value: '2018-09-30',
             editable: true
-        },
-        {
-          name:'1234',
-          editable: true
         }
         ]
       }

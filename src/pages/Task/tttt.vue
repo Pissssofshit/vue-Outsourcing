@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="tetete">
       <el-row><b><router-link to="">{{form.id}}</router-link>{{form.commitname}}</b></el-row>
       <el-row>
           <el-col :span="2" class="sf">
@@ -8,6 +8,7 @@
           </el-col>
           <el-col class="ssf" width="100%">{{showdata}}</el-col>
       </el-row>
+      
   </div>
 </template>
 <script>
@@ -90,6 +91,7 @@ export default {
 </script>
 
 <style scoped>
+
 .sf{
     display: flex;
 }
