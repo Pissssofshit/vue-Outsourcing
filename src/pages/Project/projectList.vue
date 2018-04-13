@@ -10,58 +10,58 @@
               </el-aside>
             </div>
             <div class="swiper-slide content">
-               <el-main>
-          <div>
-            <div class="container-header">
-              <div class="title">进行中的项目</div>
-              <div class="right-content">
-                <router-link :to="{name: '新建项目'}">
-                  <i class="el-icon-plus"></i>
-                </router-link>
-                <span class="item-title">新建项目</span>
-              </div>
-            </div>
-            <div class="projectlist" v-loading="startLoading">
-              <div class="projectitem" v-for="item in projectList.prepareProjectList" :key="item.projectId">
-                <router-link :to="{name: '项目详情', params: {projectId: item.projectId}}">
-                  <projectItem :name="item.projectName" :img="item.projectLogo" :proid="item.projectId">
-                  </projectItem>
-                </router-link>
-              </div>
-            </div>
-          </div>
-          <div>
-            <div class="container-header">
-              <div class="title">准备中的项目</div>
-            </div>
-            <div class="projectlist" v-loading="prepareLoading">
-              <div class="projectitem" v-for="item in projectList.startProjectList" :key="item.projectId">
-                <router-link :to="{name: '项目详情', params: {projectId: item.projectId}}">
-                  <projectItem :name="item.projectName" :img="item.projectLogo" :proid="item.projectId"></projectItem>
-                </router-link>
-              </div>
-            </div>
-          </div>
-          <div>
-            <div class="container-header">
-              <div class="title">已完结的项目</div>
-            </div>
-            <div class="projectlist" v-loading="finishLoading">
-              <div class="projectitem" v-for="item in projectList.finishProjectList" :key="item.projectId">
-                <router-link :to="{name: '项目详情', params: {projectId: item.projectId}}">
-                  <projectItem :name="item.projectName" :img="item.projectLogo" :proid="item.projectId"></projectItem>
-                </router-link>
-              </div>
-            </div>
-          </div>
-        </el-main>
+              <el-main>
+                <div>
+                  <div class="container-header">
+                    <div class="title">进行中的项目</div>
+                    <div class="right-content">
+                      <router-link :to="{name: '新建项目'}">
+                        <i class="el-icon-plus"></i>
+                      </router-link>
+                      <span class="item-title">新建项目</span>
+                    </div>
+                  </div>
+                  <div class="projectlist" v-loading="startLoading">
+                    <div class="projectitem" v-for="item in projectList.prepareProjectList" :key="item.projectId">
+                      <router-link :to="{name: '项目详情', params: {projectId: item.projectId}}">
+                        <projectItem :name="item.projectName" :img="item.projectLogo" :proid="item.projectId">
+                        </projectItem>
+                      </router-link>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div class="container-header">
+                    <div class="title">准备中的项目</div>
+                  </div>
+                  <div class="projectlist" v-loading="prepareLoading">
+                    <div class="projectitem" v-for="item in projectList.startProjectList" :key="item.projectId">
+                      <router-link :to="{name: '项目详情', params: {projectId: item.projectId}}">
+                        <projectItem :name="item.projectName" :img="item.projectLogo" :proid="item.projectId"></projectItem>
+                      </router-link>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <div class="container-header">
+                    <div class="title">已完结的项目</div>
+                  </div>
+                  <div class="projectlist" v-loading="finishLoading">
+                    <div class="projectitem" v-for="item in projectList.finishProjectList" :key="item.projectId">
+                      <router-link :to="{name: '项目详情', params: {projectId: item.projectId}}">
+                        <projectItem :name="item.projectName" :img="item.projectLogo" :proid="item.projectId"></projectItem>
+                      </router-link>
+                    </div>
+                  </div>
+                </div>
+              </el-main>
             </div>
           </div>
         </div>
         <el-aside width="230px" v-if="media > 700">
           <asidenav :title="title" :data="data"></asidenav>
         </el-aside>
-       <el-main v-if="media > 700">
+        <el-main v-if="media > 700">
           <div>
             <div class="container-header">
               <div class="title">进行中的项目</div>
@@ -75,7 +75,7 @@
             <div class="projectlist" v-loading="startLoading">
               <div class="projectitem" v-for="item in projectList.prepareProjectList" :key="item.projectId">
                 <router-link :to="{name: '项目详情', params: {projectId: item.projectId}}">
-                  <projectItem :name="item.projectName" :img="item.projectLogo" :proid="item.projectId">
+                  <projectItem :name="item.projectName" :img="item.projectLogo" :proid="item.projectId" :state="item.projectState">
                   </projectItem>
                 </router-link>
               </div>
@@ -88,7 +88,7 @@
             <div class="projectlist" v-loading="prepareLoading">
               <div class="projectitem" v-for="item in projectList.startProjectList" :key="item.projectId">
                 <router-link :to="{name: '项目详情', params: {projectId: item.projectId}}">
-                  <projectItem :name="item.projectName" :img="item.projectLogo" :proid="item.projectId"></projectItem>
+                  <projectItem :name="item.projectName" :img="item.projectLogo" :proid="item.projectId" :state="item.projectState"></projectItem>
                 </router-link>
               </div>
             </div>
@@ -100,7 +100,7 @@
             <div class="projectlist" v-loading="finishLoading">
               <div class="projectitem" v-for="item in projectList.finishProjectList" :key="item.projectId">
                 <router-link :to="{name: '项目详情', params: {projectId: item.projectId}}">
-                  <projectItem :name="item.projectName" :img="item.projectLogo" :proid="item.projectId"></projectItem>
+                  <projectItem :name="item.projectName" :img="item.projectLogo" :proid="item.projectId" :state="item.projectState"></projectItem>
                 </router-link>
               </div>
             </div>
@@ -132,10 +132,10 @@ export default {
       title: '地狱咆哮',
       data: [
         [{ type: 2, menuname: '概览' },
-          { type: 2, menuname: '数据中心' ,url:'数据中心'},
-          { type: 2, menuname: '个人中心' ,url:'个人中心'}
+          { type: 2, menuname: '数据中心', url: '数据中心' },
+          { type: 2, menuname: '个人中心', url: '个人中心' }
         ],
-        [{ type: 3, menuname: '团队配置中心'  ,url:'团队配置中心'}]
+        [{ type: 3, menuname: '团队配置中心', url: '团队配置中心' }]
       ],
       item1: [],
       item2: [],
@@ -143,15 +143,30 @@ export default {
       prepareLoading: true,
       finishLoading: true,
     }
+
   },
   components: {
     ProjectItem,
     Asidenav
   },
   created: function() {
-    this.getStartProjectList()
-    this.getPrepareProjectList()
-    this.getFinishProjectList()
+    var self = this
+    //吹吹
+    setTimeout(function() {
+      self.startLoading = false
+    }, 1500)
+    setTimeout(
+      function() {
+        self.prepareLoading = false
+      }, 1600)
+    setTimeout(
+      function() {
+        self.finishLoading = false
+      }, 1800)
+
+    // this.getStartProjectList()
+    // this.getPrepareProjectList()
+    // this.getFinishProjectList()
     // console.log("projectList.vue：" + JSON.stringify(this.$store.state.userInfo));
   },
   mounted: function() {
@@ -163,8 +178,7 @@ export default {
         slidesPerView: 'auto',
         initialSlide: 1,
         on: {
-          slideChange: function() {
-          },
+          slideChange: function() {},
         }
       });
     }
@@ -201,19 +215,20 @@ export default {
 
 </script>
 <style scoped>
-.right-content{
+.right-content {
   z-index: 10;
 }
+
 @media only screen and (max-width: 700px) {
   .menu {
     width: 200px;
     z-index: 1000 !important;
   }
-  .menuitem{
+  .menuitem {
     background-color: rgb(241, 241, 241);
   }
-  .projectitem{
-    width: 100% !important; 
+  .projectitem {
+    width: 100% !important;
   }
   .swiper-container {
     width: 100%;

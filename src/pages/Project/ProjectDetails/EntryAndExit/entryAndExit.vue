@@ -20,7 +20,7 @@
             <el-col :span="8">
               <h2 style="margin-top:5px;">在职人员</h2>
               <el-col :span="6">
-                <el-input class="search" size="medium" placeholder="在职人员搜索" prefix-icon="el-icon-search" v-model="searchKey">
+                <el-input class="search" size="medium" placeholder="在职人员搜索" prefix-icon="el-icon-search" v-model="searchKey1">
                 </el-input>
               </el-col>
               <el-table :data="tabs[0]" style="width: 100% ;margin-top:5px" border highlight-current-row @current-change="handleCurrentChange1">
@@ -45,7 +45,7 @@
             <el-col :span="16">
               <h2 style="margin-top:5px;">离职人员</h2>
               <el-col :span="6">
-                <el-input class="search" size="medium" placeholder="离职人员搜索" prefix-icon="el-icon-search" v-model="searchKey">
+                <el-input class="search" size="medium" placeholder="离职人员搜索" prefix-icon="el-icon-search" v-model="searchKey2">
                 </el-input>
               </el-col>
               <el-table :data="tabs[1]" style="width: 100% ;margin-top:5px" border highlight-current-row @current-change="handleCurrentChange2">
@@ -148,8 +148,8 @@ export default {
         dialogVisible: false,
       },
       TabsValue: '项目成员',
-      placeholder: '搜索项目成员',
-      searchKey: '',
+      searchKey1: '',
+      searchKey2: '',
       tabPosition: 'left',
       MyTabs: [{
           position: '项目成员',
@@ -182,16 +182,30 @@ export default {
           { name: "fanping", position: "普通成员", isMove: '否' },
         ],
       ],
-
+       tabs1: [
+        [
+          { name: "zhuyunwu", position: "普通成员", },
+          { name: "wanghoulun", position: "普通成员", },
+          { name: "spongebob ", position: "负责人", },
+          { name: "fanping", position: "普通成员", },
+        ],
+        [
+          { name: "zhuyunwu", position: "普通成员", isMove: '否' },
+          { name: "wanghoulun", position: "普通成员", isMove: '否' },
+          { name: "spongebob ", position: "负责人", isMove: '否' },
+          { name: "fanping", position: "普通成员", isMove: '否' },
+        ],
+      ],
     }
   },
   watch: {
-    searchKey: function(curval, oldval) {
-      if (curval === "") {
-        this.HandleClick()
-        return
-      }
-      this.tableData = this.tableData.filter(object => {
+    searchKey1: function(curval, oldval) {
+      this.tabs[0] = this.tabs1[0].filter(object => {
+        return object.name.indexOf(curval) >= 0
+      })
+    },
+    searchKey2: function(curval, oldval) {
+      this.tabs[1] = this.tabs1[1].filter(object => {
         return object.name.indexOf(curval) >= 0
       })
     },
