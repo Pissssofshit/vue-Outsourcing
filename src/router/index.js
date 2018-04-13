@@ -43,6 +43,7 @@ import TaskStatistics from '@/pages/Project/ProjectDetails/ProjectReports/taskSt
 import ProjectSetting from '@/pages/Project/ProjectDetails/ProjectSetting/projectSetting'
 import EntryAndExit from '@/pages/Project/ProjectDetails/EntryAndExit/entryAndExit'
 import staffHub from '@/pages/Project/ProjectDetails/ProjectStaff/staffHub'
+import TaskDataChange from '@/pages/Task/taskDataChange'
 Vue.use(Router)
 // 兄弟 or 侄子 用router-to ，父子 包含router-view
 const vueRouter = new Router({
@@ -93,7 +94,13 @@ const vueRouter = new Router({
             path: 'mainf',
             name: 'mainf',
             component: Taskmainbody
-          }]
+          },
+          {
+            path: 'TaskDataChange',
+            name: '任务资料变化',
+            component: TaskDataChange
+          }
+          ]
         },
         {
           path: 'organization',

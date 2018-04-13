@@ -1,6 +1,6 @@
 <template>
-  <div class="tetete">
-      <el-row><b><router-link to="">{{form.id}}</router-link>{{form.commitname}}</b></el-row>
+  <div>
+      <el-row><b><router-link :to="{name:'任务资料变化'}">{{form.id}}</router-link>{{form.commitname}}</b></el-row>
       <el-row>
           <el-col :span="2" class="sf">
               <img　:src="form.logoimg">

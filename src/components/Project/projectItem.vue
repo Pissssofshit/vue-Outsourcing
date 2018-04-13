@@ -13,12 +13,12 @@
       <el-row>
         <el-row class="item-name">
           <el-col :span="24">
-            <div style="font-size:16px ;font-weight:bold;">项目名称</div>
+            <div style="font-size:16px ;font-weight:bold;">{{name}}</div>
           </el-col>
         </el-row>
         <el-row class="item-context">
           <el-col :span="24">
-            <div style="font-size:14px;color:#C0C0C0">项目简介:XXXXXXX</div>
+            <div style="font-size:14px;color:#C0C0C0">项目简介:{{state}}</div>
           </el-col>
         </el-row>
       </el-row>
@@ -36,6 +36,7 @@ export default {
     'img',
     'name',
     'proid',
+    'name',
     'state'
   ],
   created() {
